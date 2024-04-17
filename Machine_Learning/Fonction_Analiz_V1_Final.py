@@ -1,14 +1,23 @@
-def Analiz():
+def Analiz(pathfile):
     import pandas as pd
     import numpy as np
     import matplotlib.pyplot as plt
     import os
     import datetime
-    
+    # partie zip
+#zip_file_path = "chemin/vers/votre/fichier.zip"
+
+# Dossier de destination pour extraire les fichiers
+#extract_folder = "chemin/vers/dossier/de/destination"
+
+# Créer un objet ZipFile
+#with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+    # Extraire le contenu du fichier zip dans le dossier de destination
+    #zip_ref.extractall(extract_folder) """
 
 
     # Définition du chemin du répertoire contenant les données
-    pathfile ='./Machine_Learning/data_anonymous'
+   
 
     print(os.getcwd())
     # reflist: list of epc in each box
