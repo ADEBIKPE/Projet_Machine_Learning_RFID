@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Page Web</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://livetechspot.com/wp-content/uploads/2020/07/Complete-Guide-List-on-How-to-Optimize-E-commerce-Website.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: black;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            width: 100%;
+        }
+
+            .menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+                .menu ul li {
+                    display: inline-block;
+                    margin-right: 20px;
+                }
+
+                    .menu ul li a {
+                        color: white;
+                        text-decoration: none;
+                    }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <ul>
+        
+            <li><a asp asp-controller="Choix_methode" asp-action="Methode_choix">Choix et paramétrage de l'algorithme de prédilection</a></li>
+            
+        </ul>
+    </div>
+    <div class="content">
+        <h1>BIENVENUE SUR LE LOGICIEL DE GESTION LOGISTIQUE</h1>
+    </div>
+</body>
+</html>
+

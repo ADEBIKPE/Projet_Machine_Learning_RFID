@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewData["Title"] = "Methode_choix";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CHOIX METHODE D'ANALYSE</title>
+    <style>
+        /* Styles pour centrer le contenu */
+        body {
+            display: flex;
+            flex-direction: column; /* Alignement vertical */
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Centrer verticalement */
+            margin: 0; /* Supprimer les marges par défaut du corps */
+            font-family: Arial, sans-serif; /* Police de caractères */
+        }
+
+        /* Styles pour le titre */
+        h1 {
+            font-size: 2em; /* Taille de la police */
+            text-align: center; /* Centrage horizontal */
+            margin-bottom: 20px; /* Espace sous le titre */
+        }
+
+        /* Styles pour agrandir la liste déroulante */
+        select {
+            font-size: 1em; /* Taille de la police de la liste déroulante */
+            height: 40px; /* Hauteur de la liste déroulante */
+            width: 200px; /* Largeur de la liste déroulante */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Choix du méthode</h1>
+
+    <form>
+        <select class="form-select" aria-label="Default select example" onchange="location = this.value;">
+            <option selected disabled>Choix</option>
+            <option value="M_Analytique.cshtml">méthode analytique</option>
+            <option value="modelsmachinelearning.html">méthode machine learning</option>
+        </select>
+    </form>
+</body>
+</html>
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Choix du model</title>
+    <style>
+        /* Styles pour centrer le contenu */
+        body {
+            display: flex;
+            flex-direction: column; /* Alignement vertical */
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Centrer verticalement */
+            margin: 0; /* Supprimer les marges par défaut du corps */
+            font-family: Arial, sans-serif; /* Police de caractères */
+        }
+
+        /* Styles pour le titre */
+        h1 {
+            font-size: 2em; /* Taille de la police */
+            text-align: center; /* Centrage horizontal */
+            margin-bottom: 20px; /* Espace sous le titre */
+        }
+
+        /* Styles pour agrandir la liste déroulante */
+        select {
+            font-size: 1em; /* Taille de la police de la liste déroulante */
+            height: 40px; /* Hauteur de la liste déroulante */
+            width: 200px; /* Largeur de la liste déroulante */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CHOIX DU MODELE DE MACHINE LEARNING</h1>
+
+    <form>
+        <select class="form-select" aria-label="Default select example" onchange="location = this.value;">
+            <option selected disabled>Choix</option>
+            <option value="model1.html">model1</option>
+            <option value="model2.html">model2</option>
+            <option value="model3.html">model3</option>
+        </select>
+    </form>
+</body>
+</html>
+
+

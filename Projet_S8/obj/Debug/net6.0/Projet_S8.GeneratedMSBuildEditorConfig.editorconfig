@@ -1,0 +1,59 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Projet_S8
+build_property.RootNamespace = Projet_S8
+build_property.ProjectDir = C:\Users\agoss\OneDrive\Desktop\Projet_S8\Projet_Machine_Learning_RFID\Projet_S8\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\agoss\OneDrive\Desktop\Projet_S8\Projet_Machine_Learning_RFID\Projet_S8
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/agoss/OneDrive/Desktop/Projet_S8/Projet_Machine_Learning_RFID/Projet_S8/Views/Choix/Methode_choix.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hvaXhcTWV0aG9kZV9jaG9peC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agoss/OneDrive/Desktop/Projet_S8/Projet_Machine_Learning_RFID/Projet_S8/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agoss/OneDrive/Desktop/Projet_S8/Projet_Machine_Learning_RFID/Projet_S8/Views/Home/M_Analytique.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNX0FuYWx5dGlxdWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agoss/OneDrive/Desktop/Projet_S8/Projet_Machine_Learning_RFID/Projet_S8/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agoss/OneDrive/Desktop/Projet_S8/Projet_Machine_Learning_RFID/Projet_S8/Views/Methode_Analytique/M_Analytique.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWV0aG9kZV9BbmFseXRpcXVlXE1fQW5hbHl0aXF1ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agoss/OneDrive/Desktop/Projet_S8/Projet_Machine_Learning_RFID/Projet_S8/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agoss/OneDrive/Desktop/Projet_S8/Projet_Machine_Learning_RFID/Projet_S8/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agoss/OneDrive/Desktop/Projet_S8/Projet_Machine_Learning_RFID/Projet_S8/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agoss/OneDrive/Desktop/Projet_S8/Projet_Machine_Learning_RFID/Projet_S8/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/agoss/OneDrive/Desktop/Projet_S8/Projet_Machine_Learning_RFID/Projet_S8/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-cpo9l54m94

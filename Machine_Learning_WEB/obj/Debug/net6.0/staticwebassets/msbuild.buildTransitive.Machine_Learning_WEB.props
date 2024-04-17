@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Machine_Learning_WEB.props" />
+</Project>
