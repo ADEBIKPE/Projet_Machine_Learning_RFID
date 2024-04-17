@@ -1,4 +1,5 @@
-def Analiz(pathfile):
+
+def preprocessing(pathfile):
     import pandas as pd
     import numpy as np
     import matplotlib.pyplot as plt
@@ -17,9 +18,6 @@ def Analiz(pathfile):
 
 
     # Définition du chemin du répertoire contenant les données
-   
-
-    print(os.getcwd())
     # reflist: list of epc in each box
     reflist=pd.DataFrame()
     # 
@@ -210,104 +208,129 @@ def Analiz(pathfile):
     # readrate
     round(100*df_timing_slices_threshold.reset_index(drop=False).groupby(['run','loc'])['Epc'].nunique().groupby('loc').mean()\
         /reflist['Epc'].nunique(),2)
+    
+    # ds:
+    # sample : one tag in one window
+    #
+    # Définir les quantiles de RSSI
+    rssi_quantile = 1
 
-    ana = df_timing_slices.groupby(['Epc' ,'slice_id', 'loc','reflist_run_id']) ['Rssi'].max()\
-        .unstack('loc', fill_value =- 110).reset_index(drop=False)
+    # Calculer les quantiles de RSSI pour chaque groupe dans df_timing_slices
+    ds_rssi = df_timing_slices.groupby(['Epc', 'reflist_run_id', 'slice_id', 'loc'])['Rssi'].quantile(rssi_quantile)\
+                .unstack(['slice_id','loc'], fill_value=-110)
 
+    # Renommer les colonnes pour les rendre plus descriptives
+    ds_rssi.columns = [f'{x[0]}_{x[1]}' for x in ds_rssi.columns]
 
-    order=pd.DataFrame(timing_slices['slice_id'].unique(), columns=['slice_id'])
-    order['order']=order. index
+    # Réinitialiser l'index pour obtenir un DataFrame plat
+    ds_rssi = ds_rssi.reset_index(drop=False)
+    
+    # Calculer le nombre d'occurrences de chaque tag dans chaque fenêtre de temps et emplacement
+    ds_rc = df_timing_slices.groupby(['Epc','reflist_run_id','slice_id','loc']).size()\
+            .unstack(['slice_id', 'loc'], fill_value=0)
+    # Renommer les colonnes pour les rendre plus descriptives
+    ds_rc.columns = [f'{x[0]}_{x[1]}' for x in ds_rc.columns]
+    # Réinitialiser l'index pour obtenir un DataFrame plat
+    ds_rc = ds_rc.reset_index(drop=False)
 
+    # Fusionner les DataFrames ds_rssi et ds_rc sur les colonnes 'Epc' et 'reflist_run_id'
+    ds = pd.merge(ds_rssi, ds_rc, on=['Epc', 'reflist_run_id'], suffixes=['_rssi', '_rc'])
+    window = timing
+    window['reflist_run_id'] = window['refListId'].astype(str) +"_"+ window['run'].astype(str)
+    window ['window_width'] = (window['ciuchStopdown'] - window['ciuchStartup']).apply(lambda x:x.total_seconds())
+    # Assurez-vous que les DataFrames sont triés par 'reflist_run_id'
+    df_timing_slices.sort_values('reflist_run_id', inplace=True)
+    ds.sort_values('reflist_run_id', inplace=True)
 
+    # Fusionner en utilisant merge
+    ds = pd.merge(ds, window[['reflist_run_id', 'window_width']], on='reflist_run_id', how='left')
+    ds = pd.merge(ds, reflist, on='Epc', how='inner')
+    ds['in_or_out'] = ds.apply(lambda row: 'inside' if int(row['reflist_run_id'].split('_')[0]) == row['refListId_actual'] else 'outside', axis=1)
 
+    # Epcs_window
+    Q_Epcs_window = df_timing_slices.groupby(['reflist_run_id'])['Epc'].nunique().rename('Epcs_window').reset_index(drop=False)
+    ds = pd.merge(ds, Q_Epcs_window, on='reflist_run_id', how='left')
+    # reads_window
+    Q_reads_window = df_timing_slices.groupby(['reflist_run_id']).size().rename('reads_window').reset_index(drop=False)
+    ds = pd.merge(ds, Q_reads_window, on='reflist_run_id', how='left')
+    ds.groupby("in_or_out")['Epc'].nunique()
+    
+    return ds
+def Xcols_func(features, Xcols_all):
+    import pandas as pd
+    import numpy as np
+    Features=pd.DataFrame(\
+    [\
+    ['all', True, True, False, True, True, True ],\
+    ['rssi & rc only', True, True, False, False, False, False ], \
+    ['rssi & rc_mid', True, True, True, False, False, False ], \
+    ['rssi only', True, False, True, False, False, False ], \
+    ['rc only', False, True, False, False, False, False ], \
+    ], columns=['features', 'rssi', 'rc', 'rc_mid_only', 'Epcs_window', 'reads_window', 'window_width'])
+    Features_temp = Features [Features['features'] == features]
 
-    ana=pd.merge(ana, order, on='slice_id', how='left')
-    ana = ana [['Epc','reflist_run_id','slice_id', 'in', 'out', 'order']]
+    X=[]
+    rssi = Features_temp ['rssi'].values[0]
+    rc = Features_temp['rc'].values[0]
+    rc_mid_only = Features_temp['rc_mid_only'].values[0]
+    Epcs_window = Features_temp['Epcs_window'].values[0]
+    reads_window = Features_temp['reads_window'].values[0]
+    window_width = Features_temp['window_width'].values[0]
 
+    X_rssi = [x for x in Xcols_all if rssi*'rssi' in x.split('_') ]
+    X_rc = [x for x in Xcols_all if rc*'rc' in x.split('_') ]
 
-    # Last subslice_id with out>in
-    ana_out =ana [ ana['out']>ana['in'] ] \
-    .sort_values(['Epc', 'reflist_run_id', 'order'], ascending=False) \
-    .drop_duplicates(['Epc', 'reflist_run_id'])
-    # first subslice_id with in/out
-    ana_in =ana [ ana['in']>ana['out'] ] \
-    .sort_values(['Epc', 'reflist_run_id', 'order'], ascending=True) \
-    .drop_duplicates(['Epc', 'reflist_run_id'])
+    X = X_rssi + X_rc
 
-    ana = pd.merge(ana_in, ana_out, on=['Epc', 'reflist_run_id'], suffixes=['_IN', '_OUT'], how='inner')\
-    .sort_values(['Epc', 'reflist_run_id'])
-    ana = pd.merge(ana, reflist, on='Epc', how='left')
+    if Epcs_window:
+        X.append('Epcs_window')
 
+    if reads_window:
+        X.append('reads_window')
 
-    ana['pred_ana_bool']= ana['reflist_run_id'].apply(lambda x:x.split('_')[0]).astype('int64')== ana['refListId_actual']
+    if window_width:
+        X.append('window_width')
+    return X
+def RandomForest_method(n_arbres, profondeur, n_plis, n_minimum_split,pathfile):
+    # Charger les données
+    from sklearn.model_selection import cross_val_score
+    from sklearn.ensemble import RandomForestClassifier
+    X=Xcols_func(all,(preprocessing(pathfile)).columns)
+    ds=preprocessing(pathfile)
+    x = ds.loc[:, X]
+    y = ds['in_or_out']
+    
+    # Créer le modèle
+    clf = RandomForestClassifier(n_estimators=n_arbres, max_depth=profondeur, min_samples_split=n_minimum_split)
+    
+    # Effectuer une validation croisée
+    scores = cross_val_score(clf, x, y, cv=n_plis)  # cv=n_plis indique une validation croisée avec n_plis plis
+    
+    # Afficher les scores de validation croisée
+    print("Scores de validation croisée:", scores)
+    print("Score moyen de validation croisée:", scores.mean())
+    score=scores.mean()
+    # Entraîner le modèle sur toutes les données
+    clf.fit(x, y)
+    
+    # Calculer le score sur les données d'entraînement
+    train_score = clf.score(x, y)
+    
+    print("Score sur l'ensemble d'entraînement:", train_score)
 
-    true=ana[ana['pred_ana_bool']==True]
-    accuracy= (true.shape[0]/ana.shape[0])*100
-    error_margin=100-accuracy
-    #print("Exactitude globale :"+str(accuracy*100)+"%")
-    false=ana[ana['pred_ana_bool']==False]
-    #a=["Tags bien classés","Tags mal classés"]
-    #b=[true.shape[0],false.shape[0]]
-    #import seaborn as sns
-    #sns.barplot(x=a, y=b)
-    #for value in range(9):
-        #data=ana[(ana["refListId_actual"] == value) & (ana["pred_ana_bool"] == True)]
-        #data2=ana[ana["refListId_actual"] == value]
-        #print(data.shape[0]/data2.shape[0])'''
+    return score
+#
+#
 
+#
 
-    return accuracy, error_margin
+#
 
+#
 
+#
 
+#
+#
 
-# Fonction de visualisation
-def viz(ana):
-
-    true=ana[ana['pred_ana_bool']==True]
-    true.shape
-    accuracy= true.shape[0]/ana.shape[0]
-    print("Exactitude globale :"+str(accuracy*100)+"%")
-    false=ana[ana['pred_ana_bool']==False]
-    false.shape
-    a=["Tags bien classés","Tags mal classés"]
-    b=[true.shape[0],false.shape[0]]
-    import seaborn as sns
-    sns.barplot(x=a, y=b)
-    for value in range(9):
-        data=ana[(ana["refListId_actual"] == value) & (ana["pred_ana_bool"] == True)]
-        data2=ana[ana["refListId_actual"] == value]
-        print(data.shape[0]/data2.shape[0])
-
-    ana['run']= ana['reflist_run_id'].apply(lambda x:x.split('_')[1]).astype('int64')
-    ong = ana.drop('reflist_run_id', axis=1)  # Supprimer la colonne 'reflist_run_id'
-    ong_filtered = ong[ong["pred_ana_bool"] == True]  # Filtrer les lignes où "pred_ana_bool" est True
-    grp1 = ong_filtered.groupby(['run', 'refListId_actual'])  # Groupement par 'run' et 'refListId_actual'
-    grp1.sum()  # Calcul de la somme pour chaque groupe
-    #grp1.sum().to_excel("xcel.xlsx",sheet_name="f")
-    ong = ana.drop('reflist_run_id', axis=1)  # Supprimer la colonne 'reflist_run_id'
-    ong_filtered = ong  # Filtrer les lignes où "pred_ana_bool" est True
-    grp = ong_filtered.groupby(['run', 'refListId_actual'])['pred_ana_bool'].value_counts()\
-    .unstack('pred_ana_bool',fill_value=0).reset_index(drop=False)
-    # Renommer les colonnes
-    grp = grp[['run', 'refListId_actual', True, False]]
-    import matplotlib.pyplot as plt
-    for index, row in grp.iterrows():
-        # Récupération des valeurs de 'run', 'refListId_actual', True et False pour cette ligne
-        run_value = row['run']
-        reflist_value = row['refListId_actual']
-        true_value = row[True]
-        false_value = row[False]
-        
-        # Création d'un histogramme
-        if run_value == 2:
-
-            plt.figure()
-            plt.bar(['Bien classés', 'Mal classés'], [true_value, false_value])
-            plt.title(f'Tour {run_value}, {reflist_value+1}eme Boite')
-            plt.xlabel('Valeur de pred_ana_bool')
-            plt.ylabel('Nombre de Tags')
-            plt.show()
-
-# Exécution de l'analyse et de la visualisation
-viz(Analiz())
+#
