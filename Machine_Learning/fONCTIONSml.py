@@ -317,23 +317,7 @@ def RandomForest_method(n_arbres, profondeur, n_plis, n_minimum_split,pathfile):
     cm = confusion_matrix(y, y_pred)
     
     # Calculer le score sur les données d'entraînement
-    train_score = clf.score(x, y)
     
-    print("Score sur l'ensemble d'entraînement:", train_score)
 
     return score,cm
-#
-#
-
-#
-
-#
-
-#
-
-#
-
-#
-#
-
 #
