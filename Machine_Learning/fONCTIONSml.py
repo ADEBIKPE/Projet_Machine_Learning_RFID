@@ -311,14 +311,17 @@ def RandomForest_method(n_arbres, profondeur, n_plis, n_minimum_split,pathfile):
     print("Score moyen de validation croisée:", scores.mean())
     score=scores.mean()
     # Entraîner le modèle sur toutes les données
-    clf.fit(x, y)
+    
+    y_pred = clf.predict(x)
+    from sklearn.metrics import confusion_matrix
+    cm = confusion_matrix(y, y_pred)
     
     # Calculer le score sur les données d'entraînement
     train_score = clf.score(x, y)
     
     print("Score sur l'ensemble d'entraînement:", train_score)
 
-    return score
+    return score,cm
 #
 #
 
