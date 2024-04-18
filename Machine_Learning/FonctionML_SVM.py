@@ -328,10 +328,6 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau,pathfile):
     # Entraîner le modèle sur toutes les données
     svm_model.fit(x, y_encoded)
     
-    # Calculer le score sur les données d'entraînement
-    train_score = svm_model.score(x, y_encoded)
-    
-    print("Score sur l'ensemble d'entraînement:", train_score)
 
     # Prédiction avec la validation croisée
     y_pred = cross_val_predict(svm_model, x, y_encoded, cv=5)
@@ -342,11 +338,8 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau,pathfile):
     print("Confusion Matrix:")
     print(conf_matrix)
 
-    # Affichage de la matrice de confusion moyenne
-    mean_conf_matrix = np.mean(conf_matrix, axis=0)
-    print("Mean Confusion Matrix:")
-    print(mean_conf_matrix)
-    return score, conf_matrix, mean_conf_matrix
+    
+    return score, conf_matrix
 
 
 #

@@ -316,7 +316,6 @@ def RandomForest_method(n_arbres, profondeur, n_plis, n_minimum_split,pathfile):
     from sklearn.metrics import confusion_matrix
     cm = confusion_matrix(y, y_pred)
     
-    # Calculer le score sur les données d'entraînement
     
 
     return score,cm
