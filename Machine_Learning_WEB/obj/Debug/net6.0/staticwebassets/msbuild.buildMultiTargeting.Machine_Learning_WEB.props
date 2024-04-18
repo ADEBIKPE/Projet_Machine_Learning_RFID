@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\Machine_Learning_WEB.props" />
-</Project>
