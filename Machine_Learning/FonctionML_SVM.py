@@ -303,35 +303,41 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau,pathfile):
     from sklearn.model_selection import cross_val_predict
     from sklearn.metrics import confusion_matrix
     import numpy as np
+    from sklearn.preprocessing import LabelEncoder
 
-    X=Xcols_func(all,(preprocessing(pathfile)).columns)
+    X=Xcols_func('rssi & rc only',(preprocessing(pathfile)).columns)
     ds=preprocessing(pathfile)
     x = ds.loc[:, X]
     y = ds['in_or_out']
+    # Créer un encodeur LabelEncoder
+    label_encoder = LabelEncoder()
+
+    # Encoder la variable cible
+    y_encoded = label_encoder.fit_transform(y)
     
     # Créer le modèle
     svm_model = SVC(C=regularisation,gamma=CoefNoyau,kernel=Noyau) 
     
     # Effectuer une validation croisée
-    scores = cross_val_score(svm_model, x, y, cv=n_plis)  # cv=n_plis indique une validation croisée avec n_plis plis
+    scores = cross_val_score(svm_model, x, y_encoded, cv=n_plis)  # cv=n_plis indique une validation croisée avec n_plis plis
     
     # Afficher les scores de validation croisée
     print("Scores de validation croisée:", scores)
     print("Score moyen de validation croisée:", scores.mean())
     score=scores.mean()
     # Entraîner le modèle sur toutes les données
-    svm_model.fit(x, y)
+    svm_model.fit(x, y_encoded)
     
     # Calculer le score sur les données d'entraînement
-    train_score = svm_model.score(x, y)
+    train_score = svm_model.score(x, y_encoded)
     
     print("Score sur l'ensemble d'entraînement:", train_score)
 
     # Prédiction avec la validation croisée
-    y_pred = cross_val_predict(svm_model, X, y, cv=5)
+    y_pred = cross_val_predict(svm_model, x, y_encoded, cv=5)
 
     # Calcul de la matrice de confusion
-    conf_matrix = confusion_matrix(y, y_pred)
+    conf_matrix = confusion_matrix(y_encoded, y_pred)
 
     print("Confusion Matrix:")
     print(conf_matrix)
@@ -340,7 +346,9 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau,pathfile):
     mean_conf_matrix = np.mean(conf_matrix, axis=0)
     print("Mean Confusion Matrix:")
     print(mean_conf_matrix)
-    return scores.mean(), conf_matrix, mean_conf_matrix
+    return score, conf_matrix, mean_conf_matrix
+
+
 #
 #
 
