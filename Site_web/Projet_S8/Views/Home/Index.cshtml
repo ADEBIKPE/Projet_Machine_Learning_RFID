@@ -15,7 +15,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: black; /* Changement de couleur du texte en blanc pour une meilleure lisibilité */
+            color: grey; /* Changement de couleur du texte en blanc pour une meilleure lisibilité */
             font-family: Arial, sans-serif;
         }
 
@@ -114,29 +114,34 @@
                     <!-- Formulaire pour KNN -->
                     <div>
                         <label for="Param1">n_neighbors</label>
+                            <p>Le nombre de voisins à considérer lors de la prédiction</p>
                         <select id="param2" name="param2">
                             <option value="max">Maximum:20</option>>
                             <option value="min">Minimum:1</option>
                             
-                            <option value="ideal">Default:5</option>
+                            <option value="ideal">Default:3</option>
                         </select>
+                         
+                        
                        
                     </div>
                     <div>
                         <label for="Param2">weights</label>
+                        <p>La méthode utilisée pour pondérer les voisins</p>
                         <select id="param2" name="param2">
                             <option value="max">Uniforme</option>
-                            <option value="min">Distance</option>
+                            <option value="min">Ideal: Distance</option>
                             
                         </select>
                        
                     </div>
                     <div>
                         <label for="Param3">metric</label>
+                        <p> La mesure de distance utilisée pour calculer la proximité entre les points.</p>
                         <select id="param2" name="param2">
                             <option value="max">Euclidienne</option>
                             <option value="min">Minkowski</option>
-                            <option value="ideal">Manhattan</option>
+                            <option value="ideal">Ideal:Manhattan</option>
                         </select>
                        
                     </div>
@@ -166,6 +171,7 @@
                     <!-- Formulaire pour RandomForest -->
                     <div>
                         <label for="Param1">n_estimators</label>
+                         <p>Le nombre d'arbres de décision dans la forêt</p>
                         <select id="param2" name="param2">
                             <option value="max">Maximum:1000</option>
                             <option value="min">Minimum:10</option>
@@ -178,6 +184,7 @@
 
                     <div>
                         <label for="Param2">min_samples_split</label>
+                        <p>Le nombre d'arbres de décision dans la forêt</p>
                         <input type="number" name="Param3" id="Param3" value="10" data-default="10">
                         
                        </select>
@@ -185,6 +192,7 @@
                     </div>
                     <div>
                         <label for="Param3">max_depth </label>
+                        <p>La profondeur maximale de chaque arbre de décision</p>
                         <input type="number" name="Param3" id="Param3" value="10" data-default="10">
                          
                        </select>
@@ -211,12 +219,14 @@
         </li>
         <li>
             <input type="checkbox" id="checkbox-SVM" name="method" value="SVM" onclick="showForm('SVM')">
+
             <label for="checkbox-SVM">Méthode SVM</label>
             <div id="form-container-SVM" class="form-container">
                 <form method="get" action="">
                     <!-- Formulaire pour SVM -->
                     <div>
                         <label for="Param1">Paramètre de régularisation(C)</label>
+                        <p>Il contrôle la trade-off entre la marge maximale et la classification correcte des points d'entraînement</p>
                         <select id="param2" name="param2">
                             <option value="max">Maximum:100</option>
                             <option value="min">Minimum:0,1</option>
@@ -225,6 +235,7 @@
                     </div>
                     <div>
                         <label for="Param2">Paramètre du noyau (Kernel)</label>
+                        <p>Le noyau à utiliser dans l'algorithme SVM</p>
                         <select id="param2" name="param2">
                             <option value="max">RBF</option>
                             <option value="min">Poly</option>
@@ -234,6 +245,7 @@
                     </div>
                     <div>
                         <label for="Param3">Coefficient du noyau (Gamma)</label>
+                        <p>Il définit jusqu'à quel point l'influence d'un seul exemple d'entraînement s'étend</p>
                         <select id="param2" name="param2">
                             <option value="max">Maximum:10</option>
                             <option value="min">Minimum:0,001</option>

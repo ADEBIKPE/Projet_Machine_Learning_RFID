@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\API_Proj"
+    "\\API_Proj",
+    "\\Site_web",
+    "\\Site_web\\Projet_S8"
   ],
-  "SelectedNode": "\\API_Proj\\ReadMe.md",
+  "SelectedNode": "\\Site_web\\Projet_S8\\Projet_S8.csproj",
   "PreviewInSolutionExplorer": false
 }
