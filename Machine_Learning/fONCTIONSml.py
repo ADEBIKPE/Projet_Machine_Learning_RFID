@@ -295,7 +295,7 @@ def RandomForest_method(n_arbres, profondeur, n_plis, n_minimum_split,pathfile):
     # Charger les données
     from sklearn.model_selection import cross_val_score
     from sklearn.ensemble import RandomForestClassifier
-    X=Xcols_func(all,(preprocessing(pathfile)).columns)
+    X=Xcols_func('rssi & rc only',(preprocessing(pathfile)).columns)
     ds=preprocessing(pathfile)
     x = ds.loc[:, X]
     y = ds['in_or_out']
@@ -311,8 +311,8 @@ def RandomForest_method(n_arbres, profondeur, n_plis, n_minimum_split,pathfile):
     print("Score moyen de validation croisée:", scores.mean())
     score=scores.mean()
     # Entraîner le modèle sur toutes les données
-    
-    y_pred = clf.predict(x)
+    from sklearn.model_selection import cross_val_predict
+    y_pred = cross_val_predict(clf, x, y, cv=n_plis)
     from sklearn.metrics import confusion_matrix
     cm = confusion_matrix(y, y_pred)
     
