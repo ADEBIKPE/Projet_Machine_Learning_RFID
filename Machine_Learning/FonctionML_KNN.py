@@ -326,11 +326,11 @@ def KNN_method(metric, n_neighbors, n_plis, weights,pathfile):
 
     # Validation croisée avec 5 folds et une métrique de score spécifiée
     cv_scores = cross_val_score(knn, X_normalized, y, cv=5, scoring='accuracy')
+    #print("Score moyen de validation croisée:", cv_scores.mean())
+    score=cv_scores.mean()
 
     # Affichage des scores de validation croisée
     #print("Scores de validation croisée:", cv_scores)
-
-
 
     # Faire des prédictions avec validation croisée
     y_pred = cross_val_predict(knn, X_normalized, y, cv=5)
@@ -343,7 +343,7 @@ def KNN_method(metric, n_neighbors, n_plis, weights,pathfile):
     #print(conf_matrix)
 
 
-    return cv_scores, conf_matrix
+    return score, conf_matrix
 
 
 ##
@@ -358,10 +358,10 @@ weights = 'uniform'
 pathfile ='./Machine_Learning/data_anonymous'
 
 # Appeler la méthode KNN_method
-cv_scores, confusion_matrix_result = KNN_method(metric, n_neighbors, n_plis, weights, pathfile)
+score, confusion_matrix_result = KNN_method(metric, n_neighbors, n_plis, weights, pathfile)
 
 # Afficher les scores de validation croisée
-print("Scores de validation croisée:", cv_scores)
+print("Scores de validation croisée:", score)
 
 # Afficher la matrice de confusion
 print("Matrice de confusion:")
