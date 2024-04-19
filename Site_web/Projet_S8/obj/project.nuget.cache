@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "cisvLl+8F7U8IIEWANlqqV8oTqFeZCshS04QUtITJDzATOOWLCAS8wX4OGuDiUR1exxsPkiWA17K7C9OgYTNOg==",
+  "dgSpecHash": "nTSBCfxaTJwWmeFRMBUbnePFU+koxMNwc3dDLeU8DAClLcPCT4otr5DV/l0QZuyIwtgt4s6ufCC7HhmE0ai1Ng==",
   "success": true,
-  "projectFilePath": "C:\\Users\\46426376\\source\\repos\\Projet_S8\\Projet_S8\\Projet_S8.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hp\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.27\\microsoft.windowsdesktop.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.27\\microsoft.netcore.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.27\\microsoft.aspnetcore.app.ref.6.0.27.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.27\\microsoft.netcore.app.host.win-x64.6.0.27.nupkg.sha512"
+  ],
   "logs": []
 }

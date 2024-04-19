@@ -1,8 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\API_Proj"
+    "\\API_Proj\\Projet_S8\\Projet_S8",
+    "\\API_Proj\\Projet_S8\\Projet_S8\\Controllers",
+    "\\Site_web",
+    "\\Site_web\\Projet_S8",
+    "\\Site_web\\Projet_S8\\Views",
+    "\\Site_web\\Projet_S8\\Views\\Home"
   ],
-  "SelectedNode": "\\API_Proj\\ReadMe.md",
+  "SelectedNode": "\\Site_web\\Projet_S8\\Projet_S8.sln",
   "PreviewInSolutionExplorer": false
 }
