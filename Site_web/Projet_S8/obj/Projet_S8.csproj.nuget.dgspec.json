@@ -1,7 +1,27 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\46411803\\Documents\\New\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj": {}
+=======
+<<<<<<< HEAD
+    "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj": {}
+  },
+  "projects": {
+    "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj",
+        "projectName": "Projet_S8",
+        "projectPath": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "C:\\Users\\agoss\\OneDrive\\Desktop\\R\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj": {}
+>>>>>>> d3e9ef1e0a644adcc03f80043e4c4bd5eba872a4
   },
   "projects": {
     "C:\\Users\\46411803\\Documents\\New\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj": {
@@ -20,6 +40,7 @@
         "configFilePaths": [
           "C:\\Users\\46411803\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> 79fbd727846bbc6d7e4acfcf8281dc74d2352175
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,6 +60,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -54,6 +80,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.27, 6.0.27]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.27, 6.0.27]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.27, 6.0.27]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.27, 6.0.27]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -62,7 +106,15 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.320\\RuntimeIdentifierGraph.json"
+=======
+<<<<<<< HEAD
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+>>>>>>> 79fbd727846bbc6d7e4acfcf8281dc74d2352175
+>>>>>>> d3e9ef1e0a644adcc03f80043e4c4bd5eba872a4
         }
       }
     }

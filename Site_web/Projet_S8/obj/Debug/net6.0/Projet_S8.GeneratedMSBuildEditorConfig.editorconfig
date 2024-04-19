@@ -8,11 +8,55 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Projet_S8
 build_property.RootNamespace = Projet_S8
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\46411803\Documents\New\Projet_Machine_Learning_RFID\Site_web\Projet_S8\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\46411803\Documents\New\Projet_Machine_Learning_RFID\Site_web\Projet_S8
+=======
+<<<<<<< HEAD
+build_property.ProjectDir = D:\Esigelec\2emeAnnee\S8\ProjetS8\Projet_Machine_Learning_RFID\Site_web\Projet_S8\
+=======
+build_property.ProjectDir = C:\Users\agoss\OneDrive\Desktop\R\Projet_Machine_Learning_RFID\Site_web\Projet_S8\
+>>>>>>> 79fbd727846bbc6d7e4acfcf8281dc74d2352175
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+<<<<<<< HEAD
+build_property.MSBuildProjectDirectory = D:\Esigelec\2emeAnnee\S8\ProjetS8\Projet_Machine_Learning_RFID\Site_web\Projet_S8
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/Esigelec/2emeAnnee/S8/ProjetS8/Projet_Machine_Learning_RFID/Site_web/Projet_S8/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Esigelec/2emeAnnee/S8/ProjetS8/Projet_Machine_Learning_RFID/Site_web/Projet_S8/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Esigelec/2emeAnnee/S8/ProjetS8/Projet_Machine_Learning_RFID/Site_web/Projet_S8/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Esigelec/2emeAnnee/S8/ProjetS8/Projet_Machine_Learning_RFID/Site_web/Projet_S8/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Esigelec/2emeAnnee/S8/ProjetS8/Projet_Machine_Learning_RFID/Site_web/Projet_S8/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Esigelec/2emeAnnee/S8/ProjetS8/Projet_Machine_Learning_RFID/Site_web/Projet_S8/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Esigelec/2emeAnnee/S8/ProjetS8/Projet_Machine_Learning_RFID/Site_web/Projet_S8/Views/Shared/_Layout.cshtml]
+=======
+build_property.MSBuildProjectDirectory = C:\Users\agoss\OneDrive\Desktop\R\Projet_Machine_Learning_RFID\Site_web\Projet_S8
+>>>>>>> d3e9ef1e0a644adcc03f80043e4c4bd5eba872a4
 build_property._RazorSourceGeneratorDebug = 
 
 [C:/Users/46411803/Documents/New/Projet_Machine_Learning_RFID/Site_web/Projet_S8/Areas/Identity/Pages/Account/AccessDenied.cshtml]
@@ -203,6 +247,11 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+<<<<<<< HEAD
 [C:/Users/46411803/Documents/New/Projet_Machine_Learning_RFID/Site_web/Projet_S8/Views/Shared/_Layout.cshtml]
+=======
+[C:/Users/agoss/OneDrive/Desktop/R/Projet_Machine_Learning_RFID/Site_web/Projet_S8/Views/Shared/_Layout.cshtml]
+>>>>>>> 79fbd727846bbc6d7e4acfcf8281dc74d2352175
+>>>>>>> d3e9ef1e0a644adcc03f80043e4c4bd5eba872a4
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-cpo9l54m94

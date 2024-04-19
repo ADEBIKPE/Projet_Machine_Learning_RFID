@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Machine_learning_WEB")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e32fe1780677926c73e434d56be5c2ccd72d9ee")]
+=======
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+>>>>>>> 79fbd727846bbc6d7e4acfcf8281dc74d2352175
 [assembly: System.Reflection.AssemblyProductAttribute("Machine_learning_WEB")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Machine_learning_WEB")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

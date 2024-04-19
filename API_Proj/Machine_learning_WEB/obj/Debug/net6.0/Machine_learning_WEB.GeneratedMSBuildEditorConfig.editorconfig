@@ -8,9 +8,19 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Machine_learning_WEB
 build_property.RootNamespace = Machine_learning_WEB
+<<<<<<< HEAD
+build_property.ProjectDir = D:\Esigelec\2emeAnnee\S8\ProjetS8\Projet_Machine_Learning_RFID\API_Proj\Machine_learning_WEB\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Esigelec\2emeAnnee\S8\ProjetS8\Projet_Machine_Learning_RFID\API_Proj\Machine_learning_WEB
+=======
 build_property.ProjectDir = C:\Users\46426376\Desktop\Site_Web\Projet_Machine_Learning_RFID\API_Proj\Machine_learning_WEB\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\46426376\Desktop\Site_Web\Projet_Machine_Learning_RFID\API_Proj\Machine_learning_WEB
+>>>>>>> 79fbd727846bbc6d7e4acfcf8281dc74d2352175
 build_property._RazorSourceGeneratorDebug = 

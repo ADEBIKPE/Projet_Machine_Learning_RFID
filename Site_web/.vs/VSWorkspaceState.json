@@ -1,10 +1,15 @@
 {
   "ExpandedNodes": [
+<<<<<<< HEAD
+    ""
+  ],
+=======
     "",
     "\\Projet_S8",
     "\\Projet_S8\\Views",
     "\\Projet_S8\\Views\\Home"
   ],
   "SelectedNode": "\\Projet_S8\\Views\\Home\\Index.cshtml",
+>>>>>>> 79fbd727846bbc6d7e4acfcf8281dc74d2352175
   "PreviewInSolutionExplorer": false
 }
