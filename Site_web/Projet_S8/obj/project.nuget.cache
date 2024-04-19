@@ -1,6 +1,9 @@
 {
   "version": 2,
 <<<<<<< HEAD
+  "dgSpecHash": "Yjz2MKB5VGtB1ECdQSTpOTCSxKAoXhxh5bErEvxDt4Krwdg51SnHQ9x358wUKsXIRsXJ32KPC3+Kz2wrm707AA==",
+=======
+<<<<<<< HEAD
   "dgSpecHash": "nTSBCfxaTJwWmeFRMBUbnePFU+koxMNwc3dDLeU8DAClLcPCT4otr5DV/l0QZuyIwtgt4s6ufCC7HhmE0ai1Ng==",
   "success": true,
   "projectFilePath": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj",
@@ -12,8 +15,9 @@
   ],
 =======
   "dgSpecHash": "+ZWrW5JPzEVOxSzbNTpSjP/LX2l2H/0h+9GvyG6AuGZiC4SJdzS92Qzf/zE+SpfCn5etWXRKACe85iMfDY8w5g==",
+>>>>>>> d3e9ef1e0a644adcc03f80043e4c4bd5eba872a4
   "success": true,
-  "projectFilePath": "C:\\Users\\agoss\\OneDrive\\Desktop\\R\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj",
+  "projectFilePath": "C:\\Users\\46411803\\Documents\\New\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj",
   "expectedPackageFiles": [],
 >>>>>>> 79fbd727846bbc6d7e4acfcf8281dc74d2352175
   "logs": []

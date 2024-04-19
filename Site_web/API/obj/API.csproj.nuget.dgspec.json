@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\agoss\\OneDrive\\Desktop\\R\\Projet_Machine_Learning_RFID\\Site_web\\API\\API.csproj": {}
+    "C:\\Users\\46411803\\Documents\\New\\Projet_Machine_Learning_RFID\\Site_web\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\agoss\\OneDrive\\Desktop\\R\\Projet_Machine_Learning_RFID\\Site_web\\API\\API.csproj": {
+    "C:\\Users\\46411803\\Documents\\New\\Projet_Machine_Learning_RFID\\Site_web\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\agoss\\OneDrive\\Desktop\\R\\Projet_Machine_Learning_RFID\\Site_web\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\46411803\\Documents\\New\\Projet_Machine_Learning_RFID\\Site_web\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\agoss\\OneDrive\\Desktop\\R\\Projet_Machine_Learning_RFID\\Site_web\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\agoss\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\agoss\\OneDrive\\Desktop\\R\\Projet_Machine_Learning_RFID\\Site_web\\API\\obj\\",
+        "projectPath": "C:\\Users\\46411803\\Documents\\New\\Projet_Machine_Learning_RFID\\Site_web\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\46411803\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\46411803\\Documents\\New\\Projet_Machine_Learning_RFID\\Site_web\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\agoss\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\46411803\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +27,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -70,8 +70,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -83,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.320\\RuntimeIdentifierGraph.json"
         }
       }
     }
