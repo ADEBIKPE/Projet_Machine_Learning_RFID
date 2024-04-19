@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj": {}
   },
   "projects": {
@@ -15,6 +16,26 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "C:\\Users\\agoss\\OneDrive\\Desktop\\R\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\agoss\\OneDrive\\Desktop\\R\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\agoss\\OneDrive\\Desktop\\R\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj",
+        "projectName": "Projet_S8",
+        "projectPath": "C:\\Users\\agoss\\OneDrive\\Desktop\\R\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\Projet_S8.csproj",
+        "packagesPath": "C:\\Users\\agoss\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\agoss\\OneDrive\\Desktop\\R\\Projet_Machine_Learning_RFID\\Site_web\\Projet_S8\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\agoss\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+>>>>>>> 79fbd727846bbc6d7e4acfcf8281dc74d2352175
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +43,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -81,7 +103,11 @@
               "privateAssets": "all"
             }
           },
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+>>>>>>> 79fbd727846bbc6d7e4acfcf8281dc74d2352175
         }
       }
     }
