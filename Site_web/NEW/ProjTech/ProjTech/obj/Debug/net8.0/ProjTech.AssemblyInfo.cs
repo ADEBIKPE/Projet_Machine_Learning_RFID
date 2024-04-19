@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProjTech")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e32fe1780677926c73e434d56be5c2ccd72d9ee")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d3e9ef1e0a644adcc03f80043e4c4bd5eba872a4")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProjTech")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProjTech")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -116,6 +116,7 @@
                 </div>
             </div>
             </div>
+
         </li>
         <li>
             <input type="checkbox" id="checkbox-KNN" name="method" value="KNN" onclick="showForm('KNN')">
@@ -124,9 +125,9 @@
                 <form asp-action="KNN" method="post">
                     <!-- Formulaire pour KNN -->
                     <div>
-                        <label for="Param1">n_neighbors</label>
+                        <label for="Param2">n_neighbors</label>
                         <p>Le nombre de voisins à considérer lors de la prédiction</p>
-                        <select id="param2" name="param2">
+                        <select id="Param2" name="Param2">
                             <option value=20>Maximum:20</option>>
                             <option value=1>Minimum:1</option>
 
@@ -137,34 +138,34 @@
 
                     </div>
                     <div>
-                        <label for="Param2">weights</label>
+                        <label for="Param3">weights</label>
                         <p>La méthode utilisée pour pondérer les voisins</p>
-                        <select id="param2" name="param2">
-                            <option value="max">Uniforme</option>
-                            <option value="min">Ideal: Distance</option>
+                        <select id="Param3" name="Param3">
+                            <option value="uniform">Uniforme</option>
+                            <option value="distance">Ideal: Distance</option>
 
                         </select>
 
                     </div>
                     <div>
-                        <label for="Param3">metric</label>
+                        <label for="Param4">metric</label>
                         <p> La mesure de distance utilisée pour calculer la proximité entre les points.</p>
-                        <select id="param2" name="param2">
-                            <option value="max">Euclidienne</option>
-                            <option value="min">Minkowski</option>
-                            <option value="ideal">Ideal:Manhattan</option>
+                        <select id="Param4" name="Param4">
+                            <option value="euclidean">Euclidienne</option>
+                            <option value="minkowski">Minkowski</option>
+                            <option value="manhattan">Ideal:Manhattan</option>
                         </select>
 
                     </div>
                     <div>
-                        <label for="Param3">Nombre de plis pour validation croisée</label>
-                        <select id="param2" name="param2">
-                            <option value="max">5</option>
-                            <option value="min">6</option>
-                            <option value="ideal">7</option>
-                            <option value="max">8</option>
-                            <option value="min">9</option>
-                            <option value="ideal">10</option>
+                        <label for="Param5">Nombre de plis pour validation croisée</label>
+                        <select id="Param5" name="Param5">
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
                         </select>
 
                     </div>
@@ -172,6 +173,15 @@
                         <button type="submit" class="bouton-envoyer">Valider</button>
                     </div>
                 </form>
+            </div>
+            <div class="col-md-8">
+                <div class="result">
+                    @if (ViewBag.Result != null)
+                    {
+                        <h4>Result:</h4>
+                        <pre>@Html.Raw(ViewBag.Result)</pre>
+                    }
+                </div>
             </div>
         </li>
         <li>
@@ -243,49 +253,50 @@
             <label for="checkbox-SVM">Méthode SVM</label>
             <div id="form-container-SVM" class="form-container">
                 <form asp-action="SVM" method="post">
+
                     <!-- Formulaire pour SVM -->
                     <div>
                         <label for="Param1">Paramètre de régularisation(C)</label>
                         <p>Il contrôle la trade-off entre la marge maximale et la classification correcte des points d'entraînement</p>
-                        <select id="param2" name="param2">
-                            <option value="max">Maximum:100</option>
-                            <option value="min">Minimum:0,1</option>
-
+                        <select id="Param1" name="Param1">
+                            <option value="100">Maximum:100</option>
+                            <option value="0.1">Minimum:0.1</option>
                         </select>
                     </div>
                     <div>
                         <label for="Param2">Paramètre du noyau (Kernel)</label>
                         <p>Le noyau à utiliser dans l'algorithme SVM</p>
-                        <select id="param2" name="param2">
-                            <option value="max">RBF</option>
-                            <option value="min">Poly</option>
-                            <option value="ideal">Linear</option>
+                        <select id="Param2" name="Param2">
+                            <option value="rbf">RBF</option>
+                            <option value="poly">Poly</option>
+                            <option value="linear">Linear</option>
                         </select>
-
                     </div>
                     <div>
                         <label for="Param3">Coefficient du noyau (Gamma)</label>
                         <p>Il définit jusqu'à quel point l'influence d'un seul exemple d'entraînement s'étend</p>
-                        <select id="param2" name="param2">
-                            <option value="max">Maximum:10</option>
-                            <option value="min">Minimum:0,001</option>
-                            <option value="ideal">Default:Scale</option>
+                        <select id="Param3" name="Param3">
+                            <option value="10">Maximum:10</option>
+                            <option value="0.001">Minimum:0,001</option>
                         </select>
-                        <div>
-                            <label for="Param3">Nombre de plis pour validation croisée</label>
-                            <select id="param2" name="param2">
-                                <option value="max">Maximum</option>
-                                <option value="min">Minimum</option>
-                                <option value="ideal">Idéal</option>
-                            </select>
-
-                        </div>
-
+                    </div>
+                    <div>
+                        <label for="Param4">Nombre de plis pour validation croisée</label>
+                        <select id="Param4" name="param4">
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
                     </div>
                     <div class="conteneur-bouton">
                         <button type="submit" class="bouton-envoyer">Valider</button>
                     </div>
+                    
                 </form>
+
             </div>
         </li>
     </ul>
