@@ -4,6 +4,8 @@ def Analiz(pathfile):
     import matplotlib.pyplot as plt
     import os
     import datetime
+    import time
+    start_time = time.time()
     # partie zip
 #zip_file_path = "chemin/vers/votre/fichier.zip"
 
@@ -19,7 +21,7 @@ def Analiz(pathfile):
     # D�finition du chemin du r�pertoire contenant les donn�es
    
 
-    print(os.getcwd())
+    #print(os.getcwd())
     # reflist: list of epc in each box
     reflist=pd.DataFrame()
     # 
@@ -255,5 +257,9 @@ def Analiz(pathfile):
         #data2=ana[ana["refListId_actual"] == value]
         #print(data.shape[0]/data2.shape[0])'''
 
+    end_time = time.time()
 
-    return accuracy
+    # Calcul du temps d'exécution
+    execution_time = end_time - start_time
+
+    return accuracy,execution_time
