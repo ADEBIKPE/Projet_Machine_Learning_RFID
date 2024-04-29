@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify
-from Analiz import Analiz
-from fONCTIONSml import RandomForest_method
+from Methode_Analytique import Analiz
+from FonctionML_RF import RandomForest_method
 from FonctionML_KNN import KNN_method
-
+from FonctionML_SVM import SVM_method
 app = Flask(__name__)
 
 @app.route('/analytical', methods=['POST'])
@@ -11,7 +11,7 @@ def analytical_route():
     accuracy = Analiz('./data_anonymous')
     
     # Return the prediction as JSON
-    return jsonify({'accuracy': accuracy})
+    return jsonify({'score': accuracy})
 
 @app.route('/randomforest', methods=['POST'])
 def rf_route():

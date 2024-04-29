@@ -1,4 +1,3 @@
-
 def preprocessing(pathfile):
     import pandas as pd
     import numpy as np
@@ -256,68 +255,3 @@ def preprocessing(pathfile):
     ds.groupby("in_or_out")['Epc'].nunique()
     
     return ds
-def Xcols_func(features, Xcols_all):
-    import pandas as pd
-    import numpy as np
-    Features=pd.DataFrame(\
-    [\
-    ['all', True, True, False, True, True, True ],\
-    ['rssi & rc only', True, True, False, False, False, False ], \
-    ['rssi & rc_mid', True, True, True, False, False, False ], \
-    ['rssi only', True, False, True, False, False, False ], \
-    ['rc only', False, True, False, False, False, False ], \
-    ], columns=['features', 'rssi', 'rc', 'rc_mid_only', 'Epcs_window', 'reads_window', 'window_width'])
-    Features_temp = Features [Features['features'] == features]
-
-    X=[]
-    rssi = Features_temp ['rssi'].values[0]
-    rc = Features_temp['rc'].values[0]
-    rc_mid_only = Features_temp['rc_mid_only'].values[0]
-    Epcs_window = Features_temp['Epcs_window'].values[0]
-    reads_window = Features_temp['reads_window'].values[0]
-    window_width = Features_temp['window_width'].values[0]
-
-    X_rssi = [x for x in Xcols_all if rssi*'rssi' in x.split('_') ]
-    X_rc = [x for x in Xcols_all if rc*'rc' in x.split('_') ]
-
-    X = X_rssi + X_rc
-
-    if Epcs_window:
-        X.append('Epcs_window')
-
-    if reads_window:
-        X.append('reads_window')
-
-    if window_width:
-        X.append('window_width')
-    return X
-def RandomForest_method(n_arbres, profondeur, n_plis, n_minimum_split,pathfile):
-    # Charger les données
-    from sklearn.model_selection import cross_val_score
-    from sklearn.ensemble import RandomForestClassifier
-    X=Xcols_func('rssi & rc only',(preprocessing(pathfile)).columns)
-    ds=preprocessing(pathfile)
-    x = ds.loc[:, X]
-    y = ds['in_or_out']
-    
-    # Créer le modèle
-    clf = RandomForestClassifier(n_estimators=n_arbres, max_depth=profondeur, min_samples_split=n_minimum_split)
-    
-    # Effectuer une validation croisée
-    scores = cross_val_score(clf, x, y, cv=n_plis)  # cv=n_plis indique une validation croisée avec n_plis plis
-    
-    # Afficher les scores de validation croisée
-    print("Scores de validation croisée:", scores)
-    print("Score moyen de validation croisée:", scores.mean())
-    score=scores.mean()
-    # Entraîner le modèle sur toutes les données
-    from sklearn.model_selection import cross_val_predict
-    y_pred = cross_val_predict(clf, x, y, cv=n_plis)
-    from sklearn.metrics import confusion_matrix
-    cm = confusion_matrix(y, y_pred)
-    
-    # Calculer le score sur les données d'entraînement
-    
-
-    return score,cm
-#

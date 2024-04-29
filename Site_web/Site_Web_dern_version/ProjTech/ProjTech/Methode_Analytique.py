@@ -10,13 +10,13 @@ def Analiz(pathfile):
 # Dossier de destination pour extraire les fichiers
 #extract_folder = "chemin/vers/dossier/de/destination"
 
-# Créer un objet ZipFile
+# Crï¿½er un objet ZipFile
 #with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
     # Extraire le contenu du fichier zip dans le dossier de destination
     #zip_ref.extractall(extract_folder) """
 
 
-    # Définition du chemin du répertoire contenant les données
+    # Dï¿½finition du chemin du rï¿½pertoire contenant les donnï¿½es
    
 
     print(os.getcwd())
@@ -77,7 +77,7 @@ def Analiz(pathfile):
     timing.loc[:,'refListId']=timing.loc[:,'refListId'].apply(lambda x:int(x[8:]))
     timing=timing[['refListId', 'ciuchStart', 'ciuchStop']]
 
-    # Création des fenêtres temporelles
+    # Crï¿½ation des fenï¿½tres temporelles
     # ciuchStart_up starts upstream ciuchStart, half way in between the previous stop and the actual start
     timing[['ciuchStop_last']]=timing[['ciuchStop']].shift(1)
     timing[['refListId_last']]=timing[['refListId']].shift(1)
@@ -246,7 +246,7 @@ def Analiz(pathfile):
     error_margin=100-accuracy
     #print("Exactitude globale :"+str(accuracy*100)+"%")
     false=ana[ana['pred_ana_bool']==False]
-    #a=["Tags bien classés","Tags mal classés"]
+    #a=["Tags bien classï¿½s","Tags mal classï¿½s"]
     #b=[true.shape[0],false.shape[0]]
     #import seaborn as sns
     #sns.barplot(x=a, y=b)
