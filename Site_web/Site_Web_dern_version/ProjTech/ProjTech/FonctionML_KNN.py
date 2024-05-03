@@ -26,13 +26,13 @@ def KNN_method(metric, n_neighbors, n_plis, weights,pathfile):
 
     X_normalized
     # Appliquer l'encodage aux valeurs de la colonne 'in_or_out'
-    y = label_encoder.fit_transform(y)
+    y_encoded  = label_encoder.fit_transform(y)
 
     # Création du classificateur KNN
     knn = KNeighborsClassifier(metric=metric,n_neighbors=n_neighbors,weights=weights)
 
     # Validation croisée avec 5 folds et une métrique de score spécifiée
-    cv_scores = cross_val_score(knn, X_normalized, y, cv=n_plis, scoring='precision')
+    cv_scores = cross_val_score(knn, X_normalized, y_encoded, cv=n_plis, scoring='accuracy')
     #print("Score moyen de validation croisée:", cv_scores.mean())
     score=cv_scores.mean()
 
@@ -40,9 +40,9 @@ def KNN_method(metric, n_neighbors, n_plis, weights,pathfile):
     #print("Scores de validation croisée:", cv_scores)
 
     # Faire des prédictions avec validation croisée
-    y_pred = cross_val_predict(knn, X_normalized, y, cv=n_plis)
-    faux_inside = [i for i in range(len(y)) if y_pred[i] == 1 and y[i] == 0]
-    faux_outside = [i for i in range(len(y)) if y_pred[i] == 0 and y[i] == 1]
+    y_pred = cross_val_predict(knn, X_normalized, y_encoded, cv=n_plis)
+    faux_inside = [i for i in range(len(y)) if y_pred[i] == 1 and y_encoded[i] == 0]
+    faux_outside = [i for i in range(len(y)) if y_pred[i] == 0 and y_encoded[i] == 1]
     import pandas as pd
 
     # Nom de la colonne que vous souhaitez extraire
@@ -68,9 +68,9 @@ def KNN_method(metric, n_neighbors, n_plis, weights,pathfile):
         else:
             false_inside_column2 = ds.iloc[faux_inside, column_index]
             false_outside_column2=ds.iloc[faux_outside, column_index]
-    details_classement = pd.DataFrame({'Tags':  false_inside_column, 'Classé dans la boîte ':  false_inside_column1, 'Devrait être classé dans la boite':  false_inside_column2})
+    details_classement = pd.DataFrame({'Tags':  false_inside_column, 'Classé dans la boîte':  false_inside_column1, 'Devrait être classé dans la boite':  false_inside_column2})
     # Calculer la matrice de confusion
-    conf_matrix = confusion_matrix(y, y_pred)
+    conf_matrix = confusion_matrix(y_encoded, y_pred)
 
     # Afficher la matrice de confusion
     #print("Matrice de confusion:")
@@ -79,7 +79,9 @@ def KNN_method(metric, n_neighbors, n_plis, weights,pathfile):
 
     # Calcul du temps d'exécution
     execution_time = end_time - start_time
-
+    print("Matrix:", conf_matrix)
+    print("exec:", execution_time)
+    print("details:",  details_classement)
 
     return score, conf_matrix, execution_time,details_classement
 

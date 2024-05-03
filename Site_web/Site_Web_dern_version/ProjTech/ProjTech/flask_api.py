@@ -8,10 +8,31 @@ app = Flask(__name__)
 @app.route('/analytical', methods=['POST'])
 def analytical_route():
     # Call the predict() function to make a prediction
-    accuracy = Analiz('./data_anonymous')
+    accuracy, execution_time  = Analiz('./data_anonymous')
     
     # Return the prediction as JSON
-    return jsonify({'score': accuracy})
+    return jsonify({'accuracy': accuracy, 'execution_time': execution_time})
+
+
+@app.route('/SVM', methods=['POST'])
+def SVM_route():
+    input_params = request.get_json()
+
+    if input_params is not None:
+        C = input_params.get('C')
+        Kernel = input_params.get('Kernel')
+        Gamma = input_params.get('Gamma')
+        n_plis = input_params.get('n_plis')
+
+        score, conf_matrix, execution_time, details_classement = SVM_method(float(C), float(Gamma), int(n_plis), str(Kernel),'./data_anonymous')
+
+        # Convertir le DataFrame details_classement en un format JSON compatible
+        details_classement_json = details_classement.to_dict(orient='records')
+
+        conf_matrix_json = conf_matrix.tolist()
+        return jsonify({'score': score, 'matrice_de_confusion': conf_matrix_json, 'temps_execution': execution_time, 'details_classement': details_classement_json})
+        
+
 
 @app.route('/randomforest', methods=['POST'])
 def rf_route():
@@ -24,10 +45,15 @@ def rf_route():
         
 
         
-        score, cm = RandomForest_method(int(n_arbres), int(profondeur), int(n_plis), int(n_minimum_split), './data_anonymous')
+        score, cm, execution_time, details_classement = RandomForest_method(int(n_arbres), int(profondeur), int(n_plis), int(n_minimum_split), './data_anonymous')
+
+        # Convertir le DataFrame details_classement en un format JSON compatible
+        details_classement_json = details_classement.to_dict(orient='records')
+        
 
         cm_json = cm.tolist()
-        return jsonify({'score': score, 'matrice de confusion':  cm_json})
+        return jsonify({'score': score, 'matrice_de_confusion': cm_json, 'temps_execution': execution_time, 'details_classement': details_classement_json})
+
 
 
 @app.route('/knn', methods=['POST'])
@@ -39,25 +65,15 @@ def knn_route():
         n_plis = input_params.get('n_plis')
         weights = input_params.get('weights')
 
-        score, conf_matrix = KNN_method(str(metric), int(n_neighbor), int(n_plis), str(weights), './data_anonymous')
+        score, conf_matrix, execution_time, details_classement  = KNN_method(str(metric), int(n_neighbor), int(n_plis), str(weights), './data_anonymous')
+
+        # Convertir le DataFrame details_classement en un format JSON compatible
+        details_classement_json = details_classement.to_dict(orient='records')
 
         conf_matrix_json = conf_matrix.tolist()
-        return jsonify({'score': score, 'matrice de confusion': conf_matrix_json})
+        return jsonify({'score': score, 'matrice_de_confusion': conf_matrix_json, 'temps_execution': execution_time, 'details_classement': details_classement_json})
 
 
-@app.route('/SVM', methods=['POST'])
-def SVM_route():
-    input_params = request.get_json()
-    if input_params is not None:
-        C = input_params.get('C')
-        Kernel = input_params.get('Kernel')
-        Gamma = input_params.get('Gamma')
-        n_plis = input_params.get('n_plis')
-
-        score, conf_matrix = SVM_method(int(C), float(Gamma), int(n_plis), str(Kernel),  './data_anonymous')
-
-        conf_matrix_json = conf_matrix.tolist()
-        return jsonify({'score': score, 'matrice de confusion': conf_matrix_json})
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

@@ -5,6 +5,8 @@ using Newtonsoft.Json;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Reflection.Metadata;
+using Newtonsoft.Json.Linq;
+using System.Text;
 
 namespace ProjTech.Controllers
 {
@@ -26,9 +28,24 @@ namespace ProjTech.Controllers
         {
             using( var client = new HttpClient())
             {
+
                 var response = await client.PostAsync("http://localhost:5000/analytical", null);
+                //var result = await response.Content.ReadAsStringAsync();
+                //ViewBag.Result = result;
                 var result = await response.Content.ReadAsStringAsync();
-                ViewBag.Result = result;
+
+                // Analyse la chaîne JSON pour extraire les valeurs de précision et de temps d'exécution
+                var jsonObject = JObject.Parse(result);
+                var accuracy = jsonObject["accuracy"].ToObject<double>();
+                var executionTimeInSeconds = (double)jsonObject["execution_time"];
+
+                // Formatage du temps d'exécution avec trois chiffres après la virgule
+                var formattedExecutionTime = executionTimeInSeconds.ToString("0.###") + " secs";
+                // Stocke les valeurs dans ViewBag
+                ViewBag.Accuracy = accuracy;
+                ViewBag.ExecutionTime = formattedExecutionTime;
+                //ViewBag.ExecutionTime = executionTime;
+
             }
 
             return View("Index");
@@ -49,12 +66,36 @@ namespace ProjTech.Controllers
 
                 };
 
-                var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
+                var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync("http://localhost:5000/randomforest", content);
+                response.EnsureSuccessStatusCode();
+                var result = await response.Content.ReadAsStringAsync();
+
+                    // Convertir la réponse JSON en un objet dynamique
+                dynamic jsonResponse = JsonConvert.DeserializeObject(result);
+
+                // Stocker les résultats dans ViewBag ou un autre objet
+                ViewBag.Score = jsonResponse.score;
+                ViewBag.MatriceDeConfusion = jsonResponse.matrice_de_confusion;
+                double tempsExecution = jsonResponse.temps_execution;
+                string tempsExecutionFormate = tempsExecution.ToString("0.###");
+                ViewBag.TempsExecution = tempsExecutionFormate;
+
+                //ViewBag.TempsExecution = jsonResponse.temps_execution;
+
+                // Convertir les détails de classement en une liste d'objets avant de les stocker dans ViewBag
+                JArray detailsArray = JArray.Parse(jsonResponse.details_classement.ToString());
+                List<dynamic> detailsList = detailsArray.ToObject<List<dynamic>>();
+                ViewBag.DetailsClassement = detailsList;
+
+
+                /*var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
                 var response = await client.PostAsync("http://localhost:5000/randomforest", content);
                 var result = await response.Content.ReadAsStringAsync();
 
-                ViewBag.Result = result;
-                
+                ViewBag.Result = result;*/
+
             }
 
             return View("Index");
@@ -76,9 +117,27 @@ namespace ProjTech.Controllers
 
                 var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
                 var response = await client.PostAsync("http://localhost:5000/knn", content);
+                response.EnsureSuccessStatusCode();
                 var result = await response.Content.ReadAsStringAsync();
 
-                ViewBag.Result = result;
+                // Convertir la réponse JSON en un objet dynamique
+                dynamic jsonResponse = JsonConvert.DeserializeObject(result);
+
+                // Stocker les résultats dans ViewBag ou un autre objet
+                ViewBag.Score = jsonResponse.score;
+                ViewBag.MatriceDeConfusion = jsonResponse.matrice_de_confusion;
+                double tempsExecution = jsonResponse.temps_execution;
+                string tempsExecutionFormate = tempsExecution.ToString("0.###");
+                ViewBag.TempsExecution = tempsExecutionFormate;
+                //ViewBag.TempsExecution = jsonResponse.temps_execution;
+
+                // Convertir les détails de classement en une liste d'objets avant de les stocker dans ViewBag
+                JArray detailsArray = JArray.Parse(jsonResponse.details_classement.ToString());
+                List<dynamic> detailsList = detailsArray.ToObject<List<dynamic>>();
+                ViewBag.DetailsClassement = detailsList;
+                //var result = await response.Content.ReadAsStringAsync();
+
+                //ViewBag.Result = result;
 
             }
 
@@ -90,6 +149,9 @@ namespace ProjTech.Controllers
         {
             using (var client = new HttpClient())
             {
+                // Spécifier un délai d'attente plus long (par exemple, 5 minutes)
+                client.Timeout = TimeSpan.FromMinutes(5);
+
                 var requestData = new
                 {
                     C = Param1,
@@ -103,9 +165,42 @@ namespace ProjTech.Controllers
 
                 var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
                 var response = await client.PostAsync("http://localhost:5000/SVM", content);
+
+                response.EnsureSuccessStatusCode();
                 var result = await response.Content.ReadAsStringAsync();
 
-                ViewBag.Result = result;
+                // Convertir la réponse JSON en un objet dynamique
+                dynamic jsonResponse = JsonConvert.DeserializeObject(result);
+
+                // Stocker les résultats dans ViewBag ou un autre objet
+                ViewBag.Score = jsonResponse.score;
+                ViewBag.MatriceDeConfusion = jsonResponse.matrice_de_confusion;
+                double tempsExecution = jsonResponse.temps_execution;
+                string tempsExecutionFormate = tempsExecution.ToString("0.###");
+                ViewBag.TempsExecution = tempsExecutionFormate;
+                //ViewBag.TempsExecution = jsonResponse.temps_execution;
+
+                // Convertir les détails de classement en une liste d'objets avant de les stocker dans ViewBag
+                JArray detailsArray = JArray.Parse(jsonResponse.details_classement.ToString());
+                List<dynamic> detailsList = detailsArray.ToObject<List<dynamic>>();
+                ViewBag.DetailsClassement = detailsList;
+
+                //var result = await response.Content.ReadAsStringAsync();
+
+                //ViewBag.Result = result;
+
+                /*var jsonObject = JObject.Parse(result);
+                var score = (double)jsonObject["score"];
+                var confusionMatrix = jsonObject["matrice de confusion"].ToString();
+                var executionTime = (double)jsonObject["execution_time"];
+                var detailsClassement = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(jsonObject["details_classement"].ToString());
+
+                // Stockage des valeurs dans ViewBag pour l'affichage dans la vue
+                ViewBag.Score = score;
+                ViewBag.ConfusionMatrix = confusionMatrix;
+                ViewBag.ExecutionTime = executionTime;
+                ViewBag.DetailsClassement = detailsClassement;*/
+
 
             }
 

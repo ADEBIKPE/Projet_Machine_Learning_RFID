@@ -1,11 +1,9 @@
 
-
 def SVM_method(regularisation, CoefNoyau, n_plis, Noyau,pathfile):
     # Charger les données
     from preprocessing import preprocessing
     from sklearn.model_selection import cross_val_score
     from sklearn.svm import SVC
-    from sklearn.model_selection import cross_val_predict
     from sklearn.metrics import confusion_matrix
     from sklearn.preprocessing import LabelEncoder
     from selectfeatures import Xcols_func
@@ -25,20 +23,22 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau,pathfile):
     svm_model = SVC(C=regularisation,gamma=CoefNoyau,kernel=Noyau) 
     
     # Effectuer une validation croisée
-    scores = cross_val_score(svm_model, x, y_encoded, cv=n_plis, scoring='precision')  # cv=n_plis indique une validation croisée avec n_plis plis
+    scores = cross_val_score(svm_model, x, y_encoded, cv=n_plis)  # cv=n_plis indique une validation croisée avec n_plis plis
     
     # Afficher les scores de validation croisée
     print("Scores de validation croisée:", scores)
     print("Score moyen de validation croisée:", scores.mean())
     score=scores.mean()
+    print("Score", score)
     # Entraîner le modèle sur toutes les données
     svm_model.fit(x, y_encoded)
     
 
     # Prédiction avec la validation croisée
+    from sklearn.model_selection import cross_val_predict
     y_pred = cross_val_predict(svm_model, x, y_encoded, cv=n_plis)
-    faux_inside = [i for i in range(len(y)) if y_pred[i] == 1 and y[i] == 0]
-    faux_outside = [i for i in range(len(y)) if y_pred[i] == 0 and y[i] == 1]
+    faux_inside = [i for i in range(len(y)) if y_pred[i] == 1 and y_encoded[i] == 0]
+    faux_outside = [i for i in range(len(y)) if y_pred[i] == 0 and y_encoded[i] == 1]
     import pandas as pd
 
     # Nom de la colonne que vous souhaitez extraire
@@ -64,7 +64,8 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau,pathfile):
         else:
             false_inside_column2 = ds.iloc[faux_inside, column_index]
             false_outside_column2=ds.iloc[faux_outside, column_index]
-    details_classement = pd.DataFrame({'Tags':  false_inside_column, 'Classé dans la boîte ':  false_inside_column1, 'Devrait être classé dans la boite':  false_inside_column2})
+    details_classement = pd.DataFrame({'Tags':  false_inside_column, 'Classé dans la boîte':  false_inside_column1, 'Devrait être classé dans la boite':  false_inside_column2})
+
 
     # Calcul de la matrice de confusion
     conf_matrix = confusion_matrix(y_encoded, y_pred)
@@ -76,24 +77,6 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau,pathfile):
     # Calcul du temps d'exécution
     execution_time = end_time - start_time
 
-
     return score, conf_matrix, execution_time, details_classement
     
-    
 
-
-#
-#
-
-#
-
-#
-
-#
-
-#
-
-#
-#
-
-#

@@ -7,13 +7,13 @@ def Analiz(pathfile):
     import time
     start_time = time.time()
     # partie zip
-#zip_file_path = "chemin/vers/votre/fichier.zip"
+    #zip_file_path = "chemin/vers/votre/fichier.zip"
 
-# Dossier de destination pour extraire les fichiers
-#extract_folder = "chemin/vers/dossier/de/destination"
+    # Dossier de destination pour extraire les fichiers
+    #extract_folder = "chemin/vers/dossier/de/destination"
 
-# Cr�er un objet ZipFile
-#with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+    # Cr�er un objet ZipFile
+    #with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
     # Extraire le contenu du fichier zip dans le dossier de destination
     #zip_ref.extractall(extract_folder) """
 
@@ -262,4 +262,4 @@ def Analiz(pathfile):
     # Calcul du temps d'exécution
     execution_time = end_time - start_time
 
-    return accuracy,execution_time
+    return accuracy, execution_time

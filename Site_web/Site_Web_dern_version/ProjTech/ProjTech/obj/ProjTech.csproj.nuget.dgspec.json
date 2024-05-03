@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\NEW\\ProjTech\\ProjTech\\ProjTech.csproj": {}
+    "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {}
   },
   "projects": {
-    "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\NEW\\ProjTech\\ProjTech\\ProjTech.csproj": {
+    "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\NEW\\ProjTech\\ProjTech\\ProjTech.csproj",
+        "projectUniqueName": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
         "projectName": "ProjTech",
-        "projectPath": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\NEW\\ProjTech\\ProjTech\\ProjTech.csproj",
+        "projectPath": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\NEW\\ProjTech\\ProjTech\\obj\\",
+        "outputPath": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QkmP9+uzKiFgQdgJs8Aqsa6wubpuSNRkijAuB1ux+pGhextP1Ubv53qHKyFkimJtLxB15VvY2yOXA4rkVEZJ7w==",
+  "dgSpecHash": "y7HkhHHsUwtYgkjzjhIHNYBRSs7LMjLgD5oQKvV4+IlBmzbMw7f4cRQ/WTWyju7OcU9k+xa0PvV6LQqaemjCnw==",
   "success": true,
-  "projectFilePath": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\NEW\\ProjTech\\ProjTech\\ProjTech.csproj",
+  "projectFilePath": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\8.0.4\\microsoft.aspnetcore.jsonpatch.8.0.4.nupkg.sha512",
     "C:\\Users\\hp\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\8.0.4\\microsoft.aspnetcore.mvc.newtonsoftjson.8.0.4.nupkg.sha512",
