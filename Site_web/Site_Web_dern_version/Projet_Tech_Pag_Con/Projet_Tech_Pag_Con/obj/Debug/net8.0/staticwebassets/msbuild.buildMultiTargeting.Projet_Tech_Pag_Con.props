@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Projet_Tech_Pag_Con.props" />
+</Project>
