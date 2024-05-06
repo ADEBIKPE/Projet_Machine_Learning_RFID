@@ -1,0 +1,111 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats de l'Analyse</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .result {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .result h4 {
+            color: #ff80ab;
+            margin-bottom: 10px;
+        }
+
+        .result p {
+            margin-bottom: 10px;
+        }
+
+        .result table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .result table th,
+        .result table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .result table th {
+            background-color: #ff80ab;
+            color: #333;
+        }
+
+        .result table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Résultats de l'Analyse</h1>
+
+        <div class="result">
+            <h4>Résultats :</h4>
+            <p>Score : 0,9987708108450185</p>
+            <p>Matrice de confusion :</p>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Classé dans la boîte</th>
+                    <th>Devrait être classé dans la boîte</th>
+                </tr>
+                <tr>
+                    <td>epc_139</td>
+                    <td></td>
+                    <td>2</td>
+                </tr>
+                <!-- Ajoutez le reste des données de la matrice de confusion ici -->
+            </table>
+            <p>Temps d'exécution : 57,315</p>
+            <p>Détails de classement :</p>
+            <table>
+                <tr>
+                    <th>Tags</th>
+                    <th>Classé dans la boîte</th>
+                    <th>Devrait être classé dans la boîte</th>
+                </tr>
+                <tr>
+                    <td>epc_139</td>
+                    <td></td>
+                    <td>2</td>
+                </tr>
+                <!-- Ajoutez le reste des données de classement ici -->
+            </table>
+        </div>
+    </div>
+</body>
+</html>

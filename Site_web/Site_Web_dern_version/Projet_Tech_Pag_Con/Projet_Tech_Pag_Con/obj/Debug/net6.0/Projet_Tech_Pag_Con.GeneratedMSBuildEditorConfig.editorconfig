@@ -175,12 +175,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/46411803/Downloads/Projet_Machine_Learning_RFID/Site_web/Site_Web_dern_version/Projet_Tech_Pag_Con/Projet_Tech_Pag_Con/Views/Home/Guest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHdWVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/46411803/Downloads/Projet_Machine_Learning_RFID/Site_web/Site_Web_dern_version/Projet_Tech_Pag_Con/Projet_Tech_Pag_Con/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/46411803/Downloads/Projet_Machine_Learning_RFID/Site_web/Site_Web_dern_version/Projet_Tech_Pag_Con/Projet_Tech_Pag_Con/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/46411803/Downloads/Projet_Machine_Learning_RFID/Site_web/Site_Web_dern_version/Projet_Tech_Pag_Con/Projet_Tech_Pag_Con/Views/Home/Resultats.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZXN1bHRhdHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/46411803/Downloads/Projet_Machine_Learning_RFID/Site_web/Site_Web_dern_version/Projet_Tech_Pag_Con/Projet_Tech_Pag_Con/Views/Shared/Error.cshtml]

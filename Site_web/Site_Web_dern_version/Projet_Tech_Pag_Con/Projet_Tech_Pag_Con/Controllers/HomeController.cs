@@ -25,9 +25,9 @@ namespace Projet_Tech_Pag_Con.Controllers
                     // L'utilisateur est dans le rôle "Admin"
                     return RedirectToAction("IndexAdmin", "Home");
                 }
-                else if (User.IsInRole("Lamda"))
+                if (!User.IsInRole("Admin"))
                 {
-                    // L'utilisateur est dans le rôle "Lamda"
+                    // L'utilisateur n'est pas dans le rôle "Admin", rediriger vers la page "Guest"
                     return RedirectToAction("Guest", "Home");
                 }
                 else
@@ -44,6 +44,10 @@ namespace Projet_Tech_Pag_Con.Controllers
         }
 
         public IActionResult Guest()
+        {
+            return View();
+        }
+        public IActionResult Resultats()
         {
             return View();
         }

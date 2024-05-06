@@ -1,0 +1,176 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historique des Méthodes de Machine Learning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://livetechspot.com/wp-content/uploads/2020/07/Complete-Guide-List-on-How-to-Optimize-E-commerce-Website.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #ff80ab;
+            font-weight: bold;
+            color: #333;
+        }
+
+        tr:hover {
+            background-color: #2196f3;
+            color: #fff;
+        }
+
+        .filter {
+            margin-bottom: 20px;
+        }
+
+        .filter input[type="text"] {
+            padding: 8px;
+            width: 200px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .filter select {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #03a9f4;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #007ac1;
+        }
+
+        .details {
+            display: none;
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Historique des Méthodes de Machine Learning</h1>
+
+        <div class="filter">
+            <input type="text" placeholder="Rechercher par date...">
+            <input type="text" placeholder="Rechercher par utilisateur...">
+            <select id="methodFilter">
+                <option value="">Filtrer par méthode...</option>
+                <option value="KNN">KNN</option>
+                <option value="SVM">SVM</option>
+                <option value="RandomForest">Random Forest</option>
+            </select>
+            <button class="btn" id="applyFilter">Appliquer</button>
+        </div>
+
+        <table id="historyTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Utilisateur</th>
+                    <th>Méthode</th>
+                    <th>Temps d'Exécution</th>
+                    <th>Visualiser les résultats</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Remplacer ce contenu par les données de l'historique -->
+                <tr>
+                    <td>2024-05-10 08:30:45</td>
+                    <td>Utilisateur A</td>
+                    <td>KNN</td>
+                    <td>10 secondes</td>
+                    <td><a href="/Home/Resultats"><button class="btn">Visualiser les résultats</button></a></td>
+                </tr>
+                <tr>
+                    <td>2024-05-10 09:15:20</td>
+                    <td>Utilisateur B</td>
+                    <td>SVM</td>
+                    <td>15 secondes</td>
+                    <td><a href="/Home/Resultats"><button class="btn">Visualiser les résultats</button></a></td>
+                </tr>
+                <tr>
+                    <td>2024-05-10 10:05:55</td>
+                    <td>Utilisateur C</td>
+                    <td>Random Forest</td>
+                    <td>20 secondes</td>
+                    <td><a href="/Home/Resultats"><button class="btn">Visualiser les résultats</button></a></td>
+                </tr>
+                <!-- Fin des données de l'historique -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById("applyFilter").addEventListener("click", function() {
+            var method = document.getElementById("methodFilter").value;
+            var table = document.getElementById("historyTable");
+            var tr = table.getElementsByTagName("tr");
+            for (var i = 0; i < tr.length; i++) {
+                var td = tr[i].getElementsByTagName("td")[2];
+                if (td) {
+                    if (method === "" || td.innerText === method) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
