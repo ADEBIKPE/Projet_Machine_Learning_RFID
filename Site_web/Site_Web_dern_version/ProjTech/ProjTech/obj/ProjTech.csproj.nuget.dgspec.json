@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {}
+    "C:\\Users\\46426376\\Desktop\\PROJ\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {}
   },
   "projects": {
-    "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {
+    "C:\\Users\\46426376\\Desktop\\PROJ\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
+        "projectUniqueName": "C:\\Users\\46426376\\Desktop\\PROJ\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
         "projectName": "ProjTech",
-        "projectPath": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "D:\\Esigelec\\2emeAnnee\\S8\\ProjetS8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\obj\\",
+        "projectPath": "C:\\Users\\46426376\\Desktop\\PROJ\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
+        "packagesPath": "C:\\Users\\46426376\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\46426376\\Desktop\\PROJ\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\46426376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,42 +39,22 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
-              "target": "Package",
-              "version": "[8.0.4, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.321\\RuntimeIdentifierGraph.json"
         }
       }
     }

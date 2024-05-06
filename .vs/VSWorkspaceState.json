@@ -1,21 +1,7 @@
 {
   "ExpandedNodes": [
     "",
-<<<<<<< HEAD
-    "\\API_Proj\\Projet_S8\\Projet_S8",
-    "\\API_Proj\\Projet_S8\\Projet_S8\\Controllers",
-    "\\Site_web",
-    "\\Site_web\\Projet_S8",
-    "\\Site_web\\Projet_S8\\Views",
-    "\\Site_web\\Projet_S8\\Views\\Home"
+    "\\Machine_Learning"
   ],
-  "SelectedNode": "\\Site_web\\Projet_S8\\Projet_S8.sln",
-=======
-    "\\API_Proj",
-    "\\Site_web",
-    "\\Site_web\\Projet_S8"
-  ],
-  "SelectedNode": "\\Site_web\\Projet_S8\\Projet_S8.csproj",
->>>>>>> 79fbd727846bbc6d7e4acfcf8281dc74d2352175
   "PreviewInSolutionExplorer": false
 }
