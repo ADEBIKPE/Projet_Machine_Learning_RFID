@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\46411803\\Downloads\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {}
   },
   "projects": {
@@ -12,13 +13,30 @@
         "projectPath": "C:\\Users\\46411803\\Downloads\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
         "packagesPath": "C:\\Users\\46411803\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\46411803\\Downloads\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\obj\\",
+=======
+    "C:\\Users\\46426376\\Desktop\\PROJ\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\46426376\\Desktop\\PROJ\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\46426376\\Desktop\\PROJ\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
+        "projectName": "ProjTech",
+        "projectPath": "C:\\Users\\46426376\\Desktop\\PROJ\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
+        "packagesPath": "C:\\Users\\46426376\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\46426376\\Desktop\\PROJ\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\obj\\",
+>>>>>>> e104f6dd6050c89d611e858b0d46918bd61fabff
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
+<<<<<<< HEAD
           "C:\\Users\\46411803\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+          "C:\\Users\\46426376\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> e104f6dd6050c89d611e858b0d46918bd61fabff
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -42,6 +60,7 @@
         }
       },
       "frameworks": {
+<<<<<<< HEAD
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
@@ -50,6 +69,10 @@
               "version": "[6.0.4, )"
             }
           },
+=======
+        "net8.0": {
+          "targetAlias": "net8.0",
+>>>>>>> e104f6dd6050c89d611e858b0d46918bd61fabff
           "imports": [
             "net461",
             "net462",
@@ -60,6 +83,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+<<<<<<< HEAD
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -69,6 +93,9 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.320\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.321\\RuntimeIdentifierGraph.json"
+>>>>>>> e104f6dd6050c89d611e858b0d46918bd61fabff
         }
       }
     }
