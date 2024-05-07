@@ -42,10 +42,27 @@ def rf_route():
         profondeur = input_params.get('profondeur')
         n_plis = input_params.get('n_plis')
         n_minimum_split = input_params.get('n_minimum_split')
+        criterion=input_params.get('criterion')
+        min_samples_leaf=input_params.get('min_samples_leaf')
+        min_weight_fraction_leaf= input_params.get('min_weight_fraction_leaf')
+        max_features=input_params.get('max_features')
+        max_leaf_nodes= input_params.get('max_leaf_nodes')
+        min_impurity_decrease= input_params.get('min_impurity_decrease')
+        bootstrap= input_params.get('bootstrap')
+        oob_score= input_params.get('oob_score')
+        n_jobs= input_params.get('n_jobs')
+        random_state=input_params.get('random_state')
+        verbose= input_params.get('verbose')
+        warm_start= input_params.get('warm_start')
+        class_weight= input_params.get('class_weight') 
+        ccp_alpha= input_params.get('ccp_alpha')
+        max_samples= input_params.get('max_samples')
         
 
-        
         score, cm, execution_time, details_classement = RandomForest_method(int(n_arbres), int(profondeur), int(n_plis), int(n_minimum_split), './data_anonymous')
+        score, cm, execution_time, details_classement = RandomForest_method(int(n_arbres), int(profondeur), int(n_plis), int(n_minimum_split), './data_anonymous', str(criterion), int(min_samples_leaf),
+                         float(min_weight_fraction_leaf), str(max_features), int(max_leaf_nodes), float(min_impurity_decrease),
+                         bool(bootstrap), bool(oob_score), int(n_jobs), int(random_state), int(verbose), bool(warm_start), str(class_weight), float(ccp_alpha), int(max_samples))
 
         # Convertir le DataFrame details_classement en un format JSON compatible
         details_classement_json = details_classement.to_dict(orient='records')
