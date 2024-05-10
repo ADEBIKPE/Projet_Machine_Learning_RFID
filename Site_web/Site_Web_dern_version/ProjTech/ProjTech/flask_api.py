@@ -19,12 +19,25 @@ def SVM_route():
     input_params = request.get_json()
 
     if input_params is not None:
-        C = input_params.get('C')
-        Kernel = input_params.get('Kernel')
-        Gamma = input_params.get('Gamma')
-        n_plis = input_params.get('n_plis')
+        regularisation=input_params.get('regularisation')
+        CoefNoyau=input_params.get('CoefNoyau')
+        n_plis=input_params.get('n_plis')
+        Noyau=input_params.get('Noyau')
+        degree= input_params.get('degree')
+        coef0=input_params.get('coef0')
+        shrinking= input_params.get('shrinking')
+        probability=input_params.get('probability')
+        tol=input_params.get('tol')
+        cache_size=input_params.get('cache_size')
+        verbose=input_params.get('verbose')
+        max_iter=input_params.get('max_iter')
+        decision_function_shape=input_params.get('decision_function_shape')
+        break_ties=input_params.get('break_ties')
+        random_state=input_params.get('random_state')
 
-        score, conf_matrix, execution_time, details_classement = SVM_method(float(C), float(Gamma), int(n_plis), str(Kernel),'./data_anonymous')
+        score, conf_matrix, execution_time, details_classement = SVM_method(float(regularisation), float(CoefNoyau), int(n_plis), 
+         str(Noyau),'./data_anonymous',int(degree), float(coef0),bool(shrinking),bool(probability),float(tol),float(cache_size),
+         bool(verbose), int(max_iter),str(decision_function_shape),bool(break_ties), int(random_state) )
 
         # Convertir le DataFrame details_classement en un format JSON compatible
         details_classement_json = details_classement.to_dict(orient='records')
@@ -59,7 +72,7 @@ def rf_route():
         max_samples= input_params.get('max_samples')
         
 
-        score, cm, execution_time, details_classement = RandomForest_method(int(n_arbres), int(profondeur), int(n_plis), int(n_minimum_split), './data_anonymous')
+        
         score, cm, execution_time, details_classement = RandomForest_method(int(n_arbres), int(profondeur), int(n_plis), int(n_minimum_split), './data_anonymous', str(criterion), int(min_samples_leaf),
                          float(min_weight_fraction_leaf), str(max_features), int(max_leaf_nodes), float(min_impurity_decrease),
                          bool(bootstrap), bool(oob_score), int(n_jobs), int(random_state), int(verbose), bool(warm_start), str(class_weight), float(ccp_alpha), int(max_samples))
@@ -78,11 +91,16 @@ def knn_route():
     input_params = request.get_json()
     if input_params is not None:
         metric = input_params.get('metric')
-        n_neighbor = input_params.get('n_neighbor')
+        n_neighbors= input_params.get('n_neighbors')
         n_plis = input_params.get('n_plis')
         weights = input_params.get('weights')
+        algorithm=input_params.get('algorithm') 
+        leaf_size=input_params.get('leaf_size')
+        p=input_params.get('p')
+        n_jobs=input_params.get('n_jobs')
 
-        score, conf_matrix, execution_time, details_classement  = KNN_method(str(metric), int(n_neighbor), int(n_plis), str(weights), './data_anonymous')
+        score, conf_matrix, execution_time, details_classement  = KNN_method(str(metric), int(n_neighbors), int(n_plis),
+        str(weights), './data_anonymous',str(algorithm),int(leaf_size),float(p),int(n_jobs))
 
         # Convertir le DataFrame details_classement en un format JSON compatible
         details_classement_json = details_classement.to_dict(orient='records')
