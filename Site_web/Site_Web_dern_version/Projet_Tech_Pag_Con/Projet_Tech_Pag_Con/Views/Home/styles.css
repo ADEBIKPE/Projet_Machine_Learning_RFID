@@ -1,0 +1,77 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    background-image: url('https://livetechspot.com/wp-content/uploads/2020/07/Complete-Guide-List-on-How-to-Optimize-E-commerce-Website.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: grey; /* Changement de couleur du texte en blanc pour une meilleure lisibilité */
+    font-family: Arial, sans-serif;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 100%;
+}
+
+    .menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .menu ul li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+            .menu ul li a {
+                color: white;
+                text-decoration: none;
+            }
+
+.content {
+    text-align: center;
+    margin-top: 50px; /* Espacement du contenu par rapport au menu */
+}
+
+h1 {
+    font-size: 2em; /* Taille de la police */
+    text-align: center; /* Centrage horizontal */
+    margin-bottom: 20px; /* Espace sous le titre */
+    justify-content: center;
+}
+
+form {
+    margin-top: 30px; /* Espacement du formulaire par rapport au contenu */
+    text-align: center;
+}
+
+select {
+    padding: 10px;
+    font-size: 1em;
+    margin-top: 10px; /* Espacement entre le formulaire et le select */
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff; /* Couleur de fond du bouton */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease; /* Transition douce pour le changement de couleur */
+}
+
+    button[type="submit"]:hover {
+        background-color: #0056b3; /* Changement de couleur au survol */
+    }
+
+
