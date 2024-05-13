@@ -133,21 +133,21 @@
                     <td>Utilisateur A</td>
                     <td>KNN</td>
                     <td>10 secondes</td>
-                    <td><a href="/Home/Resultats"><button class="btn">Visualiser les résultats</button></a></td>
+                    <td><a href="/Home/Resultats?modele=KNN"><button class="btn">Visualiser les résultats</button></a></td>
                 </tr>
                 <tr>
                     <td>2024-05-10 09:15:20</td>
                     <td>Utilisateur B</td>
                     <td>SVM</td>
                     <td>15 secondes</td>
-                    <td><a href="/Home/Resultats"><button class="btn">Visualiser les résultats</button></a></td>
+                    <td><a href="/Home/Resultats?modele=SVM"><button class="btn">Visualiser les résultats</button></a></td>
                 </tr>
                 <tr>
                     <td>2024-05-10 10:05:55</td>
                     <td>Utilisateur C</td>
                     <td>Random Forest</td>
                     <td>20 secondes</td>
-                    <td><a href="/Home/Resultats"><button class="btn">Visualiser les résultats</button></a></td>
+                    <td><a href="/Home/Resultats?modele=Random Forest"><button class="btn">Visualiser les résultats</button></a></td>
                 </tr>
                 <!-- Fin des données de l'historique -->
             </tbody>
@@ -155,6 +155,16 @@
     </div>
 
     <script>
+
+       
+        // Récupérer le paramètre "modele" de l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const modele = urlParams.get('modele');
+
+        // Afficher le modèle utilisé dans la section "Modèle Utilisé"
+        document.querySelector('.result').insertAdjacentHTML('afterbegin', `<h4>Modèle Utilisé :</h4><p>${modele}</p>`);
+  
+
         document.getElementById("applyFilter").addEventListener("click", function() {
             var method = document.getElementById("methodFilter").value;
             var table = document.getElementById("historyTable");

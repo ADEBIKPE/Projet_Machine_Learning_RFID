@@ -1,20 +1,17 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Résultats de l'Analyse</title>
     <style>
+        /* Votre style CSS ici */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
+            background-image: url('https://livetechspot.com/wp-content/uploads/2020/07/Complete-Guide-List-on-How-to-Optimize-E-commerce-Website.jpg');
             padding: 0;
-            background-color: #f0f0f0;
+            background-color: #f5f5f5;
         }
 
         .container {
@@ -32,40 +29,88 @@
         }
 
         .result {
-            background-color: #f9f9f9;
+            background-color: #fff;
             padding: 20px;
-            border-radius: 5px;
+            border-radius: 10px;
             margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .result h4 {
-            color: #ff80ab;
+            color: #00bcd4; /* Bleu */
             margin-bottom: 10px;
+            text-align: center;
         }
 
         .result p {
             margin-bottom: 10px;
+            text-align: justify;
         }
 
         .result table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
 
         .result table th,
         .result table td {
             padding: 8px;
             border: 1px solid #ddd;
-            text-align: left;
+            text-align: center;
         }
 
         .result table th {
-            background-color: #ff80ab;
-            color: #333;
+            background-color: #00bcd4; /* Bleu */
+            color: #fff;
         }
 
         .result table tr:nth-child(even) {
             background-color: #f2f2f2;
+        }
+
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 */
+            overflow: hidden;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #00bcd4; /* Bleu */
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .button:hover {
+            background-color: #0097a7; /* Bleu plus foncé au survol */
         }
     </style>
 </head>
@@ -73,39 +118,81 @@
     <div class="container">
         <h1>Résultats de l'Analyse</h1>
 
+        <!-- Modèle Utilisé -->
         <div class="result">
-            <h4>Résultats :</h4>
+            
+           
+        </div>
+
+        <!-- Score -->
+        <div class="result">
+            <h4>Score </h4>
             <p>Score : 0,9987708108450185</p>
-            <p>Matrice de confusion :</p>
+        </div>
+
+
+         <!-- Matrice de Confusion -->
+        <div class="result">
+            <h4>Matrice de Confusion :</h4>
             <table>
                 <tr>
                     <th></th>
-                    <th>Classé dans la boîte</th>
-                    <th>Devrait être classé dans la boîte</th>
+                    <th>Positif</th>
+                    <th>Négatif</th>
                 </tr>
                 <tr>
-                    <td>epc_139</td>
-                    <td></td>
-                    <td>2</td>
+                    <th>Positif</th>
+                    <td class="true-positive">Vrai Positif</td>
+                    <td class="false-negative">Faux Négatif</td>
                 </tr>
-                <!-- Ajoutez le reste des données de la matrice de confusion ici -->
+                <tr>
+                    <th>Négatif</th>
+                    <td class="false-positive">Faux Positif</td>
+                    <td class="true-negative">Vrai Négatif</td>
+                </tr>
             </table>
-            <p>Temps d'exécution : 57,315</p>
-            <p>Détails de classement :</p>
-            <table>
-                <tr>
-                    <th>Tags</th>
-                    <th>Classé dans la boîte</th>
-                    <th>Devrait être classé dans la boîte</th>
-                </tr>
-                <tr>
-                    <td>epc_139</td>
-                    <td></td>
-                    <td>2</td>
-                </tr>
-                <!-- Ajoutez le reste des données de classement ici -->
-            </table>
+
+        <!-- Introduction à la Matrice de Confusion -->
+        <div class="result">
+            <h4>Vous ne comprenez pas le concept de matrice de confusion?</h4>
+            <p>La matrice de confusion est un outil utilisé en statistiques et en apprentissage automatique pour évaluer les performances d'un modèle de classification. Elle compare les prédictions du modèle avec les vraies valeurs de la cible pour évaluer sa précision. Les cellules de la matrice représentent les différentes combinaisons de prédictions et de vraies valeurs.</p>
         </div>
+
+       
+
+            <!-- Description de la Matrice de Confusion -->
+           
+            <!-- Image explicative -->
+            <div class="image-container">
+                <img src="https://th.bing.com/th/id/OIP.f_7cZFR_jOe4vrpyCgpmyAHaEg?w=274&h=180&c=7&r=0&o=5&pid=1.7" alt="Image explicative de la matrice de confusion">
+            </div>
+        </div>
+
+        <!-- Étude de cas -->
+        <div class="result">
+            <h4>Étude de Cas :</h4>
+            <p>Une étude de cas détaillée sur l'utilisation d'une matrice de confusion dans le domaine de la santé pour prédire les maladies.</p>
+            <p>Vous pouvez lire l'étude de cas complète <a href="https://www.bing.com/ck/a?!&&p=caa53a9d4c654e40JmltdHM9MTcxNTU1ODQwMCZpZ3VpZD0wYjkwYjFlNC1kZjMyLTZkY2EtMmVjMS1hNTlhZGU4NjZjZmMmaW5zaWQ9NTQ5OA&ptn=3&ver=2&hsh=3&fclid=0b90b1e4-df32-6dca-2ec1-a59ade866cfc&psq=etude+de+cas+matrice+de+confusion&u=a1aHR0cHM6Ly9pY2hpLnByby9mci9tYXRyaWNlLWRlLWNvbmZ1c2lvbi1jbGFpcmVtZW50LWV4cGxpcXVlZS0xNzUxNjU0Mzk1NDM3NQ&ntb=1">ici</a>.</p>
+        </div>
+
+        <!-- Vidéo explicative -->
+        <div class="result">
+            <h4>Vidéo Explicative :</h4>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Kdsp6soqA7o" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
+       
+
     </div>
+    <script>
+        // Récupérer le paramètre "modele" de l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const modele = urlParams.get('modele');
+
+        // Afficher le modèle utilisé dans la section "Modèle Utilisé"
+        document.querySelector('.result').insertAdjacentHTML('afterbegin', `<h4>Modèle Utilisé :</h4><p>${modele}</p>`);
+    </script>
 </body>
 </html>
