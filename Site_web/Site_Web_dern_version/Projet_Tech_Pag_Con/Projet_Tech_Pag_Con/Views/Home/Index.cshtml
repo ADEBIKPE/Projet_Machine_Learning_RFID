@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma Page Web</title>
+    <!--<link rel="stylesheet" href="~/Styles/StyleSheet.css">
+
+     Formulaire pour KNN-->
+
     <style>
         body {
             margin: 0;
@@ -31,12 +35,17 @@
                 list-style: none;
                 padding: 0;
                 margin: 0;
+                display: flex;
             }
 
                 .menu ul li {
-                    display: inline-block;
+                    /*display: inline-block;*/
                     margin-right: 20px;
                 }
+
+                    .menu ul li:last-child {
+                        margin-right: 0; /* Supprimer la marge à droite du dernier élément de la liste */
+                    }
 
                     .menu ul li a {
                         color: white;
@@ -44,10 +53,52 @@
                     }
 
         .content {
-            text-align: center;
-            margin-top: 50px; /* Espacement du contenu par rapport au menu */
+            display: flex; /* Utiliser Flexbox pour aligner les sections horizontalement */
+            justify-content: center; /* Centrer les sections horizontalement */
+            align-items: center; /* Centrer verticalement les éléments à l'intérieur des sections */
+            flex-direction: row; /* Aligner les éléments horizontalement */
+            flex-wrap: wrap; /* Permettre aux éléments de passer à la ligne s'ils dépassent la largeur de leur conteneur */
+            margin-top: 20px; /* Espacement entre les sections */
         }
 
+        .method-sections {
+            display: flex;
+            flex-wrap: wrap; /* Permet aux sections de passer à la ligne si nécessaire */
+            justify-content: center; /* Centre les sections horizontalement */
+        }
+
+        .method-section {
+            flex: 0 1 300px; /* Les sections ont une largeur minimale de 300px et peuvent s'adapter à la taille disponible */
+            margin: 10px; /* Espacement entre les sections */
+            position: relative; /* Position relative pour les effets de survol */
+            transition: flex-grow 0.3s ease; /* Transition pour l'élargissement lors du survol */
+            border-radius: 10px; /* Arrondi les coins */
+            overflow: hidden; /* Empêche le contenu de déborder des coins arrondis */
+        }
+
+        /* Couleur de fond transparente pour chaque section */
+        .analytique {
+            background-color: rgba(255, 0, 0, 0.3); /* Rouge transparent */
+        }
+
+        .svm {
+            background-color: rgba(0, 255, 0, 0.3); /* Vert transparent */
+        }
+        .knn {
+            background-color: rgba(0, 0, 255, 0.3)
+        }
+
+        .RandomForest {
+            background-color: rgba(10, 0, 0, 0.3)
+        }
+
+        .method-section:hover {
+            flex-grow: 2; /* Élargit la section au survol */
+        }
+
+            .method-section h2 {
+                margin-right: 20px; /* Espacement entre le titre et le formulaire */
+            }
         h1 {
             font-size: 2em; /* Taille de la police */
             text-align: center; /* Centrage horizontal */
@@ -80,10 +131,26 @@
             button[type="submit"]:hover {
                 background-color: #0056b3; /* Changement de couleur au survol */
             }
-    </style>
+
+        .form-container {
+            display: none;
+        }
+        /* Cacher les boutons par défaut */
+        .param-description-btn {
+            display: none;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        /* Afficher les boutons au survol de leur parent */
+        div:hover .param-description-btn {
+            display: inline-block;
+        }
+    </style> 
 </head>
 <body>
     <h1 class="welcome-title">BIENVENUE SUR VOTRE SITE DE GESTION LOGISTIQUE</h1>
+    <section class="horizontal-section">
     <div class="import-section">
         <form method="get" action="">
             <label for="file">Choisissez le fichier à traiter </label>
@@ -91,9 +158,13 @@
             <input type="submit" value="Importer">
         </form>
     </div>
-    <ul class="Menu">
+    </section>
+    <div class="method-sections">
+        <section class="method-section analytique" id="method-Analytique">
+            <h2>Méthode Analytique</h2>
+        <ul class="Menu">
         <li>
-            <input type="checkbox" id="checkbox-Analytique" name="method" value="Analytique" onclick="showForm('Analytique')">
+            <input type="checkbox" id="checkbox-Analytique" name="method" value="Analytique" onclick="toggleForm('Analytique')">
             <label for="checkbox-Analytique">Méthode Analytique</label>
             <div id="form-container-Analytique" class="form-container">
                 <form asp-action="Analiz" method="post">
@@ -120,157 +191,289 @@
             <!--</div>-->
 
         </li>
-        <li>
-            <input type="checkbox" id="checkbox-SVM" name="method" value="SVM" onclick="showForm('SVM')">
+        </ul>
+        </section>
+        <section class="method-section svm" id="method-SVM">
+        <h2>Méthode SVM</h2>
+        <ul class="Menu">
+            <li>
+                <input type="checkbox" id="checkbox-SVM" name="method" value="SVM" onclick="toggleForm('SVM')">
 
-            <label for="checkbox-SVM">Méthode SVM</label>
-            <div id="form-container-SVM" class="form-container">
-                <form asp-action="SVM" method="post">
+                <label for="checkbox-SVM">Méthode SVM</label>
+                <div id="form-container-SVM" class="form-container">
+                    <form asp-action="SVM" method="post">
 
-                    <!-- Formulaire pour SVM -->
-                    <div>
-                        <label for="Param1">Paramètre de régularisation(C)</label>
-                        <p>Il contrôle la trade-off entre la marge maximale et la classification correcte des points d'entraînement</p>
-                        <select id="Param1" name="Param1">
-                            <option value="100">Maximum:100</option>
-                            <option value="0.1">Minimum:0.1</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="Param2">Paramètre du noyau (Kernel)</label>
-                        <p>Le noyau à utiliser dans l'algorithme SVM</p>
-                        <select id="Param2" name="Param2">
-                            <option value="rbf">RBF</option>
-                            <option value="poly">Poly</option>
-                            <option value="linear">Linear</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="Param3">Coefficient du noyau (Gamma)</label>
-                        <p>Il définit jusqu'à quel point l'influence d'un seul exemple d'entraînement s'étend</p>
-                        <select id="Param3" name="Param3">
-                            <option value="10">Maximum:10</option>
-                            <option value="0.001">Minimum:0,001</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="Param4">Nombre de plis pour validation croisée</label>
-                        <select id="Param4" name="Param4">
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-                    </div>
-                    <div class="conteneur-bouton">
-                        <button type="submit" class="bouton-envoyer">Valider</button>
-                    </div>
+                        <!-- Formulaire pour SVM -->
+                        <div>
+                            <label for="Param1">Paramètre de régularisation(C)</label>
+                                <span class="param-description-btn" data-description="Il contrôle la trade-off entre la marge maximale et la classification correcte des points d'entraînement">?</span>                            <select id="Param1" name="Param1">
+                                <option value="1.0">Par défaut:1.0</option>
+                                <option value="100">Maximum:100</option>
+                                <option value="0.1">Minimum:0.1</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="Param2">Paramètre du noyau(Kernel)</label>
+                            <span class="param-description-btn" data-description="Le noyau à utiliser dans l'algorithme SVM">?</span>
+                            <br />
+                            <select id="Param2" name="Param2">
+                                <option value="rbf">RBF</option>
+                                <option value="poly">Poly</option>
+                                <option value="linear">Linear</option>
+                                <option value="sigmoid">Sigmoid</option>
+                                <option value="precomputed">Precomputed</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="Param3">Coefficient du noyau(Gamma)</label>
+                            <span class="param-description-btn" data-description="Il définit jusqu'à quel point l'influence d'un seul exemple d'entraînement s'étend">?</span>
+                            <br />
+                            <select id="Param3" name="Param3">
+                                <option value="10">Maximum:10</option>
+                                <option value="0.001">Minimum:0,001</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="Param4">Nombre de plis pour validation croisée</label>
+                            <span class="param-description-btn" data-description="Nombre de plis pour validation croisée">?</span>
+                            <br />
+                            <select id="Param4" name="Param4">
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                            <div>
+                                <label for="Param5">Degré du noyau(Degree)</label>
+                                <span class="param-description-btn" data-description="Le degré du polynôme si le noyau est de type 'poly'">?</span>
+                                <br />
+                                <input type="number" id="Param5" name="Param5" min="1" max="10" data-default="3">
+                            </div>
+                            <div>
+                                <label for="Param6">Coefficient indépendant du noyau(Coef0)</label>
+                                <span class="param-description-btn" data-description="Le degré du polynôme si le noyau est de type 'poly'">?</span>
+                                <br />
+                                <input type="number" id="Param6" name="Param6" min="0.0" max="1" step="0.1" data-default="0.0">
+                            </div>
+                            <div>
+                                <label for="Param7">Activer le rétrécissement de la marge(Shrinking)</label>
+                                <span class="param-description-btn" data-description="Activer ou désactiver le rétrécissement de la marge">?</span>
+                                <br />
+                                <select id="Param7" name="Param7">
+                                    <option value="True">Oui</option>
+                                    <option value="False">Non</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param8">Activer la probabilité de sortie(Probability)</label>
+                                <span class="param-description-btn" data-description="Activer ou désactiver la probabilité de sortie">?</span>
+                                <br />
+                                <select id="Param8" name="Param8">
+                                    <option value="False">Non</option>
+                                    <option value="True">Oui</option>
+                                    
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param9">Tolérance de tolérance d'arrêt(Tol)</label>
+                                <span class="param-description-btn" data-description="La tolérance pour arrêter l'optimisation">?</span>
+                                <br />
+                                <input type="number" id="Param9" name="Param9" min="0.001" step="0.001" data-default="0.001">
+                            </div>
+                            <div>
+                                <label for="Param10">Taille du cache(Cache Size)</label>
+                                <span class="param-description-btn" data-description="La taille du cache en Mo">?</span>
+                                <br />
+                                <input type="number" id="Param10" name="Param10" min="200" max="500" step="50" data-default="200">
+                            </div>
+                            <div>
+                                <label for="Param11">Verbosité(Verbose)</label>
+                                <span class="param-description-btn" data-description="Le niveau de verbosité">?</span>
+                                <br />
+                                <select id="Param11" name="Param11">
+                                    <option value="False">Non</option>
+                                    <option value="True">Oui</option>
+                                    
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param12">Nombre maximal d'itérations(Max Iter)</label>
+                                <span class="param-description-btn" data-description="Le nombre maximal d'itérations">?</span>
+                                <br />
+                                <input type="number" id="Param12" name="Param12" min="-1" max="60" step="5" data-default="-1">
+                            </div>
+                            <div>
+                                <label for="Param13">Forme de la fonction de décision(Decision Function Shape)</label>
+                                <span class="param-description-btn" data-description="La forme de la fonction de décision">?</span>
+                                <br />
+                                <select id="Param13" name="Param13">
+                                    <option value="ovr">One-vs-Rest</option>
+                                    <option value="ovo">One-vs-One</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param14">Break Ties</label>                                
+                                <span class="param-description-btn" data-description="Détermination de la règle de rupture">?</span>
+                                <br />
+                                <select id="Param14" name="Param14">
+                                    <option value="False">Faux</option>
+                                    <option value="True">Vrai</option>
+                                    
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param15">Seed pour la randomisation(Random State)</label>
+                                <span class="param-description-btn" data-description="Seed pour la randomisation">?</span>
+                                <br />
+                                <input type="number" id="Param15" name="Param15" min="24" data-default="42">
+                            </div>
+                        <div class="conteneur-bouton">
+                            <button type="submit" class="bouton-envoyer">Valider</button>
+                        </div>
 
-                </form>
+                    </form>
 
-            </div>
-            <div class="col-md-8">
-                <div class="result">
-                    @if (ViewBag.Score != null)
-                    {
-                        <h4>Résultats :</h4>
-                        <p>Score : @ViewBag.Score</p>
-                        <p>Matrice de confusion :</p>
-                        <table>
-                            @foreach (var row in ViewBag.MatriceDeConfusion)
-                            {
-                                <tr>
-                                    @foreach (var item in row)
-                                    {
-                                        <td>@item</td>
-                                    }
-                                </tr>
-                            }
-                        </table>
-                        <p>Temps d'exécution : @ViewBag.TempsExecution</p>
-                        <p>Détails de classement :</p>
-                        <table>
-                            <tr>
-                                <th>Tags</th>
-                                <th>Classé dans la boîte</th>
-                                <th>Devrait être classé dans la boîte</th>
-                            </tr>
-                            @foreach (var detail in ViewBag.DetailsClassement)
-                            {
-                                <tr>
-                                    <td>@detail.Tags</td>
-                                    <td>    </td>
-                                    <td>@detail["Classé dans la boîte"]</td>
-                                    <td>    </td>
-                                    <td>@detail["Devrait être classé dans la boite"]</td>
-                                </tr>
-                            }
-                        </table>
-
-                    }
-                    else
-                    {
-                        <p>Aucun résultat disponible pour l'instant.</p>
-                    }
                 </div>
-            </div>
+                <div class="col-md-8">
+                    <div class="result">
+                        @if (ViewBag.ScoreSVM != null)
+                        {
+                            <h4>Résultats :</h4>
+                            <p>Score : @ViewBag.ScoreSVM</p>
+                            <p>Matrice de confusion :</p>
+                            <table>
+                                @foreach (var row in ViewBag.MatriceDeConfusionSVM)
+                                {
+                                    <tr>
+                                        @foreach (var item in row)
+                                        {
+                                            <td>@item</td>
+                                        }
+                                    </tr>
+                                }
+                            </table>
+                            <p>Temps d'exécution : @ViewBag.TempsExecutionSVM</p>
+                            <p>Détails de classement :</p>
+                            <table>
+                                <tr>
+                                    <th>Tags</th>
+                                    <th>Classé dans la boîte</th>
+                                    <th>Devrait être classé dans la boîte</th>
+                                </tr>
+                                @foreach (var detail in ViewBag.DetailsClassementSVM)
+                                {
+                                    <tr>
+                                        <td>@detail.Tags</td>
+                                        <td>    </td>
+                                        <td>@detail["Classé dans la boîte"]</td>
+                                        <td>    </td>
+                                        <td>@detail["Devrait être classé dans la boite"]</td>
+                                    </tr>
+                                }
+                            </table>
+
+                        }
+                        else
+                        {
+                            <p>Aucun résultat disponible pour l'instant.</p>
+                        }
+                    </div>
+                </div>
 
 
 
-        </li>
+            </li>
+        </ul>
+        </section>
+        <section class="method-section knn" id="method-KNN">
+        <h2>Méthode KNN</h2>
+        <ul class="Menu">
         <li>
-            <input type="checkbox" id="checkbox-KNN" name="method" value="KNN" onclick="showForm('KNN')">
+            <input type="checkbox" id="checkbox-KNN" name="method" value="KNN" onclick="toggleForm('KNN')">
             <label for="checkbox-KNN">Méthode KNN</label>
             <div id="form-container-KNN" class="form-container">
                 <form asp-action="KNN" method="post">
                     <!-- Formulaire pour KNN -->
+                     <div>
+                      <label for="Param1">metric</label>
+                     <span class="param-description-btn" data-description="La mesure de distance utilisée pour calculer la proximité entre les points.">?</span>
+                       <br />
+                       <select id="Param1" name="Param1">
+                         <option value="minkowski">Minkowski</option>
+                         <option value="euclidean">Euclidienne</option>
+                         <option value="manhattan">Manhattan</option>
+                       </select>
+                     </div>
                     <div>
                         <label for="Param2">n_neighbors</label>
-                        <p>Le nombre de voisins à considérer lors de la prédiction</p>
+                        <span class="param-description-btn" data-description="Le nombre de voisins à considérer lors de la prédiction.">?</span>
+                        <br />
                         <select id="Param2" name="Param2">
+                            <option value="5">Default:5</option>
                             <option value="20">Maximum:20</option>>
-                            <option value="1">Minimum:1</option>
-
-                            <option value="3">Default:3</option>
+                            <option value="5">Minimum:5</option>
+                            
                         </select>
-
-
-
                     </div>
-                    <div>
-                        <label for="Param3">weights</label>
-                        <p>La méthode utilisée pour pondérer les voisins</p>
-                        <select id="Param3" name="Param3">
-                            <option value="uniform">Uniforme</option>
-                            <option value="distance">Ideal: Distance</option>
+                                <div>
+                                    <label for="Param3">Nombre de plis pour validation croisée</label>
+                                    <select id="Param3" name="Param3">
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                            <div>
+                                <label for="Param4">weights</label>
+                                
+                                <span class="param-description-btn" data-description="La méthode utilisée pour pondérer les voisins.">?</span>
+                                <br />
 
-                        </select>
-
-                    </div>
-                    <div>
-                        <label for="Param4">metric</label>
-                        <p> La mesure de distance utilisée pour calculer la proximité entre les points.</p>
-                        <select id="Param4" name="Param4">
-                            <option value="euclidean">Euclidienne</option>
-                            <option value="minkowski">Minkowski</option>
-                            <option value="manhattan">Ideal:Manhattan</option>
-                        </select>
-
-                    </div>
-                    <div>
-                        <label for="Param5">Nombre de plis pour validation croisée</label>
-                        <select id="Param5" name="Param5">
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
-
-                    </div>
+                                <select id="Param4" name="Param4">
+                                    <option value="uniform">Uniforme</option>
+                                    <option value="distance">Distance</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param5">algorithm</label>
+                                <span class="param-description-btn" data-description="L'algorithme utilisé pour calculer les voisins les plus proches.">?</span>
+                                <br />
+                                
+                                <select id="Param5" name="Param5">
+                                    <option value="auto">Auto</option>
+                                    <option value="ball_tree">Ball Tree</option>
+                                    <option value="kd_tree">KD Tree</option>
+                                    <option value="brute">Brute</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param6">leaf_size</label>
+                                <span class="param-description-btn" data-description="La taille de la feuille pour les arbres ball ou KD.">?</span>
+                                <br />
+                                                               
+                                <input type="number" id="Param6" name="Param6" min="30" max="60" step="5" data-default="30">
+                                
+                            </div>
+                            <div>
+                                <label for="Param7">p</label>
+                                <span class="param-description-btn" data-description="Paramètre pour la distance de Minkowski.">?</span>
+                                <br />
+                               <input type="number" id="Param7" name="Param7" min="2"  step="1" data-default="2">
+                                
+                            </div>
+                            <div>
+                                <label for="Param8">n_jobs</label>
+                                <span class="param-description-btn" data-description="Nombre de tâches à exécuter en parallèle.">?</span>
+                                <br />
+                                <input type="number" id="Param8" name="Param8" min="-1" max="20" step="1">
+                              
+                            </div>
                     <div class="conteneur-bouton">
                         <button type="submit" class="bouton-envoyer">Valider</button>
                     </div>
@@ -278,13 +481,13 @@
             </div>
             <div class="col-md-8">
                 <div class="result">
-                    @if (ViewBag.Score != null)
+                    @if (ViewBag.ScoreKNN != null)
                     {
                         <h4>Résultats :</h4>
-                        <p>Score : @ViewBag.Score</p>
+                        <p>Score : @ViewBag.ScoreKNN</p>
                         <p>Matrice de confusion :</p>
                         <table>
-                            @foreach (var row in ViewBag.MatriceDeConfusion)
+                            @foreach (var row in ViewBag.MatriceDeConfusionKNN)
                             {
                                 <tr>
                                     @foreach (var item in row)
@@ -294,7 +497,7 @@
                                 </tr>
                             }
                         </table>
-                        <p>Temps d'exécution : @ViewBag.TempsExecution</p>
+                        <p>Temps d'exécution : @ViewBag.TempsExecutionKNN</p>
                         <p>Détails de classement :</p>
                         <table>
                             <tr>
@@ -302,7 +505,7 @@
                                 <th>Classé dans la boîte</th>
                                 <th>Devrait être classé dans la boîte</th>
                             </tr>
-                            @foreach (var detail in ViewBag.DetailsClassement)
+                            @foreach (var detail in ViewBag.DetailsClassementKNN)
                             {
                                 <tr>
                                     <td>@detail.Tags</td>
@@ -323,113 +526,245 @@
                 </div>
             </div>
         </li>
-        <li>
-            <input type="checkbox" id="checkbox-RandomForest" name="method" value="RandomForest" onclick="showForm('RandomForest')">
-            <label for="checkbox-RandomForest">Méthode RandomForest</label>
-            <div id="form-container-RandomForest" class="form-container">
-                <form asp-action="RandomForest" method="post">
-                    <!-- Formulaire pour RandomForest -->
-                    <div>
-                        <label for="Param2">n_estimators</label>
-                        <p>Le nombre d'arbres de décision dans la forêt</p>
-                        <select id="param2" name="Param2">
-                            <option value=1000>1000</option>
-                            <option value=10>10</option>
-                            <option value=500>500</option>
-                        </select>
+       </ul>
+        </section>
+        <section class="method-section RandomForest" id="method-RandomForest">
+        <h2>Méthode Random Forest</h2>
+        <ul class="Menu">
+            <li>
+                <input type="checkbox" id="checkbox-RandomForest" name="method" value="RandomForest" onclick="toggleForm('RandomForest')">
+                <label for="checkbox-RandomForest">Méthode RandomForest</label>
+                <div id="form-container-RandomForest" class="form-container">
+                    <form asp-action="RandomForest" method="post">
+                        <!-- Formulaire pour RandomForest -->
+                            <div>
+                                <label for="Param1">n_estimators</label>
+                               <span class="param-description-btn" data-description="Le nombre d'arbres de décision dans la forêt.">?</span>
+                                <br />
+                                
+                               <input type="number" id="Param1" name="Param1" min="100" step="50" data-default="100">
+                                
+                            </div>
+                            <div>
+                                <label for="Param2">min_samples_split</label>
+                                <span class="param-description-btn" data-description="Le nombre minimum d'échantillons requis pour diviser un nœud interne.">?</span>
+                                <br />
+                                <input type="number" name="Param2" id="Param2" min="2" step="1" data-default="2">
+                            </div>
+                            <div>
+                                <label for="Param3">max_depth</label>
+                                
+                                <span class="param-description-btn" data-description="La profondeur maximale de chaque arbre de décision.">?</span>
+                                <br />
+                                <input type="number" name="Param3" id="Param3" min="3" max="10" step="1" data-default="3">
+                            </div>
+                            <div>
+                                <label for="Param4">criterion</label>
+                                <span class="param-description-btn" data-description="La fonction pour mesurer la qualité d'une partition.">?</span>
+                                <br />
+                                <select id="Param4" name="Param4">
+                                    <option value="gini">Gini</option>
+                                    <option value="entropy">Entropie</option>
+                                    <option value="log_loss">Log_loss</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param5">max_features</label>
+                                <span class="param-description-btn" data-description="Le nombre de caractéristiques à considérer lors de la recherche de la meilleure partition.">?</span>
+                                <br />
+                                <select id="Param5" name="Param5">
+                                    <option value="sqrt">Sqrt</option>
+                                    <option value="log2">Log2</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param6">min_samples_leaf</label>
+                                <span class="param-description-btn" data-description="Le nombre minimum d'échantillons requis pour être au niveau d'une feuille.">?</span>
+                                <br />
+                                <input type="number" name="Param6" id="Param6" min="1" max="10" step="1" value="1">
+                            </div>
+                            <div>
+                                <label for="Param7">min_weight_fraction_leaf</label>
+                                <span class="param-description-btn" data-description="Le poids minimum qu'un échantillon doit avoir pour être considéré dans un nœud de feuille.">?</span>
+                                <br />
+                                <input type="number" name="Param7" id="Param7" min="0.0" max="10" step="0.1" value="0.0">
+                            </div>
+                            <div>
+                                <label for="Param8">max_leaf_nodes</label>
+                                <span class="param-description-btn" data-description="Le nombre maximum de nœuds de feuille.">?</span>
+                                <br />
+                                <input type="number" name="Param8" id="Param8" min="2" max="10" step="1" value="2">
+                            </div>
+                            <div>
+                                <label for="Param9">min_impurity_decrease</label>
+                                <span class="param-description-btn" data-description="Un nœud sera divisé si cette division induit une diminution de l'impureté plus grande ou égale à cette valeur.">?</span>
+                                <br />
+                                <input type="number" name="Param9" id="Param9" min="0.0" max="10" step="0.1" value="0.0">
+                            </div>
+                            <div>
+                                <label for="Param10">bootstrap</label>
+                                <span class="param-description-btn" data-description="Indique si les échantillons sont tirés avec remplacement.">?</span>
+                                <br />
+                                <select id="Param10" name="Param10">
+                                    <option value="True">True</option>
+                                    <option value="False">False</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param11">oob_score</label>
+                                <span class="param-description-btn" data-description="Indique si d'utiliser les échantillons hors-bag pour estimer la précision du généralisateur.">?</span>
+                                <br />
+                                <select id="Param11" name="Param11">
+                                    <option value="False">False</option>
+                                    <option value="True">True</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param12">n_jobs</label>
+                                <span class="param-description-btn" data-description="Le nombre de jobs parallèles à exécuter pour l'ajustement de l'arbre de décision.">?</span>
+                                <br />
+                                <input type="number" name="Param12" id="Param12" min="-1" max="20" step="1">
+                            </div>
+                            <div>
+                                <label for="Param13">random_state</label>
+                                <span class="param-description-btn" data-description="Contrôle le tirage aléatoire des échantillons utilisés lors de la construction des arbres de décision.">?</span>
+                                <br />
+                                <input type="number" name="Param13" id="Param13" min="24" step="10" value="42">
+                            </div>
+                            <div>
+                                <label for="Param14">verbose</label>
+                                <span class="param-description-btn" data-description="Contrôle la verbosité lors de l'ajustement et de la prédiction.">?</span>
+                                <br />
+                                <input type="number" name="Param14" id="Param14" min="0" step="1" value="0">
+                            </div>
+                            <div>
+                                <label for="Param15">warm_start</label>
+                                <span class="param-description-btn" data-description="Quand il est True, réutilise la solution de l'appel précédent pour ajuster et ajouter plus d'estimateurs à l'ensemble.">?</span>
+                                <br />
+                                <select id="Param15" name="Param15">
+                                    <option value="False">False</option>
+                                    <option value="True">True</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param16">class_weight</label>
+                                <span class="param-description-btn" data-description="Les poids associés à chaque classe dans l'ensemble de données.">?</span>
+                                <br />
+                                <select id="Param16" name="Param16">
+                                    <option value="balanced">Balanced</option>
+                                    <option value="balanced_subsample">Balanced Subsample</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param17">ccp_alpha</label>
+                                <span class="param-description-btn" data-description="Paramètre de complexité utilisé pour la stratégie d'élagage Minimal Cost-Complexity Pruning.">?</span>
+                                <br />
+                                <input type="number" name="Param17" id="Param17" min="0.0" step="0.1" value="0.0">
+                            </div>
+                            <div>
+                                <label for="Param18">max_samples</label>
+                                <span class="param-description-btn" data-description="Le nombre d'échantillons à tirer des données d'apprentissage pour s'entraîner chaque arbre de décision.">?</span>
+                                <br />
+                                <input type="number" name="Param18" id="Param18" min="0.0" step="1" max="2" value="0">
+                            </div>
+                        <div>
+                            <label for="Param19">Nombre de plis pour validation croisée</label>
+                            <select id="Param19" name="Param19">
+                                <option value=5>5</option>
+                                <option value=6>6</option>
+                                <option value=7>7</option>
+                                <option value=8>8</option>
+                                <option value=9>9</option>
+                                <option value=10>10</option>
+                            </select>
 
-                    </div>
-
-
-
-                    <div>
-                        <label for="Param3">min_samples_split</label>
-                        <p>Le nombre d'arbres de décision dans la forêt</p>
-                        <input type="number" name="Param3" id="Param3" value="10" data-default="10">
-
-                        
-
-                    </div>
-                    <div>
-                        <label for="Param4">max_depth </label>
-                        <p>La profondeur maximale de chaque arbre de décision</p>
-                        <input type="number" name="Param4" id="Param4" value="10" data-default="10">
-
-                        
-
-
-                    </div>
-                    <div>
-                        <label for="Param5">Nombre de plis pour validation croisée</label>
-                        <select id="Param5" name="param5">
-                            <option value=5>5</option>
-                            <option value=6>6</option>
-                            <option value=7>7</option>
-                            <option value=8>8</option>
-                            <option value=9>9</option>
-                            <option value=10>10</option>
-                        </select>
-
-                    </div>
-                    <div class="conteneur-bouton">
-                        <button type="submit" class="bouton-envoyer">Valider</button>
-                    </div>
-                </form>
-            </div>
-            <div class="col-md-8">
-                <div class="result">
-                    @if (ViewBag.Score != null)
-                    {
-                        <h4>Résultats :</h4>
-                        <p>Score : @ViewBag.Score</p>
-                        <p>Matrice de confusion :</p>
-                        <table>
-                            @foreach (var row in ViewBag.MatriceDeConfusion)
-                            {
-                                <tr>
-                                    @foreach (var item in row)
-                                    {
-                                        <td>@item</td>
-                                    }
-                                </tr>
-                            }
-                        </table>
-                        <p>Temps d'exécution : @ViewBag.TempsExecution</p>
-                        <p>Détails de classement :</p>
-                        <table>
-                            <tr>
-                                <th>Tags</th>
-                                <th>Classé dans la boîte</th>
-                                <th>Devrait être classé dans la boîte</th>
-                            </tr>
-                            @foreach (var detail in ViewBag.DetailsClassement)
-                            {
-                                <tr>
-                                    <td>@detail.Tags</td>
-                                    <td>    </td>
-                                    <td>@detail["Classé dans la boîte"]</td>
-                                    <td>    </td>
-                                    <td>@detail["Devrait être classé dans la boite"]</td>
-                                </tr>
-                            }
-                        </table>
-
-                    }
-                    else
-                    {
-                        <p>Aucun résultat disponible pour l'instant.</p>
-                    }
+                        </div>
+                        <div class="conteneur-bouton">
+                            <button type="submit" class="bouton-envoyer">Valider</button>
+                        </div>
+                    </form>
                 </div>
-            </div>
+                <div class="col-md-8">
+                    <div class="result">
+                        @if (ViewBag.ScoreRF != null)
+                        {
+                            <h4>Résultats :</h4>
+                            <p>Score : @ViewBag.ScoreRF</p>
+                            <p>Matrice de confusion :</p>
+                            <table>
+                                @foreach (var row in ViewBag.MatriceDeConfusionRF)
+                                {
+                                    <tr>
+                                        @foreach (var item in row)
+                                        {
+                                            <td>@item</td>
+                                        }
+                                    </tr>
+                                }
+                            </table>
+                            <p>Temps d'exécution : @ViewBag.TempsExecutionRF</p>
+                            <p>Détails de classement :</p>
+                            <table>
+                                <tr>
+                                    <th>Tags</th>
+                                    <th>Classé dans la boîte</th>
+                                    <th>Devrait être classé dans la boîte</th>
+                                </tr>
+                                @foreach (var detail in ViewBag.DetailsClassementRF)
+                                {
+                                    <tr>
+                                        <td>@detail.Tags</td>
+                                        <td>    </td>
+                                        <td>@detail["Classé dans la boîte"]</td>
+                                        <td>    </td>
+                                        <td>@detail["Devrait être classé dans la boite"]</td>
+                                    </tr>
+                                }
+                            </table>
+
+                        }
+                        else
+                        {
+                            <p>Aucun résultat disponible pour l'instant.</p>
+                        }
+                    </div>
+                </div>
 
 
 
-        </li>        
-    </ul>
+            </li> 
+        
+        </ul>
+        </section>
+    </div>
+    
 
+    <!-- Script JavaScript 
+    <script src="script.js"></script>-->
     <!-- Script JavaScript -->
     <script>
-        function showForm(methodName) {
+        function toggleForm(methodName) {
+            var formContainer = document.getElementById('form-container-' + methodName);
+            var checkbox = document.getElementById('checkbox-' + methodName);
+
+            if (checkbox.checked) {
+                formContainer.style.display = 'block'; // Affiche le formulaire si la case est cochée
+            } else {
+                formContainer.style.display = 'none'; // Masque le formulaire si la case n'est pas cochée
+            }
+        }
+        // Récupérer tous les éléments span avec la classe param-description-btn
+        const descriptionButtons = document.querySelectorAll('.param-description-btn');
+
+        // Pour chaque bouton, ajoutez un gestionnaire d'événements pour afficher la description au survol
+        descriptionButtons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                const description = button.getAttribute('data-description');
+                alert(description); // Remplacez cela par du code pour afficher la description de manière plus esthétique
+            });
+        });
+
+        /*function showForm(methodName) {
             var formContainer = document.getElementById('form-container-' + methodName);
             if (formContainer.style.display === 'block') {
                 formContainer.style.display = 'none';
@@ -442,7 +777,7 @@
                 top: formContainer.offsetTop,
                 behavior: 'smooth'
             });
-        }
+        }*/
     </script>
 </body>
 </html>

@@ -4,6 +4,8 @@ using Newtonsoft.Json;
 using Projet_Tech_Pag_Con.Models;
 using System.Diagnostics;
 using System.Text;
+using Humanizer;
+using System.Security.Cryptography;
 
 namespace Projet_Tech_Pag_Con.Controllers
 {
@@ -89,18 +91,33 @@ namespace Projet_Tech_Pag_Con.Controllers
             return View("Index");
         }
 
-        public async Task<IActionResult> RandomForest(string Param2, string Param3, string Param4, string Param5)
+        public async Task<IActionResult> RandomForest(string Param1, string Param2, string Param3, string Param4, string Param5, string Param6, string Param7, string Param8,
+                                                            string Param9, string Param10, string Param11, string Param12, string Param13, string Param14, string Param15, 
+                                                            string Param16, string Param17, string Param18, string Param19)
         {
             using (var client = new HttpClient())
             {
                 var requestData = new
                 {
-                    n_arbres = Param2,
-                    profondeur = (Param4),
-                    n_plis = Param5,
-                    n_minimum_split = Param3,
-
-
+                    n_arbres = Param1,
+                    profondeur = Param3,
+                    n_plis= Param19,
+                    n_minimum_split = Param2,
+                    criterion = Param4,
+                    min_samples_leaf = Param6,
+                    min_weight_fraction_leaf = Param7,
+                    max_features = Param5,
+                    max_leaf_nodes = Param8,
+                    min_impurity_decrease = Param9,
+                    bootstrap = Param10,
+                    oob_score = Param11,
+                    n_jobs = Param12,
+                    random_state = Param13,
+                    verbose = Param14,
+                    warm_start = Param15,
+                    class_weight = Param16,
+                    ccp_alpha = Param17,
+                    max_samples = Param18,
 
                 };
 
@@ -114,18 +131,18 @@ namespace Projet_Tech_Pag_Con.Controllers
                 dynamic jsonResponse = JsonConvert.DeserializeObject(result);
 
                 // Stocker les résultats dans ViewBag ou un autre objet
-                ViewBag.Score = jsonResponse.score;
-                ViewBag.MatriceDeConfusion = jsonResponse.matrice_de_confusion;
+                ViewBag.ScoreRF = jsonResponse.score;
+                ViewBag.MatriceDeConfusionRF = jsonResponse.matrice_de_confusion;
                 double tempsExecution = jsonResponse.temps_execution;
                 string tempsExecutionFormate = tempsExecution.ToString("0.###");
-                ViewBag.TempsExecution = tempsExecutionFormate;
+                ViewBag.TempsExecutionRF = tempsExecutionFormate;
 
                 //ViewBag.TempsExecution = jsonResponse.temps_execution;
 
                 // Convertir les détails de classement en une liste d'objets avant de les stocker dans ViewBag
                 JArray detailsArray = JArray.Parse(jsonResponse.details_classement.ToString());
                 List<dynamic> detailsList = detailsArray.ToObject<List<dynamic>>();
-                ViewBag.DetailsClassement = detailsList;
+                ViewBag.DetailsClassementRF = detailsList;
 
 
                 /*var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
@@ -138,19 +155,20 @@ namespace Projet_Tech_Pag_Con.Controllers
 
             return View("Index");
         }
-        public async Task<IActionResult> KNN(string Param2, string Param3, string Param4, string Param5)
+        public async Task<IActionResult> KNN(string Param1, string Param2, string Param3, string Param4, string Param5, string Param6, string Param7, string Param8)
         {
             using (var client = new HttpClient())
             {
                 var requestData = new
                 {
-                    metric = Param4,
-                    n_neighbor = Param2,
-                    n_plis = Param5,
-                    weights = Param3,
-
-
-
+                    metric = Param1,
+                    n_neighbors = Param2,
+                    n_plis = Param3,
+                    weights = Param4,
+                    algorithm = Param5,
+                    leaf_size = Param6,
+                    p = Param7,
+                    n_jobs = Param8,
                 };
 
                 var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
@@ -162,17 +180,17 @@ namespace Projet_Tech_Pag_Con.Controllers
                 dynamic jsonResponse = JsonConvert.DeserializeObject(result);
 
                 // Stocker les résultats dans ViewBag ou un autre objet
-                ViewBag.Score = jsonResponse.score;
-                ViewBag.MatriceDeConfusion = jsonResponse.matrice_de_confusion;
+                ViewBag.ScoreKNN = jsonResponse.score;
+                ViewBag.MatriceDeConfusionKNN = jsonResponse.matrice_de_confusion;
                 double tempsExecution = jsonResponse.temps_execution;
                 string tempsExecutionFormate = tempsExecution.ToString("0.###");
-                ViewBag.TempsExecution = tempsExecutionFormate;
+                ViewBag.TempsExecutionKNN = tempsExecutionFormate;
                 //ViewBag.TempsExecution = jsonResponse.temps_execution;
 
                 // Convertir les détails de classement en une liste d'objets avant de les stocker dans ViewBag
                 JArray detailsArray = JArray.Parse(jsonResponse.details_classement.ToString());
                 List<dynamic> detailsList = detailsArray.ToObject<List<dynamic>>();
-                ViewBag.DetailsClassement = detailsList;
+                ViewBag.DetailsClassementKNN = detailsList;
                 //var result = await response.Content.ReadAsStringAsync();
 
                 //ViewBag.Result = result;
@@ -183,7 +201,10 @@ namespace Projet_Tech_Pag_Con.Controllers
         }
 
 
-        public async Task<IActionResult> SVM(string Param1, string Param2, string Param3, string Param4)
+        public async Task<IActionResult> SVM(string Param1, string Param2, string Param3, string Param4,
+                                                string Param5, string Param6, string Param7, string Param8,
+                                                  string Param9, string Param10, string Param11, string Param12,
+                                                  string Param13, string Param14, string Param15)
         {
             using (var client = new HttpClient())
             {
@@ -192,13 +213,22 @@ namespace Projet_Tech_Pag_Con.Controllers
 
                 var requestData = new
                 {
-                    C = Param1,
-                    Kernel = Param2,
+                    regularisation = Param1,
+                    CoefNoyau = Param3,
                     n_plis = Param4,
-                    Gamma = Param3,
-
-
-
+                    Noyau = Param2,
+                    degree = Param5,
+                    coef0 = Param6,
+                    shrinking = Param7,
+                    probability = Param8,
+                    tol = Param9,
+                    cache_size = Param10,
+                    verbose = Param11,
+                    max_iter = Param12,
+                    decision_function_shape = Param13,
+                    break_ties = Param14,
+                    random_state = Param15,
+                    
                 };
 
                 var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
@@ -211,17 +241,17 @@ namespace Projet_Tech_Pag_Con.Controllers
                 dynamic jsonResponse = JsonConvert.DeserializeObject(result);
 
                 // Stocker les résultats dans ViewBag ou un autre objet
-                ViewBag.Score = jsonResponse.score;
-                ViewBag.MatriceDeConfusion = jsonResponse.matrice_de_confusion;
+                ViewBag.ScoreSVM = jsonResponse.score;
+                ViewBag.MatriceDeConfusionSVM = jsonResponse.matrice_de_confusion;
                 double tempsExecution = jsonResponse.temps_execution;
                 string tempsExecutionFormate = tempsExecution.ToString("0.###");
-                ViewBag.TempsExecution = tempsExecutionFormate;
+                ViewBag.TempsExecutionSVM = tempsExecutionFormate;
                 //ViewBag.TempsExecution = jsonResponse.temps_execution;
 
                 // Convertir les détails de classement en une liste d'objets avant de les stocker dans ViewBag
                 JArray detailsArray = JArray.Parse(jsonResponse.details_classement.ToString());
                 List<dynamic> detailsList = detailsArray.ToObject<List<dynamic>>();
-                ViewBag.DetailsClassement = detailsList;
+                ViewBag.DetailsClassementSVM = detailsList;
 
                 //var result = await response.Content.ReadAsStringAsync();
 
