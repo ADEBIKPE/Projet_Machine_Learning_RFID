@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V2\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {}
+    "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {}
   },
   "projects": {
-    "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V2\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {
+    "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V2\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
+        "projectUniqueName": "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
         "projectName": "ProjTech",
-        "projectPath": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V2\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
-        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V2\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\obj\\",
+        "projectPath": "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\ProjTech.csproj",
+        "packagesPath": "C:\\Users\\flori\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\ProjTech\\ProjTech\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\flori\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,11 +34,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -64,19 +59,19 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.27, 6.0.27]"
+              "version": "[6.0.26, 6.0.26]"
             },
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.27, 6.0.27]"
+              "version": "[6.0.26, 6.0.26]"
             },
             {
               "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.27, 6.0.27]"
+              "version": "[6.0.26, 6.0.26]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.27, 6.0.27]"
+              "version": "[6.0.26, 6.0.26]"
             }
           ],
           "frameworkReferences": {
@@ -87,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -19,14 +19,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            color: grey; /* Changement de couleur du texte en blanc pour une meilleure lisibilité */
+            color: black; /* Changement de couleur du texte en blanc pour une meilleure lisibilité */
             font-family: Arial, sans-serif;
         }
 
         .menu {
             display: flex;
             justify-content: center;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 15);
             padding: 20px;
             width: 100%;
         }
@@ -78,14 +78,14 @@
 
         /* Couleur de fond transparente pour chaque section */
         .analytique {
-            background-color: rgba(255, 0, 0, 0.3); /* Rouge transparent */
+            background-color: rgba(10, 0, 0, 0.3); /* Rouge transparent */
         }
 
         .svm {
-            background-color: rgba(0, 255, 0, 0.3); /* Vert transparent */
+            background-color: rgba(10, 0, 0, 0.3); /* Vert transparent */
         }
         .knn {
-            background-color: rgba(0, 0, 255, 0.3)
+            background-color: rgba(10, 0, 0, 0.3)
         }
 
         .RandomForest {
@@ -118,7 +118,8 @@
         }
 
         button[type="submit"] {
-            padding: 10px 20px;
+            padding: 10px 
+            20px;
             background-color: #007bff; /* Couleur de fond du bouton */
             color: white;
             border: none;
@@ -159,26 +160,17 @@
         </form>
     </div>
     </section>
+    <form asp-action ="Valider" id="form" method="post">
     <div class="method-sections">
         <section class="method-section analytique" id="method-Analytique">
             <h2>Méthode Analytique</h2>
         <ul class="Menu">
         <li>
-            <input type="checkbox" id="checkbox-Analytique" name="method" value="Analytique" onclick="toggleForm('Analytique')">
+            <input type="checkbox" id="checkbox-Analytique" name="method1" value="Analytique" onclick="toggleForm('Analytique')">
             <label for="checkbox-Analytique">Méthode Analytique</label>
-            <div id="form-container-Analytique" class="form-container">
-                <form asp-action="Analiz" method="post">
-                    <!-- Formulaire pour Analytique -->
-
-
-                    <div class="conteneur-bouton">
-
-                        <button type="submit" class="bouton-envoyer">Valider</button>
-                    </div>
-                </form>
-            </div>
+           
             <div class="col-md-8">
-                <div class="result">
+                <div class="result" id="analizResult">
                     @if (ViewBag.Accuracy != null && ViewBag.ExecutionTime != null)
                     {
                         <h4>Result:</h4>
@@ -197,11 +189,11 @@
         <h2>Méthode SVM</h2>
         <ul class="Menu">
             <li>
-                <input type="checkbox" id="checkbox-SVM" name="method" value="SVM" onclick="toggleForm('SVM')">
+                <input type="checkbox" id="checkbox-SVM" name="method2" value="SVM" onclick="toggleForm('SVM')">
 
                 <label for="checkbox-SVM">Méthode SVM</label>
                 <div id="form-container-SVM" class="form-container">
-                    <form asp-action="SVM" method="post">
+                    
 
                         <!-- Formulaire pour SVM -->
                         <div>
@@ -330,15 +322,13 @@
                                 <br />
                                 <input type="number" id="Param15" name="Param15" min="24" data-default="42">
                             </div>
-                        <div class="conteneur-bouton">
-                            <button type="submit" class="bouton-envoyer">Valider</button>
-                        </div>
+                       
 
-                    </form>
+                   
 
                 </div>
                 <div class="col-md-8">
-                    <div class="result">
+                    <div class="result" id=" ="svmResult>
                         @if (ViewBag.ScoreSVM != null)
                         {
                             <h4>Résultats :</h4>
@@ -392,26 +382,26 @@
         <h2>Méthode KNN</h2>
         <ul class="Menu">
         <li>
-            <input type="checkbox" id="checkbox-KNN" name="method" value="KNN" onclick="toggleForm('KNN')">
+            <input type="checkbox" id="checkbox-KNN" name="method3" value="KNN" onclick="toggleForm('KNN')">
             <label for="checkbox-KNN">Méthode KNN</label>
             <div id="form-container-KNN" class="form-container">
-                <form asp-action="KNN" method="post">
+                
                     <!-- Formulaire pour KNN -->
                      <div>
-                      <label for="Param1">metric</label>
+                      <label for="Param16">metric</label>
                      <span class="param-description-btn" data-description="La mesure de distance utilisée pour calculer la proximité entre les points.">?</span>
                        <br />
-                       <select id="Param1" name="Param1">
+                       <select id="Param16" name="Param16">
                          <option value="minkowski">Minkowski</option>
                          <option value="euclidean">Euclidienne</option>
                          <option value="manhattan">Manhattan</option>
                        </select>
                      </div>
                     <div>
-                        <label for="Param2">n_neighbors</label>
+                        <label for="Param17">n_neighbors</label>
                         <span class="param-description-btn" data-description="Le nombre de voisins à considérer lors de la prédiction.">?</span>
                         <br />
-                        <select id="Param2" name="Param2">
+                        <select id="Param17" name="Param17">
                             <option value="5">Default:5</option>
                             <option value="20">Maximum:20</option>>
                             <option value="5">Minimum:5</option>
@@ -419,8 +409,8 @@
                         </select>
                     </div>
                                 <div>
-                                    <label for="Param3">Nombre de plis pour validation croisée</label>
-                                    <select id="Param3" name="Param3">
+                                    <label for="Param18">Nombre de plis pour validation croisée</label>
+                                    <select id="Param18" name="Param18">
                                         <option value="5">5</option>
                                         <option value="6">6</option>
                                         <option value="7">7</option>
@@ -430,22 +420,22 @@
                                     </select>
                                 </div>
                             <div>
-                                <label for="Param4">weights</label>
+                                <label for="Param19">weights</label>
                                 
                                 <span class="param-description-btn" data-description="La méthode utilisée pour pondérer les voisins.">?</span>
                                 <br />
 
-                                <select id="Param4" name="Param4">
+                                <select id="Param19" name="Param19">
                                     <option value="uniform">Uniforme</option>
                                     <option value="distance">Distance</option>
                                 </select>
                             </div>
                             <div>
-                                <label for="Param5">algorithm</label>
+                                <label for="Param20">algorithm</label>
                                 <span class="param-description-btn" data-description="L'algorithme utilisé pour calculer les voisins les plus proches.">?</span>
                                 <br />
                                 
-                                <select id="Param5" name="Param5">
+                                <select id="Param20" name="Param20">
                                     <option value="auto">Auto</option>
                                     <option value="ball_tree">Ball Tree</option>
                                     <option value="kd_tree">KD Tree</option>
@@ -453,34 +443,32 @@
                                 </select>
                             </div>
                             <div>
-                                <label for="Param6">leaf_size</label>
+                                <label for="Param21">leaf_size</label>
                                 <span class="param-description-btn" data-description="La taille de la feuille pour les arbres ball ou KD.">?</span>
                                 <br />
                                                                
-                                <input type="number" id="Param6" name="Param6" min="30" max="60" step="5" data-default="30">
+                                <input type="number" id="Param21" name="Param21" min="30" max="60" step="5" data-default="30">
                                 
                             </div>
                             <div>
-                                <label for="Param7">p</label>
+                                <label for="Param22">p</label>
                                 <span class="param-description-btn" data-description="Paramètre pour la distance de Minkowski.">?</span>
                                 <br />
-                               <input type="number" id="Param7" name="Param7" min="2"  step="1" data-default="2">
+                               <input type="number" id="Param22" name="Param22" min="2"  step="1" data-default="2">
                                 
                             </div>
                             <div>
-                                <label for="Param8">n_jobs</label>
+                                <label for="Param23">n_jobs</label>
                                 <span class="param-description-btn" data-description="Nombre de tâches à exécuter en parallèle.">?</span>
                                 <br />
-                                <input type="number" id="Param8" name="Param8" min="-1" max="20" step="1">
+                                <input type="number" id="Param23" name="Param23" min="-1" max="20" step="1" data-default="-1">
                               
                             </div>
-                    <div class="conteneur-bouton">
-                        <button type="submit" class="bouton-envoyer">Valider</button>
-                    </div>
-                </form>
+                       
             </div>
+                   
             <div class="col-md-8">
-                <div class="result">
+                <div class="result" id="knnResult">
                     @if (ViewBag.ScoreKNN != null)
                     {
                         <h4>Résultats :</h4>
@@ -532,144 +520,144 @@
         <h2>Méthode Random Forest</h2>
         <ul class="Menu">
             <li>
-                <input type="checkbox" id="checkbox-RandomForest" name="method" value="RandomForest" onclick="toggleForm('RandomForest')">
+                <input type="checkbox" id="checkbox-RandomForest" name="method4" value="RandomForest" onclick="toggleForm('RandomForest')">
                 <label for="checkbox-RandomForest">Méthode RandomForest</label>
                 <div id="form-container-RandomForest" class="form-container">
-                    <form asp-action="RandomForest" method="post">
+                       
                         <!-- Formulaire pour RandomForest -->
                             <div>
-                                <label for="Param1">n_estimators</label>
+                                <label for="Param24">n_estimators</label>
                                <span class="param-description-btn" data-description="Le nombre d'arbres de décision dans la forêt.">?</span>
                                 <br />
                                 
-                               <input type="number" id="Param1" name="Param1" min="100" step="50" data-default="100">
+                               <input type="number" id="Param24" name="Param24" min="100" step="50" data-default="100">
                                 
                             </div>
                             <div>
-                                <label for="Param2">min_samples_split</label>
+                                <label for="Param25">min_samples_split</label>
                                 <span class="param-description-btn" data-description="Le nombre minimum d'échantillons requis pour diviser un nœud interne.">?</span>
                                 <br />
-                                <input type="number" name="Param2" id="Param2" min="2" step="1" data-default="2">
+                                <input type="number" name="Param25" id="Param25" min="2" step="1" data-default="2">
                             </div>
                             <div>
-                                <label for="Param3">max_depth</label>
+                                <label for="Param26">max_depth</label>
                                 
                                 <span class="param-description-btn" data-description="La profondeur maximale de chaque arbre de décision.">?</span>
                                 <br />
-                                <input type="number" name="Param3" id="Param3" min="3" max="10" step="1" data-default="3">
+                                <input type="number" name="Param26" id="Param26" min="3" max="10" step="1" data-default="3">
                             </div>
                             <div>
-                                <label for="Param4">criterion</label>
+                                <label for="Param27">criterion</label>
                                 <span class="param-description-btn" data-description="La fonction pour mesurer la qualité d'une partition.">?</span>
                                 <br />
-                                <select id="Param4" name="Param4">
+                                <select id="Param27" name="Param27">
                                     <option value="gini">Gini</option>
                                     <option value="entropy">Entropie</option>
                                     <option value="log_loss">Log_loss</option>
                                 </select>
                             </div>
                             <div>
-                                <label for="Param5">max_features</label>
+                                <label for="Param28">max_features</label>
                                 <span class="param-description-btn" data-description="Le nombre de caractéristiques à considérer lors de la recherche de la meilleure partition.">?</span>
                                 <br />
-                                <select id="Param5" name="Param5">
+                                <select id="Param28" name="Param28">
                                     <option value="sqrt">Sqrt</option>
                                     <option value="log2">Log2</option>
                                 </select>
                             </div>
                             <div>
-                                <label for="Param6">min_samples_leaf</label>
+                                <label for="Param29">min_samples_leaf</label>
                                 <span class="param-description-btn" data-description="Le nombre minimum d'échantillons requis pour être au niveau d'une feuille.">?</span>
                                 <br />
-                                <input type="number" name="Param6" id="Param6" min="1" max="10" step="1" value="1">
+                                <input type="number" name="Param29" id="Param29" min="1" max="10" step="1" data-default="1">
                             </div>
                             <div>
-                                <label for="Param7">min_weight_fraction_leaf</label>
+                                <label for="Param30">min_weight_fraction_leaf</label>
                                 <span class="param-description-btn" data-description="Le poids minimum qu'un échantillon doit avoir pour être considéré dans un nœud de feuille.">?</span>
                                 <br />
-                                <input type="number" name="Param7" id="Param7" min="0.0" max="10" step="0.1" value="0.0">
+                                <input type="number" name="Param30" id="Param30" min="0.0" max="10" step="0.1" data-default="0.0">
                             </div>
                             <div>
-                                <label for="Param8">max_leaf_nodes</label>
+                                <label for="Param31">max_leaf_nodes</label>
                                 <span class="param-description-btn" data-description="Le nombre maximum de nœuds de feuille.">?</span>
                                 <br />
-                                <input type="number" name="Param8" id="Param8" min="2" max="10" step="1" value="2">
+                                <input type="number" name="Param31" id="Param31" min="2" max="10" step="1" data-default="2">
                             </div>
                             <div>
-                                <label for="Param9">min_impurity_decrease</label>
+                                <label for="Param32">min_impurity_decrease</label>
                                 <span class="param-description-btn" data-description="Un nœud sera divisé si cette division induit une diminution de l'impureté plus grande ou égale à cette valeur.">?</span>
                                 <br />
-                                <input type="number" name="Param9" id="Param9" min="0.0" max="10" step="0.1" value="0.0">
+                                <input type="number" name="Param32" id="Param32" min="0.0" max="10" step="0.1" data-default="0.0">
                             </div>
                             <div>
-                                <label for="Param10">bootstrap</label>
+                                <label for="Param33">bootstrap</label>
                                 <span class="param-description-btn" data-description="Indique si les échantillons sont tirés avec remplacement.">?</span>
                                 <br />
-                                <select id="Param10" name="Param10">
+                                <select id="Param33" name="Param33">
                                     <option value="True">True</option>
                                     <option value="False">False</option>
                                 </select>
                             </div>
                             <div>
-                                <label for="Param11">oob_score</label>
+                                <label for="Param34">oob_score</label>
                                 <span class="param-description-btn" data-description="Indique si d'utiliser les échantillons hors-bag pour estimer la précision du généralisateur.">?</span>
                                 <br />
-                                <select id="Param11" name="Param11">
+                                <select id="Param34" name="Param34">
                                     <option value="False">False</option>
                                     <option value="True">True</option>
                                 </select>
                             </div>
                             <div>
-                                <label for="Param12">n_jobs</label>
+                                <label for="Param35">n_jobs</label>
                                 <span class="param-description-btn" data-description="Le nombre de jobs parallèles à exécuter pour l'ajustement de l'arbre de décision.">?</span>
                                 <br />
-                                <input type="number" name="Param12" id="Param12" min="-1" max="20" step="1">
+                                <input type="number" name="Param35" id="Param35" min="-1" max="20" step="1" data-default="-1">
                             </div>
                             <div>
-                                <label for="Param13">random_state</label>
+                                <label for="Param36">random_state</label>
                                 <span class="param-description-btn" data-description="Contrôle le tirage aléatoire des échantillons utilisés lors de la construction des arbres de décision.">?</span>
                                 <br />
-                                <input type="number" name="Param13" id="Param13" min="24" step="10" value="42">
+                                <input type="number" name="Param36" id="Param36" min="24" step="10" data-default="42">
                             </div>
                             <div>
-                                <label for="Param14">verbose</label>
+                                <label for="Param37">verbose</label>
                                 <span class="param-description-btn" data-description="Contrôle la verbosité lors de l'ajustement et de la prédiction.">?</span>
                                 <br />
-                                <input type="number" name="Param14" id="Param14" min="0" step="1" value="0">
+                                <input type="number" name="Param37" id="Param37" min="0" step="1" data-default="0">
                             </div>
                             <div>
-                                <label for="Param15">warm_start</label>
+                                <label for="Param38">warm_start</label>
                                 <span class="param-description-btn" data-description="Quand il est True, réutilise la solution de l'appel précédent pour ajuster et ajouter plus d'estimateurs à l'ensemble.">?</span>
                                 <br />
-                                <select id="Param15" name="Param15">
+                                <select id="Param38" name="Param38">
                                     <option value="False">False</option>
                                     <option value="True">True</option>
                                 </select>
                             </div>
                             <div>
-                                <label for="Param16">class_weight</label>
+                                <label for="Param39">class_weight</label>
                                 <span class="param-description-btn" data-description="Les poids associés à chaque classe dans l'ensemble de données.">?</span>
                                 <br />
-                                <select id="Param16" name="Param16">
+                                <select id="Param39" name="Param39">
                                     <option value="balanced">Balanced</option>
                                     <option value="balanced_subsample">Balanced Subsample</option>
                                 </select>
                             </div>
                             <div>
-                                <label for="Param17">ccp_alpha</label>
+                                <label for="Param40">ccp_alpha</label>
                                 <span class="param-description-btn" data-description="Paramètre de complexité utilisé pour la stratégie d'élagage Minimal Cost-Complexity Pruning.">?</span>
                                 <br />
-                                <input type="number" name="Param17" id="Param17" min="0.0" step="0.1" value="0.0">
+                                <input type="number" name="Param40" id="Param40" min="0.0" step="0.1" data-default="0.0">
                             </div>
                             <div>
-                                <label for="Param18">max_samples</label>
+                                <label for="Param41">max_samples</label>
                                 <span class="param-description-btn" data-description="Le nombre d'échantillons à tirer des données d'apprentissage pour s'entraîner chaque arbre de décision.">?</span>
                                 <br />
-                                <input type="number" name="Param18" id="Param18" min="0.0" step="1" max="2" value="0">
+                                <input type="number" name="Param41" id="Param41" min="0" step="1" max="2" data-default="0">
                             </div>
                         <div>
-                            <label for="Param19">Nombre de plis pour validation croisée</label>
-                            <select id="Param19" name="Param19">
+                            <label for="Param42">Nombre de plis pour validation croisée</label>
+                            <select id="Param42" name="Param42">
                                 <option value=5>5</option>
                                 <option value=6>6</option>
                                 <option value=7>7</option>
@@ -679,13 +667,11 @@
                             </select>
 
                         </div>
-                        <div class="conteneur-bouton">
-                            <button type="submit" class="bouton-envoyer">Valider</button>
-                        </div>
-                    </form>
+                        
+                    
                 </div>
                 <div class="col-md-8">
-                    <div class="result">
+                    <div class="result" id="randomForestResult">
                         @if (ViewBag.ScoreRF != null)
                         {
                             <h4>Résultats :</h4>
@@ -735,13 +721,22 @@
             </li> 
         
         </ul>
+            
         </section>
+        
+            <div class="conteneur-bouton">
+            <button type="submit" class="bouton-envoyer">Valider</button>
+            </div>
+        
     </div>
+    </form>
     
 
     <!-- Script JavaScript 
     <script src="script.js"></script>-->
     <!-- Script JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script>
         function toggleForm(methodName) {
             var formContainer = document.getElementById('form-container-' + methodName);
@@ -778,6 +773,68 @@
                 behavior: 'smooth'
             });
         }*/
+        function submitSelectedForms() {
+            // Récupérer toutes les cases à cocher
+            var checkboxes = document.getElementsByName('method');
+            var selectedForms = [];
+
+            // Parcourir les cases à cocher pour trouver celles qui sont cochées
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    // Ajouter le formulaire associé à la case à cocher cochée à la liste
+                    selectedForms.push(document.getElementById('form' + (i + 1)));
+                }
+            }
+
+            // Vérifier si au moins une case à cocher est cochée
+            if (selectedForms.length > 0) {
+                // Soumettre chaque formulaire sélectionné
+                selectedForms.forEach(function (form) {
+                    form.submit();
+                });
+            } else {
+                // Si aucune case à cocher n'est cochée, afficher un message d'erreur
+                alert("Veuillez sélectionner au moins un formulaire à valider.");
+            }
+        }
+        function submitSelectedForms2() {
+            var checkboxes = document.getElementsByName('method');
+            var selectedForms = [];
+
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) {
+                    selectedForms.push(document.getElementById('form' + (i + 1)));
+                }
+            }
+
+            if (selectedForms.length > 0) {
+                selectedForms.forEach(function (form) {
+                    var formData = new FormData(form);
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.json())
+                        .catch(error => console.error("Error submitting form", error));
+                    promises.push(promise);
+                });
+
+                Promise.all(promises).then(results => {
+                    console.log("All forms submitted successfully");
+                    // Option pour rafraîchir la page ou afficher un message de succès
+                    alert("Tous les formulaires ont été soumis avec succès.");
+                    window.location.reload(); // Rafraîchir la page
+                    //
+                    // window.location.href = 'some_other_page.html'; // Rediriger vers une autre page
+                });
+            } else {
+                alert("Veuillez sélectionner au moins un formulaire à valider.");
+            }
+        }
+
+
+
+
     </script>
 </body>
 </html>

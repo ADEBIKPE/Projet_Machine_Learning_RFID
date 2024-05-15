@@ -34,8 +34,8 @@ def KNN_method(metric, n_neighbors, n_plis, weights, pathfile, algorithm, leaf_s
     
     # Faire des prédictions avec validation croisée
     y_pred = cross_val_predict(knn, X_normalized, y, cv=n_plis)
-    faux_inside = [i for i in range(len(y)) if y_pred[i] == 1 and y[i] == 0]
-    faux_outside = [i for i in range(len(y)) if y_pred[i] == 0 and y[i] == 1]
+    faux_inside = [i for i in range(len(y)) if (y_pred[i] == 0 and y[i]!=y_pred[i])]
+    faux_outside = [i for i in range(len(y)) if (y_pred[i] == 1 and y[i]!=y_pred[i])]
     
     # Nom de la colonne que vous souhaitez extraire
     column_names = ['Epc', 'reflist_run_id', 'refListId_actual']

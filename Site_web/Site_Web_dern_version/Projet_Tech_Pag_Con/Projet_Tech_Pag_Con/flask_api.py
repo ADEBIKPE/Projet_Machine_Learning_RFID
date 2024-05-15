@@ -8,7 +8,7 @@ app = Flask(__name__)
 @app.route('/analytical', methods=['POST'])
 def analytical_route():
     # Call the predict() function to make a prediction
-    accuracy, execution_time  = Analiz('./data_anonymous')
+    accuracy, execution_time  = Analiz('data_anonymous')
     
     # Return the prediction as JSON
     return jsonify({'accuracy': accuracy, 'execution_time': execution_time})

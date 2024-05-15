@@ -270,3 +270,16 @@ C:\Users\46411803\Downloads\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_
 C:\Users\46411803\Downloads\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.pdb
 C:\Users\46411803\Downloads\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.genruntimeconfig.cache
 C:\Users\46411803\Downloads\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\ref\Projet_Tech_Pag_Con.dll
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.csproj.AssemblyReference.cache
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.AssemblyInfoInputs.cache
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.AssemblyInfo.cs
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.csproj.CoreCompileInputs.cache
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.RazorAssemblyInfo.cache
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.RazorAssemblyInfo.cs
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.sourcelink.json
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.dll
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\refint\Projet_Tech_Pag_Con.dll
+C:\Users\flori\Desktop\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net6.0\Projet_Tech_Pag_Con.pdb

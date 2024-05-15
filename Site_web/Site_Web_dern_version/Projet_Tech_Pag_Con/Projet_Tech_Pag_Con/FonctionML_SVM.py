@@ -42,8 +42,8 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau, pathfile, degree,
     
     # Prédiction avec la validation croisée
     y_pred = cross_val_predict(svm_model, x, y_encoded, cv=n_plis)
-    faux_inside = [i for i in range(len(y)) if y_pred[i] == 1 and y[i] == 0]
-    faux_outside = [i for i in range(len(y)) if y_pred[i] == 0 and y[i] == 1]
+    faux_inside = [i for i in range(len(y)) if (y_pred[i] == 0 and y_encoded[i]!=y_pred[i])]
+    faux_outside = [i for i in range(len(y)) if (y_pred[i] == 1 and y_encoded[i]!=y_pred[i])]
     
     # Nom de la colonne que vous souhaitez extraire
     column_names = ['Epc', 'reflist_run_id', 'refListId_actual']

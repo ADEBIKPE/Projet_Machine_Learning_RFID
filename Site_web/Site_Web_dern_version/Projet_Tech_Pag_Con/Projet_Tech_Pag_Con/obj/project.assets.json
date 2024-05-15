@@ -1,22 +1,8 @@
 {
   "version": 3,
   "targets": {
-<<<<<<< HEAD
-    "net6.0": {
-      "Humanizer.Core/2.8.26": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard2.0/_._": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/Humanizer.dll": {}
-        }
-      },
-      "MessagePack/2.1.152": {
-=======
     "net8.0": {
       "Azure.Core/1.35.0": {
->>>>>>> f2d4e7415ae7d2da623e250084583e9548e6478c
         "type": "package",
         "dependencies": {
           "Microsoft.Bcl.AsyncInterfaces": "1.1.1",
@@ -7522,6 +7508,7 @@
       "path": "system.runtime/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -7959,6 +7946,7 @@
       "path": "system.text.encoding/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -8287,15 +8275,6 @@
     }
   },
   "projectFileDependencyGroups": {
-<<<<<<< HEAD
-    "net6.0": [
-      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 6.0.2",
-      "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.4",
-      "Microsoft.AspNetCore.Identity.UI >= 6.0.4",
-      "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.4",
-      "Microsoft.EntityFrameworkCore.Tools >= 6.0.4",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.2"
-=======
     "net8.0": [
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 8.0.2",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.4",
@@ -8303,35 +8282,34 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.4",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.4",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.2"
->>>>>>> f2d4e7415ae7d2da623e250084583e9548e6478c
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hp\\.nuget\\packages\\": {}
+    "C:\\Users\\flori\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V2\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj",
+      "projectUniqueName": "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj",
       "projectName": "Projet_Tech_Pag_Con",
-      "projectPath": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V2\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj",
-      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V2\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\obj\\",
+      "projectPath": "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj",
+      "packagesPath": "C:\\Users\\flori\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\flori\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net6.0"
+        "net8.0"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net6.0": {
-          "targetAlias": "net6.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "projectReferences": {}
         }
       },
@@ -8339,16 +8317,11 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
-      "net6.0": {
-        "targetAlias": "net6.0",
+      "net8.0": {
+        "targetAlias": "net8.0",
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
             "target": "Package",
@@ -8396,7 +8369,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

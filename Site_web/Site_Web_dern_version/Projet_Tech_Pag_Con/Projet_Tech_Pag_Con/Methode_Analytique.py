@@ -246,7 +246,7 @@ def Analiz(pathfile):
     true=ana[ana['pred_ana_bool']==True]
     accuracy= (true.shape[0]/ana.shape[0])*100
     error_margin=100-accuracy
-    #print("Exactitude globale :"+str(accuracy*100)+"%")
+    print("Exactitude globale :"+str(accuracy*100)+"%")
     false=ana[ana['pred_ana_bool']==False]
     #a=["Tags bien class�s","Tags mal class�s"]
     #b=[true.shape[0],false.shape[0]]
