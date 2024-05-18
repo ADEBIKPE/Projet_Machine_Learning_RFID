@@ -244,7 +244,8 @@ def Analiz(pathfile):
     ana['pred_ana_bool']= ana['reflist_run_id'].apply(lambda x:x.split('_')[0]).astype('int64')== ana['refListId_actual']
 
     true=ana[ana['pred_ana_bool']==True]
-    accuracy= (true.shape[0]/ana.shape[0])*100
+    #accuracy= (true.shape[0]/ana.shape[0])*100
+    accuracy= (true.shape[0]/ana.shape[0])
     error_margin=100-accuracy
     print("Exactitude globale :"+str(accuracy*100)+"%")
     false=ana[ana['pred_ana_bool']==False]

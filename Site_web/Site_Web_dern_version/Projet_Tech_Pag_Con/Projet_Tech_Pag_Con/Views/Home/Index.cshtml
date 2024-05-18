@@ -96,7 +96,7 @@
             flex-grow: 2; /* Élargit la section au survol */
         }
 
-            .method-section h2 {
+        .method-section h2 {
                 margin-right: 20px; /* Espacement entre le titre et le formulaire */
             }
         h1 {
@@ -152,13 +152,13 @@
 <body>
     <h1 class="welcome-title">BIENVENUE SUR VOTRE SITE DE GESTION LOGISTIQUE</h1>
     <section class="horizontal-section">
-    <div class="import-section">
-        <form method="get" action="">
-            <label for="file">Choisissez le fichier à traiter </label>
-            <input type="file" id="file" name="file">
-            <input type="submit" value="Importer">
-        </form>
-    </div>
+        <div class="import-section">
+            <form method="post" asp-action="Upload" asp-controller="Home" enctype="multipart/form-data">
+                <label for="file">Choisissez le fichier à traiter </label>
+                <input type="file" id="file" name="files" multiple>
+                <button type="submit"></button>
+            </form>
+        </div>
     </section>
     <form asp-action="Valider" id="form" method="post" asp-controller="Home">
     <div class="method-sections">
@@ -727,7 +727,19 @@
             <div class="conteneur-bouton">
             <button type="submit" class="bouton-envoyer">Valider</button>
             </div>
-        
+            <div class="conteneur-bouton">
+                <!-- Utilisez un lien pour déclencher l'action -->
+                <a href="@Url.Action("Histogramme_Boite_Moustache", "Home", new {
+        resultatAnalytique = ViewBag.Accuracy != null ? ViewBag.Accuracy : 0,
+        resultatRandomForest = ViewBag.ScoreRF != null ? ViewBag.ScoreRF : 0,
+        resultatSVM = ViewBag.ScoreSVM != null ? ViewBag.ScoreSVM : 0,
+        resultatKNN = ViewBag.ScoreKNN != null ? ViewBag.ScoreKNN : 0
+    })" class="bouton-envoyer">Afficher l'histogramme</a>
+            </div>
+
+
+
+           
     </div>
     </form>
     

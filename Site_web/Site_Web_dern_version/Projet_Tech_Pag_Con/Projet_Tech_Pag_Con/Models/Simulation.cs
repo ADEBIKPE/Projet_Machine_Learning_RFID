@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace Projet_Tech_Pag_Con.Models
 {
@@ -10,5 +11,6 @@ namespace Projet_Tech_Pag_Con.Models
         [DataType(DataType.DateTime)]
         public DateTime DateSimulation { get; set; } = DateTime.Now;
         public string UtilisateurId { get; set; }
+        //public virtual IdentityUser user;
     }
 }

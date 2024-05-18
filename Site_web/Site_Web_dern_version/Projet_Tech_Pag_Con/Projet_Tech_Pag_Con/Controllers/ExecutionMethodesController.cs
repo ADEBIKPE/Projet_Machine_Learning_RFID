@@ -30,14 +30,14 @@ namespace Projet_Tech_Pag_Con.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return View();
             }
 
             var executionMethode = await _context.ExecutionMethode
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (executionMethode == null)
             {
-                return NotFound();
+                return View();
             }
 
             return View(executionMethode);

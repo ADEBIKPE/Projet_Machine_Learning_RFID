@@ -60,6 +60,13 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=ExecutionMethodes}/{action=Details}/{id?}");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Simulations}/{action=Details}/{id?}");
+
 app.MapRazorPages();
 using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
 {

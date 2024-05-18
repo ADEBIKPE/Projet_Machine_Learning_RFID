@@ -30,14 +30,14 @@ namespace Projet_Tech_Pag_Con.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return View();
             }
 
             var simulation = await _context.Simulation
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (simulation == null)
             {
-                return NotFound();
+                return View();
             }
 
             return View(simulation);

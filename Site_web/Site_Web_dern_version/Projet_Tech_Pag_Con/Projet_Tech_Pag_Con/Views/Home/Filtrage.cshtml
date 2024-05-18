@@ -1,0 +1,52 @@
+﻿[17:53] AGOSSOU Roseline Précieuse Akpé Fifamey
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FILTRAGE DES DONNEES</title>
+
+</head>
+
+<body>
+
+    <h1>Filtrer par Date, Utilisateur et Méthodes Utilisées</h1>
+
+    <form action="/filtrer" method="get">
+
+        <label for="date">Date :</label>
+
+        <input type="date" id="date" name="date">
+
+        <label for="utilisateur">Utilisateur :</label>
+
+        <input type="text" id="utilisateur" name="utilisateur">
+
+        <label for="methode">Méthode :</label>
+
+        <select id="methode" name="methode">
+
+            <option value="">Sélectionner une méthode</option>
+
+            <option value="Analytique">Analytique</option>
+
+            <option value="SVM">SVM</option>
+
+            <option value="KNN">KNN</option>
+
+            <option value="RandomForest">RandomForest</option>
+
+        </select>
+
+        <button type="submit">Filtrer</button>
+
+    </form>
+
+</body>
+
+</html>

@@ -1,9 +1,14 @@
 from flask import Flask, request, jsonify
 from Methode_Analytique import Analiz
-from FonctionML_RF import RandomForest_method
 from FonctionML_KNN import KNN_method
+from FonctionML_RF import RandomForest_method
 from FonctionML_SVM import SVM_method
+import zipfile
 app = Flask(__name__)
+ 
+def unzip_file(file_path,extract_to):
+    with zipfile.ZipFile(file_path,'r') as zip_ref:
+        zip_ref.extractall(extract_to)
 
 @app.route('/analytical', methods=['POST'])
 def analytical_route():
@@ -45,7 +50,16 @@ def SVM_route():
         conf_matrix_json = conf_matrix.tolist()
         return jsonify({'score': score, 'matrice_de_confusion': conf_matrix_json, 'temps_execution': execution_time, 'details_classement': details_classement_json})
         
-
+@app.route('/Chemin', methods=['POST'])
+def chemin():
+    # Get the input parameters from the request
+    data = request.get_json()
+    chemin=data.get('chemin')
+    # Remplacer "\\" par "/"
+    chemin = chemin.replace("\\", "/")
+    print( chemin)
+    unzip_file(chemin,"Uploads/data")
+    return chemin
 
 @app.route('/randomforest', methods=['POST'])
 def rf_route():

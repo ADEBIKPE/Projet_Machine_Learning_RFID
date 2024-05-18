@@ -57,8 +57,54 @@ namespace Projet_Tech_Pag_Con.Controllers
                 return RedirectToPage("/Account/Login", new { area = "Identity" });
             }
         }
+        public async Task<IActionResult> Upload()
+        {
+            foreach (var file in Request.Form.Files)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var uploadDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                var filePath = Path.Combine(uploadDirectory, fileName);
 
+                // Vérifier si le répertoire existe, sinon le créer
+                if (!Directory.Exists(uploadDirectory))
+                {
+                    Directory.CreateDirectory(uploadDirectory);
+                }
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                using (var client = new HttpClient())
+                {
+                    var requestData = new
+                    {
+                        chemin = filePath,
+                    };
+
+                    var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
+                    var response = await client.PostAsync("http://localhost:5000/Chemin", content);
+
+                }
+
+                // Retourner le chemin du fichier téléchargé dans l'en-tête de réponse HTTP
+                return View("Index");
+            }
+
+            // Si aucun fichier n'a été téléchargé, retourner une réponse BadRequest
+            return BadRequest("Aucun fichier téléchargé.");
+        }
+        
         public IActionResult Guest()
+        {
+            return View();
+        }
+        public IActionResult Histogramme_Boite_Moustache()
+        {
+            return View();
+        }
+        public IActionResult Result()
         {
             return View();
         }
@@ -84,7 +130,18 @@ namespace Projet_Tech_Pag_Con.Controllers
             string Param35,string Param36, string Param37,string Param38,string Param39,string Param40, string Param41, string Param42, string method1, string method2,string method3,string method4)
         {
 
-            if(method1 == "Analytique")
+            Simulation simu = new Simulation
+            {
+                UtilisateurId = User.FindFirstValue(ClaimTypes.NameIdentifier),
+                DateSimulation = DateTime.Now,
+
+            };
+            _context.Simulation.Add(simu);
+
+
+            await _context.SaveChangesAsync();
+
+            if (method1 == "Analytique")
             {
                 using (var client = new HttpClient())
                 {
@@ -100,22 +157,12 @@ namespace Projet_Tech_Pag_Con.Controllers
                     var executionTimeInSeconds = (double)jsonObject["execution_time"];
 
                     // Formatage du temps d'exécution avec trois chiffres après la virgule
-                    var formattedExecutionTime = executionTimeInSeconds.ToString("0.###") + " secs";
+                    var formattedExecutionTime = executionTimeInSeconds.ToString("0.###");
                     // Stocke les valeurs dans ViewBag
                     ViewBag.Accuracy = accuracy;
                     ViewBag.ExecutionTime = formattedExecutionTime;
                     //ViewBag.ExecutionTime = executionTime;
 
-                    Simulation simu = new Simulation
-                    {
-                        UtilisateurId = User.FindFirstValue(ClaimTypes.NameIdentifier),
-                        DateSimulation = DateTime.Now,
-
-                    };
-                    _context.Simulation.Add(simu);
-
-
-                    await _context.SaveChangesAsync();
 
                     ExecutionMethode execMeth = new ExecutionMethode
                     {
@@ -193,14 +240,7 @@ namespace Projet_Tech_Pag_Con.Controllers
 
                     ViewBag.Result = result;*/
 
-                    Simulation simulation = new Simulation
-                    {
-                        UtilisateurId = User.FindFirstValue(ClaimTypes.NameIdentifier),
-                        DateSimulation = DateTime.Now,
-                        
-                    };
-                    _context.Simulation.Add(simulation);
-                    await _context.SaveChangesAsync();
+
 
                     // Convertir les détails de classement en une liste d'objets avant de les stocker dans Details
                     string detailsClassement = JsonConvert.SerializeObject(detailsList);
@@ -210,7 +250,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                     detailsBuilder.AppendLine("Hyperparamètres pour RandomForest :");
                     foreach (var param in requestData.GetType().GetProperties())
                     {
-                        detailsBuilder.AppendLine($"{param.Name} : {param.GetValue(requestData)}");
+                        detailsBuilder.AppendLine($"{param.Name} : {param.GetValue(requestData)}|");
                     }
 
                     ExecutionMethode executionMethode = new ExecutionMethode
@@ -220,7 +260,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                         Performance = jsonResponse.score, // Performance spécifique à RandomForest
                         MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à RandomForest
                         Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à RandomForest
-                        SimulationId = simulation.Id // Utiliser l'identifiant de la simulation créée
+                        SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
                     };
                     _context.ExecutionMethode.Add(executionMethode);
                     await _context.SaveChangesAsync();
@@ -269,14 +309,7 @@ namespace Projet_Tech_Pag_Con.Controllers
 
                     string detailsClassement = JsonConvert.SerializeObject(detailsList);
 
-                    // Enregistrement des résultats dans la base de données
-                    Simulation simulation = new Simulation
-                    {
-                        UtilisateurId = User.FindFirstValue(ClaimTypes.NameIdentifier),
-                        DateSimulation = DateTime.Now,
-                    };
-                    _context.Simulation.Add(simulation);
-                    await _context.SaveChangesAsync();
+
 
                     // Construction de la chaîne de détails des hyperparamètres
                     StringBuilder detailsBuilder = new StringBuilder();
@@ -294,7 +327,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                         Performance = jsonResponse.score, // Performance spécifique à KNN
                         MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à KNN
                         Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à KNN
-                        SimulationId = simulation.Id // Utiliser l'identifiant de la simulation créée
+                        SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
                     };
                     _context.ExecutionMethode.Add(executionMethode);
                     await _context.SaveChangesAsync();
@@ -357,14 +390,6 @@ namespace Projet_Tech_Pag_Con.Controllers
                     // Convertir les détails de classement en une liste d'objets avant de les stocker dans Details
                     string detailsClassement = JsonConvert.SerializeObject(detailsList);
 
-                    // Enregistrement des résultats dans la base de données
-                    Simulation simulation = new Simulation
-                    {
-                        UtilisateurId = User.FindFirstValue(ClaimTypes.NameIdentifier),
-                        DateSimulation = DateTime.Now,
-                    };
-                    _context.Simulation.Add(simulation);
-                    await _context.SaveChangesAsync();
 
                     // Construction de la chaîne de détails des hyperparamètres
                     StringBuilder detailsBuilder = new StringBuilder();
@@ -383,7 +408,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                         Performance = jsonResponse.score, // Performance spécifique à SVM
                         MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à SVM
                         Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à SVM
-                        SimulationId = simulation.Id // Utiliser l'identifiant de la simulation créée
+                        SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
                     };
                     _context.ExecutionMethode.Add(executionMethode);
                     await _context.SaveChangesAsync();
@@ -415,6 +440,16 @@ namespace Projet_Tech_Pag_Con.Controllers
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        // Action pour afficher l'histogramme avec les résultats
+        public IActionResult AfficherHistogramme(float resultatAnalytique, float resultatRandomForest, float resultatSVM, float resultatKNN)
+        {
+            ViewBag.ResultatAnalytique = resultatAnalytique;
+            ViewBag.ResultatRandomForest = resultatRandomForest;
+            ViewBag.ResultatSVM = resultatSVM;
+            ViewBag.ResultatKNN = resultatKNN;
             return View();
         }
 
