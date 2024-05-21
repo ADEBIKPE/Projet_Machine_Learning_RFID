@@ -68,7 +68,8 @@ namespace Projet_Tech_Pag_Con.Controllers
             string Param8,string  Param9,string Param10,string Param11, string Param12,string Param13, string Param14, string Param15,string Param16,
             string Param17, string Param18, string Param19, string Param20, string Param21,string Param22, string Param23,string  Param24,string Param25,
             string Param26, string Param27, string Param28,string Param29, string Param30,string  Param31,string  Param32, string Param33, string Param34,
-            string Param35,string Param36, string Param37,string Param38,string Param39,string Param40, string Param41, string Param42, string method1, string method2,string method3,string method4)
+            string Param35,string Param36, string Param37,string Param38,string Param39,string Param40, string Param41, string Param42, 
+            string method1, string method2,string method3,string method4)
         {
 
             if(method1 == "Analytique")

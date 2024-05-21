@@ -1,4 +1,4 @@
-def Analiz(pathfile):
+def Analiz(pathfile,step,sec):
     import pandas as pd
     import numpy as np
     import matplotlib.pyplot as plt
@@ -85,12 +85,12 @@ def Analiz(pathfile):
     timing['ciuchStartup']=timing['ciuchStart'] - (timing['ciuchStart'] - timing['ciuchStop_last'])/2
     # timing start: 10sec before timing
     timing.loc[0,'refListId_last']=timing.loc[0,'refListId']
-    timing.loc[0,'ciuchStartup']=timing.loc[0,'ciuchStart']-datetime.timedelta(seconds=10)
-    timing.loc[0,'ciuchStop_last']=timing.loc[0,'ciuchStartup']-datetime.timedelta(seconds=10)
+    timing.loc[0,'ciuchStartup']=timing.loc[0,'ciuchStart']-datetime.timedelta(seconds=sec)
+    timing.loc[0,'ciuchStop_last']=timing.loc[0,'ciuchStartup']-datetime.timedelta(seconds=sec)
     timing['refListId_last']=timing['refListId_last'].astype(int)
     # 
     timing['ciuchStopdown']= timing['ciuchStartup'].shift(-1)
-    timing.loc[len(timing)-1,'ciuchStopdown']=timing.loc[len(timing)-1,'ciuchStop']+datetime.timedelta(seconds=10)
+    timing.loc[len(timing)-1,'ciuchStopdown']=timing.loc[len(timing)-1,'ciuchStop']+datetime.timedelta(seconds=sec)
     timing=timing[['refListId', 'refListId_last','ciuchStartup', 'ciuchStart','ciuchStop','ciuchStopdown']]
 
 
@@ -119,7 +119,7 @@ def Analiz(pathfile):
         ciuchStart=row['ciuchStart']
         ciuchStop=row['ciuchStop']
         ciuchStopdown=row['ciuchStopdown']
-        steps=4
+        steps=step
     #     
         up=pd.DataFrame(index=pd.date_range(start=ciuchStartup, end=ciuchStart,periods=steps,inclusive='left'))\
             .reset_index(drop=False).rename(columns={'index':'slice'})
@@ -176,7 +176,7 @@ def Analiz(pathfile):
     # df_timing_slices=df_timing_slices.drop(['refListId_actual','Q refListId_actual'],axis=1)
 
     runs_out=df_timing_slices .groupby('run')['refListId'].nunique().rename('Q refListId').reset_index(drop=False)
-    runs_out[runs_out['Q refListId']!=10]
+   
 
     current_last_windows=timing_slices.drop_duplicates(['run','refListId','refListId_last'])
     current_last_windows=current_last_windows[['run','refListId','refListId_last','ciuchStop']].reset_index(drop=True)
