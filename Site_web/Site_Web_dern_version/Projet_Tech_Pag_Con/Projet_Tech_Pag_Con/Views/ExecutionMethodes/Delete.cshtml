@@ -1,0 +1,57 @@
+﻿@model Projet_Tech_Pag_Con.Models.ExecutionMethode
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ExecutionMethode</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NomMethode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NomMethode)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Performance)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Performance)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MatriceConfusion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MatriceConfusion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Temps_Execution)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Temps_Execution)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SimulationId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SimulationId)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

@@ -6,16 +6,29 @@ using System.Diagnostics;
 using System.Text;
 using Humanizer;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Authorization;
+using Projet_Tech_Pag_Con.Controllers;
+using Microsoft.EntityFrameworkCore;
+using Projet_Tech_Pag_Con.Data;
+using Microsoft.AspNetCore.Http;
+using NuGet.Protocol;
+using System.Security.Claims;
+using System.Drawing;
+using System.ComponentModel.DataAnnotations.Schema;
+using NuGet.Packaging.Signing;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Projet_Tech_Pag_Con.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -44,8 +57,54 @@ namespace Projet_Tech_Pag_Con.Controllers
                 return RedirectToPage("/Account/Login", new { area = "Identity" });
             }
         }
+        public async Task<IActionResult> Upload()
+        {
+            foreach (var file in Request.Form.Files)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                var uploadDirectory = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                var filePath = Path.Combine(uploadDirectory, fileName);
 
+                // Vérifier si le répertoire existe, sinon le créer
+                if (!Directory.Exists(uploadDirectory))
+                {
+                    Directory.CreateDirectory(uploadDirectory);
+                }
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                using (var client = new HttpClient())
+                {
+                    var requestData = new
+                    {
+                        chemin = filePath,
+                    };
+
+                    var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
+                    var response = await client.PostAsync("http://localhost:5000/Chemin", content);
+
+                }
+
+                // Retourner le chemin du fichier téléchargé dans l'en-tête de réponse HTTP
+                return View("Index");
+            }
+
+            // Si aucun fichier n'a été téléchargé, retourner une réponse BadRequest
+            return BadRequest("Aucun fichier téléchargé.");
+        }
+        
         public IActionResult Guest()
+        {
+            return View();
+        }
+        public IActionResult Histogramme_Boite_Moustache()
+        {
+            return View();
+        }
+        public IActionResult Result()
         {
             return View();
         }
@@ -72,7 +131,18 @@ namespace Projet_Tech_Pag_Con.Controllers
             string method1, string method2,string method3,string method4)
         {
 
-            if(method1 == "Analytique")
+            Simulation simu = new Simulation
+            {
+                UtilisateurId = User.FindFirstValue(ClaimTypes.NameIdentifier),
+                DateSimulation = DateTime.Now,
+
+            };
+            _context.Simulation.Add(simu);
+
+
+            await _context.SaveChangesAsync();
+
+            if (method1 == "Analytique")
             {
                 using (var client = new HttpClient())
                 {
@@ -88,13 +158,30 @@ namespace Projet_Tech_Pag_Con.Controllers
                     var executionTimeInSeconds = (double)jsonObject["execution_time"];
 
                     // Formatage du temps d'exécution avec trois chiffres après la virgule
-                    var formattedExecutionTime = executionTimeInSeconds.ToString("0.###") + " secs";
+                    var formattedExecutionTime = executionTimeInSeconds.ToString("0.###");
                     // Stocke les valeurs dans ViewBag
                     ViewBag.Accuracy = accuracy;
                     ViewBag.ExecutionTime = formattedExecutionTime;
                     //ViewBag.ExecutionTime = executionTime;
 
+
+                    ExecutionMethode execMeth = new ExecutionMethode
+                    {
+                        NomMethode = "Analytique",
+                        Details = "Aucuns",
+                        Performance = (float)accuracy,
+                        MatriceConfusion = "Aucune",
+                        Temps_Execution = formattedExecutionTime,
+                        SimulationId = simu.Id,
+
+                    };
+
+                    _context.ExecutionMethode.Add(execMeth);
+                    await _context.SaveChangesAsync();
+
                 }
+               
+
             }
             if (method4 == "RandomForest")
             {
@@ -154,6 +241,31 @@ namespace Projet_Tech_Pag_Con.Controllers
 
                     ViewBag.Result = result;*/
 
+
+
+                    // Convertir les détails de classement en une liste d'objets avant de les stocker dans Details
+                    string detailsClassement = JsonConvert.SerializeObject(detailsList);
+
+                    // Construction de la chaîne de détails des hyperparamètres
+                    StringBuilder detailsBuilder = new StringBuilder();
+                    detailsBuilder.AppendLine("Hyperparamètres pour RandomForest :");
+                    foreach (var param in requestData.GetType().GetProperties())
+                    {
+                        detailsBuilder.AppendLine($"{param.Name} : {param.GetValue(requestData)}|");
+                    }
+
+                    ExecutionMethode executionMethode = new ExecutionMethode
+                    {
+                        NomMethode = "RandomForest",
+                        Details = $"{detailsBuilder.ToString()} \n\n Détails de classement : \n{detailsClassement}", // Détails spécifiques à RandomForest (hyperparamètres et leurs valeurs associées)
+                        Performance = jsonResponse.score, // Performance spécifique à RandomForest
+                        MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à RandomForest
+                        Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à RandomForest
+                        SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
+                    };
+                    _context.ExecutionMethode.Add(executionMethode);
+                    await _context.SaveChangesAsync();
+
                 }
 
             }
@@ -195,6 +307,32 @@ namespace Projet_Tech_Pag_Con.Controllers
                     JArray detailsArray = JArray.Parse(jsonResponse.details_classement.ToString());
                     List<dynamic> detailsList = detailsArray.ToObject<List<dynamic>>();
                     ViewBag.DetailsClassementKNN = detailsList;
+
+                    string detailsClassement = JsonConvert.SerializeObject(detailsList);
+
+
+
+                    // Construction de la chaîne de détails des hyperparamètres
+                    StringBuilder detailsBuilder = new StringBuilder();
+                    detailsBuilder.AppendLine("Hyperparamètres pour KNN :");
+                    foreach (var param in requestData.GetType().GetProperties())
+                    {
+                        detailsBuilder.AppendLine($"{param.Name} : {param.GetValue(requestData)}");
+                    }
+
+                    // Enregistrement des résultats dans la table ExecutionMethode
+                    ExecutionMethode executionMethode = new ExecutionMethode
+                    {
+                        NomMethode = "KNN",
+                        Details = $"{detailsBuilder.ToString()} \n\n Détails de classement : \n{detailsClassement}", // Détails spécifiques à KNN (hyperparamètres et détails de classement)
+                        Performance = jsonResponse.score, // Performance spécifique à KNN
+                        MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à KNN
+                        Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à KNN
+                        SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
+                    };
+                    _context.ExecutionMethode.Add(executionMethode);
+                    await _context.SaveChangesAsync();
+
                     //var result = await response.Content.ReadAsStringAsync();
 
                     //ViewBag.Result = result;
@@ -250,6 +388,32 @@ namespace Projet_Tech_Pag_Con.Controllers
                     List<dynamic> detailsList = detailsArray.ToObject<List<dynamic>>();
                     ViewBag.DetailsClassementSVM = detailsList;
 
+                    // Convertir les détails de classement en une liste d'objets avant de les stocker dans Details
+                    string detailsClassement = JsonConvert.SerializeObject(detailsList);
+
+
+                    // Construction de la chaîne de détails des hyperparamètres
+                    StringBuilder detailsBuilder = new StringBuilder();
+                    detailsBuilder.AppendLine("Hyperparamètres pour SVM :");
+                    foreach (var param in requestData.GetType().GetProperties())
+                    {
+                        detailsBuilder.AppendLine($"{param.Name} : {param.GetValue(requestData)}");
+                    }
+
+
+                    // Enregistrement des résultats dans la table ExecutionMethode
+                    ExecutionMethode executionMethode = new ExecutionMethode
+                    {
+                        NomMethode = "SVM",
+                        Details = $"{detailsBuilder.ToString()} \n\n Détails de classement : \n{detailsClassement}", // Détails spécifiques à SVM (hyperparamètres et détails de classement)
+                        Performance = jsonResponse.score, // Performance spécifique à SVM
+                        MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à SVM
+                        Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à SVM
+                        SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
+                    };
+                    _context.ExecutionMethode.Add(executionMethode);
+                    await _context.SaveChangesAsync();
+
                     //var result = await response.Content.ReadAsStringAsync();
 
                     //ViewBag.Result = result;
@@ -269,67 +433,24 @@ namespace Projet_Tech_Pag_Con.Controllers
 
                 }
             }
-
-
-
-
-
-
-
-
                 return View("Index");
-
-
-
-
-
 
         }
 
-
-
-
-
-
-
         
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
 
         public IActionResult Privacy()
         {
+            return View();
+        }
+
+        // Action pour afficher l'histogramme avec les résultats
+        public IActionResult AfficherHistogramme(float resultatAnalytique, float resultatRandomForest, float resultatSVM, float resultatKNN)
+        {
+            ViewBag.ResultatAnalytique = resultatAnalytique;
+            ViewBag.ResultatRandomForest = resultatRandomForest;
+            ViewBag.ResultatSVM = resultatSVM;
+            ViewBag.ResultatKNN = resultatKNN;
             return View();
         }
 

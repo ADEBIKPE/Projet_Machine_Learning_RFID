@@ -1,0 +1,78 @@
+﻿[17:53] AGOSSOU Roseline Précieuse Akpé Fifamey
+@model IEnumerable<Projet_Tech_Pag_Con.Models.ExecutionMethode>
+@using Projet_Tech_Pag_Con.Models
+@using Projet_Tech_Pag_Con.Data
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Affichage des méthodes d'exécution</title>
+
+</head>
+
+<body>
+
+    <h1>Liste des méthodes d'exécution</h1>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Id</th>
+
+                <th>Nom de la méthode</th>
+
+                <th>Détails</th>
+
+                <th>Performance</th>
+
+                <th>Matrice de confusion</th>
+
+                <th>Temps d'exécution</th>
+
+                <th>Simulation Id</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @foreach (var ExecutionMethode in Model )
+
+            {
+
+                <tr>
+
+                    <td>@ExecutionMethode.Id</td>
+
+                    <td>@ExecutionMethode.NomMethode</td>
+
+                    <td>@ExecutionMethode.Details</td>
+
+                    <td>@ExecutionMethode.Performance</td>
+
+                    <td>@ExecutionMethode.MatriceConfusion</td>
+
+                    <td>@ExecutionMethode.Temps_Execution</td>
+
+                    <td>@ExecutionMethode.SimulationId</td>
+
+                </tr>
+
+            }
+
+        </tbody>
+
+    </table>
+
+</body>
+
+</html>

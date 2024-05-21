@@ -1,0 +1,161 @@
+﻿@{
+    // Extraire les valeurs de ViewBag
+    float resultatAnalytique = ViewBag.Accuracy != null ? (float)ViewBag.Accuracy : 0;
+    float resultatSVM = ViewBag.ScoreSVM != null ? (float)ViewBag.ScoreSVM : 0;
+    float resultatKNN = ViewBag.ScoreKNN != null ? (float)ViewBag.ScoreKNN : 0;
+    float resultatRandomForest = ViewBag.ScoreRF != null ? (float)ViewBag.ScoreRF : 0;
+}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histogramme et Boîte à Moustaches</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            background-image: url('https://livetechspot.com/wp-content/uploads/2020/07/Complete-Guide-List-on-How-to-Optimize-E-commerce-Website.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        table {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #3c8dbc;
+            color: white;
+        }
+
+        canvas {
+            width: 400px;
+            height: 300px;
+        }
+
+        button {
+            background-color: #3c8dbc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+            button:hover {
+                background-color: #367fa9;
+            }
+
+        img {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Résultats des Méthodes</h2>
+
+    <main aria-labelledby="titre">
+        <h3>Précision de la méthode Analytique : @resultatAnalytique</h3>
+        <h3>Précision de la méthode Random Forest : @resultatRandomForest</h3>
+        @if (resultatRandomForest != 0)
+        {
+            <button id="afficherImageBouton_rf">Afficher boxplot</button>
+            <img id="monImage_rf" src="" style="display:none;" width="500px" height="300px" />
+        }
+        <h3>Précision de la méthode SVM : @resultatSVM</h3>
+        @if (resultatSVM != 0)
+        {
+            <button id="afficherImageBouton_svm">Afficher boxplot</button>
+            <img id="monImage_svm" src="" style="display:none;" width="500px" height="300px" />
+        }
+        <h3>Précision de la méthode KNN : @resultatKNN</h3>
+        @if (resultatKNN != 0)
+        {
+            <button id="afficherImageBouton_knn">Afficher boxplot</button>
+            <img id="monImage_knn" src="" style="display:none;" width="500px" height="300px" />
+        }
+    </main>
+
+    <canvas id="monGraphique"></canvas>
+
+    <script>
+        function mettreAJourGraphique(optionsSelectionnees) {
+            var ctx = document.getElementById('monGraphique').getContext('2d');
+            var monGraphique = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Analytique', 'Random Forest', 'SVM', 'KNN'],
+                    datasets: [{
+                        label: 'Précision %',
+                        data: optionsSelectionnees,
+                        backgroundColor: [
+                            'rgba(60, 141, 188, 0.2)',
+                            'rgba(0, 192, 239, 0.2)',
+                            'rgba(0, 166, 90, 0.2)',
+                            'rgba(243, 156, 18, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(60, 141, 188, 1)',
+                            'rgba(0, 192, 239, 1)',
+                            'rgba(0, 166, 90, 1)',
+                            'rgba(243, 156, 18, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function (value) { return value + "%" }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        mettreAJourGraphique([@resultatAnalytique, @resultatRandomForest, @resultatSVM, @resultatKNN]);
+
+        document.getElementById('afficherImageBouton_rf').addEventListener('click', function () {
+            var cheminImage_rf = "/Images/boxplot/rf/rf_accuracy.png";
+            var monImage_rf = document.getElementById('monImage_rf');
+            monImage_rf.src = cheminImage_rf;
+            monImage_rf.style.display = monImage_rf.style.display === 'none' ? 'block' : 'none';
+        });
+
+        document.getElementById('afficherImageBouton_svm').addEventListener('click', function () {
+            var cheminImage_svm = "/images/boxplot/svm/svm_accuracy.png";
+            var monImage_svm = document.getElementById('monImage_svm');
+            monImage_svm.src = cheminImage_svm;
+            monImage_svm.style.display = monImage_svm.style.display === 'none' ? 'block' : 'none';
+        });
+
+        document.getElementById('afficherImageBouton_knn').addEventListener('click', function () {
+            var cheminImage_knn = "/images/boxplot/knn/knn_accuracy.png";
+            var monImage_knn = document.getElementById('monImage_knn');
+            monImage_knn.src = cheminImage_knn;
+            monImage_knn.style.display = monImage_knn.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>
