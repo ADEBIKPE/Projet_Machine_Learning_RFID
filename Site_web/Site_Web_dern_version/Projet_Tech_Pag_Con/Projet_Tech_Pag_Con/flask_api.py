@@ -13,7 +13,11 @@ def unzip_file(file_path,extract_to):
 @app.route('/analytical', methods=['POST'])
 def analytical_route():
     # Call the predict() function to make a prediction
-    accuracy, execution_time  = Analiz('data_anonymous')
+    input_params = request.get_json()
+    if input_params is not None:
+        sec=input_params.get('sec')
+        step=input_params.get('step')
+    accuracy, execution_time  = Analiz('data_anonymous',step,sec)
     
     # Return the prediction as JSON
     return jsonify({'accuracy': accuracy, 'execution_time': execution_time})
