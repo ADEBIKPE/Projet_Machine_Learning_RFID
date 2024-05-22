@@ -43,16 +43,18 @@ def SVM_route():
         decision_function_shape=input_params.get('decision_function_shape')
         break_ties=input_params.get('break_ties')
         random_state=input_params.get('random_state')
+        output_dir='Img_Boxplot/New'
 
-        score, conf_matrix, execution_time, details_classement = SVM_method(float(regularisation), float(CoefNoyau), int(n_plis), 
+
+        score, conf_matrix, execution_time, details_classement, plot_path  = SVM_method(float(regularisation), float(CoefNoyau), int(n_plis), 
          str(Noyau),'./data_anonymous',int(degree), float(coef0),bool(shrinking),bool(probability),float(tol),float(cache_size),
-         bool(verbose), int(max_iter),str(decision_function_shape),bool(break_ties), int(random_state) )
+         bool(verbose), int(max_iter),str(decision_function_shape),bool(break_ties), int(random_state), output_dir  )
 
         # Convertir le DataFrame details_classement en un format JSON compatible
         details_classement_json = details_classement.to_dict(orient='records')
 
         conf_matrix_json = conf_matrix.tolist()
-        return jsonify({'score': score, 'matrice_de_confusion': conf_matrix_json, 'temps_execution': execution_time, 'details_classement': details_classement_json})
+        return jsonify({'score': score, 'matrice_de_confusion': conf_matrix_json, 'temps_execution': execution_time, 'details_classement': details_classement_json, 'path_Img': plot_path})
         
 @app.route('/Chemin', methods=['POST'])
 def chemin():
@@ -88,19 +90,20 @@ def rf_route():
         class_weight= input_params.get('class_weight') 
         ccp_alpha= input_params.get('ccp_alpha')
         max_samples= input_params.get('max_samples')
+        output_dir='Img_Boxplot/New'
         
 
         
-        score, cm, execution_time, details_classement = RandomForest_method(int(n_arbres), int(profondeur), int(n_plis), int(n_minimum_split), './data_anonymous', str(criterion), int(min_samples_leaf),
+        score, cm, execution_time, details_classement, plot_path = RandomForest_method(int(n_arbres), int(profondeur), int(n_plis), int(n_minimum_split), './data_anonymous', str(criterion), int(min_samples_leaf),
                          float(min_weight_fraction_leaf), str(max_features), int(max_leaf_nodes), float(min_impurity_decrease),
-                         bool(bootstrap), bool(oob_score), int(n_jobs), int(random_state), int(verbose), bool(warm_start), str(class_weight), float(ccp_alpha), int(max_samples))
+                         bool(bootstrap), bool(oob_score), int(n_jobs), int(random_state), int(verbose), bool(warm_start), str(class_weight), float(ccp_alpha), int(max_samples), output_dir)
 
         # Convertir le DataFrame details_classement en un format JSON compatible
         details_classement_json = details_classement.to_dict(orient='records')
         
 
         cm_json = cm.tolist()
-        return jsonify({'score': score, 'matrice_de_confusion': cm_json, 'temps_execution': execution_time, 'details_classement': details_classement_json})
+        return jsonify({'score': score, 'matrice_de_confusion': cm_json, 'temps_execution': execution_time, 'details_classement': details_classement_json, 'path_Img': plot_path})
 
 
 
@@ -116,15 +119,17 @@ def knn_route():
         leaf_size=input_params.get('leaf_size')
         p=input_params.get('p')
         n_jobs=input_params.get('n_jobs')
+        output_dir='Img_Boxplot/New'
 
-        score, conf_matrix, execution_time, details_classement  = KNN_method(str(metric), int(n_neighbors), int(n_plis),
-        str(weights), './data_anonymous',str(algorithm),int(leaf_size),float(p),int(n_jobs))
+
+        score, conf_matrix, execution_time, details_classement, plot_path   = KNN_method(str(metric), int(n_neighbors), int(n_plis),
+        str(weights), './data_anonymous',str(algorithm),int(leaf_size),float(p),int(n_jobs), output_dir)
 
         # Convertir le DataFrame details_classement en un format JSON compatible
         details_classement_json = details_classement.to_dict(orient='records')
 
         conf_matrix_json = conf_matrix.tolist()
-        return jsonify({'score': score, 'matrice_de_confusion': conf_matrix_json, 'temps_execution': execution_time, 'details_classement': details_classement_json})
+        return jsonify({'score': score, 'matrice_de_confusion': conf_matrix_json, 'temps_execution': execution_time, 'details_classement': details_classement_json, 'path_Img': plot_path})
 
 
 

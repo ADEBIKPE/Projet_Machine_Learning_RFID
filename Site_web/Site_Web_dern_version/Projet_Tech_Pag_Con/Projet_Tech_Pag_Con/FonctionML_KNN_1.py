@@ -1,4 +1,4 @@
-def KNN_method(metric, n_neighbors, n_plis, weights, pathfile, algorithm, leaf_size, p, n_jobs, output_dir):
+def KNN_method(metric, n_neighbors, n_plis, weights, pathfile, algorithm, leaf_size, p, n_jobs):
     # Charger les données
     import time
     from sklearn.model_selection import cross_val_score, cross_val_predict
@@ -8,9 +8,6 @@ def KNN_method(metric, n_neighbors, n_plis, weights, pathfile, algorithm, leaf_s
     from preprocessing import preprocessing
     from selectfeatures import Xcols_func
     import pandas as pd
-    import matplotlib.pyplot as plt
-    import seaborn as sns
-    import os
     
     start_time = time.time()
     X = Xcols_func('rssi & rc only', preprocessing(pathfile).columns)
@@ -63,47 +60,9 @@ def KNN_method(metric, n_neighbors, n_plis, weights, pathfile, algorithm, leaf_s
     # Calculer la matrice de confusion
     conf_matrix = confusion_matrix(y, y_pred)
     
-    # Créer une boîte à moustaches avec Seaborn
-    epc_data = pd.DataFrame({
-        'EPC Numbers': pd.concat([false_inside_column, false_outside_column]).reset_index(drop=True),
-        'Classification': ['inside'] * len(false_inside_column) + ['outside'] * len(false_outside_column)
-    })
-
-    plt.figure(figsize=(10, 6))
-    sns.boxplot(x='Classification', y='EPC Numbers', hue='Classification', data=epc_data, palette='Set3', dodge=False)
-    plt.title('Comparaison des EPCs incorrectement classés')
-    plt.ylabel('Nombre d\'EPCs')
-    plt.grid(True)
-    plt.tight_layout()
-
-    # Vérifier et créer le répertoire de sortie s'il n'existe pas
-    output_dir_path = os.path.join(os.getcwd(), output_dir)
-    os.makedirs(output_dir_path, exist_ok=True)
-
-    # Enregistrer le graphique dans le répertoire de sortie
-    plot_path = os.path.join(output_dir_path, 'boxplot_EPC_comparison_seaborn_KNN.png')
-    plt.savefig(plot_path)
-    plt.close()
-    
     end_time = time.time()
 
     # Calcul du temps d'exécution
     execution_time = end_time - start_time
 
-    return score, conf_matrix, execution_time, details_classement, plot_path
-
-# Appel de la fonction KNN_method et récupération des résultats
-'''
-score, conf_matrix, execution_time, details_classement, plot_path = KNN_method(
-    metric='minkowski',
-    n_neighbors=5,
-    n_plis=5,
-    weights='uniform',
-    pathfile='./data_anonymous',
-    algorithm='auto',
-    leaf_size=30,
-    p=2,
-    n_jobs=None,
-    output_dir='Img_Boxplot/New'
-)
-'''
+    return score, conf_matrix, execution_time, details_classement
