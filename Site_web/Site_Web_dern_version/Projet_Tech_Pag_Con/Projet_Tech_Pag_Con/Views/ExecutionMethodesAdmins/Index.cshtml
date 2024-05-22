@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Projet_Tech_Pag_Con.Models.ExecutionMethodesAdmin>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomMethode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Performance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MatriceConfusion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Temps_Execution)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SimulationId)
+            </th>
+            <th>
+                Nom de l'utilisateur
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserRoleId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomMethode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Performance)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MatriceConfusion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Temps_Execution)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SimulationId)
+                </td>
+                <td>
+                    @await Html.PartialAsync("_GetUserName", item.UserId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserRoleId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+
+                <a asp-action="Index" asp-controller="Simulations" class="btn btn-primary">Visualiser les visiteurs du site</a>
+
+            </tr>
+        }
+    </tbody>

@@ -1,0 +1,9 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    var user = await UserManager.FindByIdAsync(Model);
+    var userName = user?.UserName ?? "Utilisateur inconnu";
+}
+
+@userName

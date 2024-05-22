@@ -12,5 +12,7 @@ namespace Projet_Tech_Pag_Con.Data
         }
         public DbSet<Projet_Tech_Pag_Con.Models.Simulation>? Simulation { get; set; } 
         public DbSet<Projet_Tech_Pag_Con.Models.ExecutionMethode>? ExecutionMethode { get; set; } 
+        public DbSet<Projet_Tech_Pag_Con.Models.ExecutionMethodesAdmin> ExecutionMethodesAdmin { get; set; }
+        public DbSet<Projet_Tech_Pag_Con.Models.SimulationAdmin> SimulationAdmin { get; set; }
     }
 }

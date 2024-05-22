@@ -3,8 +3,36 @@ using Microsoft.EntityFrameworkCore;
 using Projet_Tech_Pag_Con.Data;
 using Microsoft.DotNet.Scaffolding.Shared.ProjectModel;
 using Projet_Tech_Pag_Con.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.Events = new CookieAuthenticationEvents
+        {
+            OnSignedIn = async context =>
+            {
+                var userManager = context.HttpContext.RequestServices.GetRequiredService<UserManager<IdentityUser>>();
+                var user = await userManager.GetUserAsync(context.Principal);
+
+                if (user != null && await userManager.IsInRoleAsync(user, "2"))
+                {
+                    var dbContext = context.HttpContext.RequestServices.GetRequiredService<ApplicationDbContext>();
+
+                    var simulation = new Simulation
+                    {
+                        UtilisateurId = user.Id,
+                        DateSimulation = DateTime.Now
+                    };
+
+                    dbContext.Simulation.Add(simulation);
+                    await dbContext.SaveChangesAsync();
+                }
+            }
+        };
+    });
 
 builder.Services.AddDbContext<Projet_Tech_Pag_ConContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("Projet_Tech_Pag_ConContextConnection") ?? throw new
