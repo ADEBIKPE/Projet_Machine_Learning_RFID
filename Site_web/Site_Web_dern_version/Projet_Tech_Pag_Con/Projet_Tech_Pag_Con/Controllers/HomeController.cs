@@ -143,7 +143,8 @@ namespace Projet_Tech_Pag_Con.Controllers
             string Param8, string Param9, string Param10, string Param11, string Param12, string Param13, string Param14, string Param15, string Param16,
             string Param17, string Param18, string Param19, string Param20, string Param21, string Param22, string Param23, string Param24, string Param25,
             string Param26, string Param27, string Param28, string Param29, string Param30, string Param31, string Param32, string Param33, string Param34,
-            string Param35, string Param36, string Param37, string Param38, string Param39, string Param40, string Param41, string Param42, string method1, string method2, string method3, string method4)
+            string Param35, string Param36, string Param37, string Param38, string Param39, string Param40, string Param41, string Param42,
+            string method1, string method2, string method3, string method4,string Param1000, string Param1111)
         {
             // Récupérer l'utilisateur actuel
             var user = await _userManager.GetUserAsync(User);
@@ -172,8 +173,16 @@ namespace Projet_Tech_Pag_Con.Controllers
                 {
                     using (var client = new HttpClient())
                     {
-                        var response = await client.PostAsync("http://localhost:5000/analytical", null);
+                        var requestData = new
+                        {
+                            step= Param1000,
+                            sec = Param1111,
+                         };
+                        var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
+                        var response = await client.PostAsync("http://localhost:5000/analytical",content);
+                        response.EnsureSuccessStatusCode();
                         var result = await response.Content.ReadAsStringAsync();
+
 
                         var jsonObject = JObject.Parse(result);
                         var accuracy = jsonObject["accuracy"].ToObject<double>();
@@ -182,11 +191,17 @@ namespace Projet_Tech_Pag_Con.Controllers
 
                         ViewBag.Accuracy = accuracy;
                         ViewBag.ExecutionTime = formattedExecutionTime;
+                        StringBuilder detailsBuilder = new StringBuilder();
+                        detailsBuilder.AppendLine("Hyperparamètres pour la méthode analytique :");
+                        foreach (var param in requestData.GetType().GetProperties())
+                        {
+                            detailsBuilder.AppendLine($"{param.Name} : {param.GetValue(requestData)}");
+                        }
 
                         var execMeth = new ExecutionMethode
                         {
                             NomMethode = "Analytique",
-                            Details = "Aucuns",
+                            Details = $"{detailsBuilder.ToString()}",
                             Performance = (float)accuracy,
                             MatriceConfusion = "Aucune",
                             Temps_Execution = formattedExecutionTime,
@@ -200,7 +215,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                         var executionMethodesAdmin = new ExecutionMethodesAdmin
                         {
                             NomMethode = "Analytique",
-                            Details = "Aucuns",
+                            Details = $"{detailsBuilder.ToString()}",
                             Performance = (float)accuracy,
                             MatriceConfusion = "Aucune",
                             Temps_Execution = formattedExecutionTime,

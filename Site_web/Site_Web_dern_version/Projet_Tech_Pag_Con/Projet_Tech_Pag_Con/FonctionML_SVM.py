@@ -77,8 +77,7 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau, pathfile, degree,
         'Classé dans la boîte': false_inside_columns['reflist_run_id'],
         'Devrait être classé dans la boite': false_inside_columns['refListId_actual']
     })
-
-    details_classement.drop_duplicates(inplace=True)
+    details_classement.drop_duplicates(inplace=True, subset='Tags')
     
     # Calcul de la matrice de confusion
     conf_matrix = confusion_matrix(y_encoded, y_pred)

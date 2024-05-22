@@ -62,7 +62,7 @@ def RandomForest_method(n_arbres, profondeur, n_plis, n_minimum_split, pathfile,
     details_classement = pd.DataFrame({'Tags': false_inside_column,
                                        'Classé dans la boîte': false_inside_column1,
                                        'Devrait être classé dans la boite': false_inside_column2})
-    details_classement.drop_duplicates(inplace=True)
+    details_classement.drop_duplicates(inplace=True, subset='Tags')
 
     # Calcul de la matrice de confusion
     cm = confusion_matrix(y, y_pred)

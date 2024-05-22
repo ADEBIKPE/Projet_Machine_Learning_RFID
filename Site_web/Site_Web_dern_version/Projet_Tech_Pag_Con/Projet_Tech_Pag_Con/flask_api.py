@@ -17,7 +17,7 @@ def analytical_route():
     if input_params is not None:
         sec=input_params.get('sec')
         step=input_params.get('step')
-    accuracy, execution_time  = Analiz('data_anonymous',step,sec)
+    accuracy, execution_time  = Analiz('data_anonymous',int(step),int(sec))
     
     # Return the prediction as JSON
     return jsonify({'accuracy': accuracy, 'execution_time': execution_time})

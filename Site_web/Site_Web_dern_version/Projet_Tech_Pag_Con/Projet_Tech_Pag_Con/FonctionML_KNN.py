@@ -58,7 +58,7 @@ def KNN_method(metric, n_neighbors, n_plis, weights, pathfile, algorithm, leaf_s
     details_classement = pd.DataFrame({'Tags': false_inside_column, 
                                        'Classé dans la boîte': false_inside_column1, 
                                        'Devrait être classé dans la boite': false_inside_column2})
-    details_classement.drop_duplicates(inplace=True)
+    details_classement.drop_duplicates(inplace=True, subset='Tags')
     
     # Calculer la matrice de confusion
     conf_matrix = confusion_matrix(y, y_pred)
