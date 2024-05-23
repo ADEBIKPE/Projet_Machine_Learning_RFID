@@ -19,6 +19,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using NuGet.Packaging.Signing;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.DotNet.MSIdentity.Shared;
+using System.Dynamic;
 
 namespace Projet_Tech_Pag_Con.Controllers
 {
@@ -533,7 +534,7 @@ namespace Projet_Tech_Pag_Con.Controllers
 
 
             }
-            return View("Index");
+            return View("Histogramme_Boite_Moustache");
 
         }
 
@@ -543,13 +544,18 @@ namespace Projet_Tech_Pag_Con.Controllers
         }
 
         // Action pour afficher l'histogramme avec les résultats
-        public IActionResult AfficherHistogramme(float resultatAnalytique, float resultatRandomForest, float resultatSVM, float resultatKNN)
+
+        private float ExtractNumber(string result)
         {
-            ViewBag.ResultatAnalytique = resultatAnalytique;
-            ViewBag.ResultatRandomForest = resultatRandomForest;
-            ViewBag.ResultatSVM = resultatSVM;
-            ViewBag.ResultatKNN = resultatKNN;
-            return View();
+            if (!string.IsNullOrEmpty(result))
+            {
+                dynamic jsonResult = JsonConvert.DeserializeObject<ExpandoObject>(result);
+                if (jsonResult != null && jsonResult.accuracy != null)
+                {
+                    return (float)jsonResult.accuracy;
+                }
+            }
+            return 0;
         }
 
     }

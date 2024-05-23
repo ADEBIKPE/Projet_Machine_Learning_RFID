@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj": {}
+    "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj": {}
   },
   "projects": {
-    "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj": {
+    "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj",
+        "projectUniqueName": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj",
         "projectName": "Projet_Tech_Pag_Con",
-        "projectPath": "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj",
-        "packagesPath": "C:\\Users\\flori\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\flori\\Desktop\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\obj\\",
+        "projectPath": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\flori\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -86,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
