@@ -58,71 +58,73 @@ def RandomForest_method(n_arbres, profondeur, n_plis, n_minimum_split, pathfile,
         else:
             false_inside_column2 = ds.iloc[faux_inside, column_index]
             false_outside_column2 = ds.iloc[faux_outside, column_index]
-
-    details_classement = pd.DataFrame({'Tags': false_inside_column,
-                                       'Classé dans la boîte': false_inside_column1,
+    
+    details_classement = pd.DataFrame({'Tags': false_inside_column, 
+                                       'Classé dans la boîte': false_inside_column1, 
                                        'Devrait être classé dans la boite': false_inside_column2})
-    details_classement.drop_duplicates(inplace=True, subset='Tags')
+    details_classement.drop_duplicates(inplace=True)
 
-    # Calcul de la matrice de confusion
+    if details_classement.empty:
+        print("Aucun mauvais classement trouvé.")
+    else:
+        print(details_classement)
+
+    # Matrice de confusion
     cm = confusion_matrix(y, y_pred)
-
     end_time = time.time()
-
-    # Calcul du temps d'exécution
     execution_time = end_time - start_time
 
-    # Extraire les nombres des chaînes de caractères pour les EPC correctement et incorrectement classés
-    correct_epcs_numbers = details_classement['Tags'].str.extract(r'(\d+)', expand=False).astype(int)
-    incorrect_epcs_numbers = details_classement['Classé dans la boîte'].str.extract(r'(\d+)', expand=False).astype(int)
+    if not details_classement.empty:
+        correct_epcs_numbers = details_classement['Tags'].str.extract(r'(\d+)', expand=False).astype(int)
+        incorrect_epcs_numbers = details_classement['Classé dans la boîte'].str.extract(r'(\d+)', expand=False).astype(int)
 
-    # Créer une boîte à moustaches avec Seaborn
-    epc_data = pd.DataFrame({
-        'EPC Numbers': pd.concat([correct_epcs_numbers, incorrect_epcs_numbers]).reset_index(drop=True),
-        'Classification': ['Correct'] * len(correct_epcs_numbers) + ['Incorrect'] * len(incorrect_epcs_numbers)
-    })
+        epc_data = pd.DataFrame({
+            'EPC Numbers': pd.concat([correct_epcs_numbers, incorrect_epcs_numbers]).reset_index(drop=True),
+            'Classification': ['Correct'] * len(correct_epcs_numbers) + ['Incorrect'] * len(incorrect_epcs_numbers)
+        })
 
-    plt.figure(figsize=(10, 6))
-    sns.boxplot(x='Classification', y='EPC Numbers', hue='Classification', data=epc_data, palette='Set3', dodge=False)
-    plt.title('Comparaison des EPCs correctement et incorrectement classés')
-    plt.ylabel('Nombre d\'EPCs')
-    plt.grid(True)
-    plt.tight_layout()
+        plt.figure(figsize=(10, 6))
+        sns.boxplot(x='Classification', y='EPC Numbers', hue='Classification', data=epc_data, palette='Set3', dodge=False)
+        plt.title('Comparaison des EPCs correctement et incorrectement classés')
+        plt.ylabel('Nombre d\'EPCs')
+        plt.grid(True)
+        plt.tight_layout()
 
-    # Vérifier et créer le répertoire de sortie s'il n'existe pas
-    output_dir_path = os.path.join(os.getcwd(), output_dir)
-    os.makedirs(output_dir_path, exist_ok=True)
+         # Définir le répertoire de sortie
+        output_dir_path = os.path.join(os.getcwd(), 'wwwroot', 'images')
+        os.makedirs(output_dir_path, exist_ok=True)
 
-    # Enregistrer le graphique dans le répertoire de sortie
-    plot_path = os.path.join(output_dir_path, 'boxplot_EPC_comparison_seaborn_RF.png')
-    plt.savefig(plot_path)
-    plt.close()
+        plot_path = os.path.join(output_dir_path, 'boxplot_EPC_comparison_seaborn_RF.png')
+        plt.savefig(plot_path)
+        plt.close()
+        print('chemin :', plot_path)
+    else:
+        plot_path = None
 
     return score, cm, execution_time, details_classement, plot_path
-
-# Appel de la fonction RandomForest_method et récupération des résultats
 '''
+# Appel de la fonction avec des paramètres ajustés
 score, cm, execution_time, details_classement, plot_path = RandomForest_method(
     n_arbres=100,
-    profondeur=None,
+    profondeur=10,  # Augmentation de la profondeur pour une meilleure modélisation
     n_plis=5,
     n_minimum_split=2,
-    pathfile='./data_anonymous',
+    pathfile='Site_web/Site_Web_dern_version/Projet_Tech_Pag_Con/Projet_Tech_Pag_Con/data_anonymous',
     criterion='gini',
     min_samples_leaf=1,
-    min_weight_fraction_leaf=0.0,
+    min_weight_fraction_leaf=0.1,  # Suppression de la fraction minimale pour éviter la restriction
     max_features='sqrt',
-    max_leaf_nodes=None,
-    min_impurity_decrease=0.0,
+    max_leaf_nodes=None,  # Suppression de la limite de noeuds pour permettre plus de flexibilité
+    min_impurity_decrease=0.1,  # Suppression de la limite d'impureté pour permettre plus de flexibilité
     bootstrap=True,
     oob_score=False,
     n_jobs=-1,
-    random_state=42,
-    verbose=0,
+    random_state=44,
+    verbose=3,
     warm_start=False,
-    class_weight=None,
-    ccp_alpha=0.0,
-    max_samples=None,
+    class_weight='balanced',
+    ccp_alpha=0.1,  # Suppression de la complexité du coût-pruning pour plus de flexibilité
+    max_samples=None,  # Suppression de l'échantillonnage maximum pour utiliser tout l'ensemble de données
     output_dir='Img_Boxplot/New'
 )
 '''

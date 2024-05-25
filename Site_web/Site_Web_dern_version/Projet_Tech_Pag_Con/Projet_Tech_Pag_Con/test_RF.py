@@ -99,7 +99,7 @@ def KNN_method(metric, n_neighbors, n_plis, weights, pathfile, algorithm, leaf_s
     return score, conf_matrix, execution_time, details_classement, plot_path
 
 # Appel de la fonction KNN_method et récupération des résultats
-'''
+
 score, conf_matrix, execution_time, details_classement, plot_path = KNN_method(
     metric='minkowski',
     n_neighbors=5,
@@ -112,4 +112,4 @@ score, conf_matrix, execution_time, details_classement, plot_path = KNN_method(
     n_jobs=-1,
     output_dir='Img_Boxplot/New'
 )
-'''
+

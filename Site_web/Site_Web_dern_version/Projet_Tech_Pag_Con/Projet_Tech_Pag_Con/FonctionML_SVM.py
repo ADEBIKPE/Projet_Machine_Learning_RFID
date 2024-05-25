@@ -104,13 +104,14 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau, pathfile, degree,
     plt.grid(True)
     plt.tight_layout()
 
-    # Vérifier et créer le répertoire de sortie s'il n'existe pas
-    output_dir_path = os.path.join(os.getcwd(), output_dir)
+    # Définir le répertoire de sortie
+    output_dir_path = os.path.join(os.getcwd(), 'wwwroot', 'images')
     os.makedirs(output_dir_path, exist_ok=True)
 
     # Enregistrer le graphique dans le répertoire de sortie
     plot_path = os.path.join(output_dir_path, 'boxplot_EPC_comparison_seaborn_SVM.png')
     plt.savefig(plot_path)
+    print('chemin  :', plot_path)
     plt.close()
     
     return score, conf_matrix, execution_time, details_classement, plot_path

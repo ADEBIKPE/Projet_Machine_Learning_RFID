@@ -278,8 +278,10 @@ namespace Projet_Tech_Pag_Con.Controllers
                         string tempsExecutionFormate = tempsExecution.ToString("0.###");
                         ViewBag.TempsExecutionRF = tempsExecutionFormate;
 
+
                         //ViewBag.TempsExecution = jsonResponse.temps_execution;
 
+                        ViewBag.CheminBoxPlotRF = jsonResponse.path_Img;
                         // Convertir les détails de classement en une liste d'objets avant de les stocker dans ViewBag
                         JArray detailsArray = JArray.Parse(jsonResponse.details_classement.ToString());
                         List<dynamic> detailsList = detailsArray.ToObject<List<dynamic>>();
@@ -369,6 +371,8 @@ namespace Projet_Tech_Pag_Con.Controllers
                         string tempsExecutionFormate = tempsExecution.ToString("0.###");
                         ViewBag.TempsExecutionKNN = tempsExecutionFormate;
                         //ViewBag.TempsExecution = jsonResponse.temps_execution;
+
+                        ViewBag.CheminBoxPlotKNN = jsonResponse.path_Img;
 
                         // Convertir les détails de classement en une liste d'objets avant de les stocker dans ViewBag
                         JArray detailsArray = JArray.Parse(jsonResponse.details_classement.ToString());
@@ -464,6 +468,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                         string tempsExecutionFormate = tempsExecution.ToString("0.###");
                         ViewBag.TempsExecutionSVM = tempsExecutionFormate;
                         //ViewBag.TempsExecution = jsonResponse.temps_execution;
+                        ViewBag.CheminBoxPlotSVM = jsonResponse.path_Img;
 
                         // Convertir les détails de classement en une liste d'objets avant de les stocker dans ViewBag
                         JArray detailsArray = JArray.Parse(jsonResponse.details_classement.ToString());

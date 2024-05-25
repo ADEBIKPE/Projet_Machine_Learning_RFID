@@ -497,21 +497,21 @@
                                 <span class="param-description-btn" data-description="La taille de la feuille pour les arbres ball ou KD.">?</span>
                                 <br />
                                                                
-                                <input type="number" id="Param21" name="Param21" min="30" max="60" step="5" data-default="30">
+                                <input type="number" id="Param21" name="Param21" min="30" max="60" step="5" value="30">
                                 
                             </div>
                             <div>
                                 <label for="Param22">p</label>
                                 <span class="param-description-btn" data-description="Paramètre pour la distance de Minkowski.">?</span>
                                 <br />
-                               <input type="number" id="Param22" name="Param22" min="2"  step="1" data-default="2">
+                                <input type="number" id="Param22" name="Param22" min="2" step="1" value="2">
                                 
                             </div>
                             <div>
                                 <label for="Param23">n_jobs</label>
                                 <span class="param-description-btn" data-description="Nombre de tâches à exécuter en parallèle.">?</span>
                                 <br />
-                                <input type="number" id="Param23" name="Param23" min="-1" max="20" step="1" data-default="-1">
+                                <input type="number" id="Param23" name="Param23" min="-1" max="20" step="1" value="-1">
                               
                             </div>
                        
@@ -579,23 +579,21 @@
                                 <label for="Param24">n_estimators</label>
                                <span class="param-description-btn" data-description="Le nombre d'arbres de décision dans la forêt.">?</span>
                                 <br />
-                                
-                               <input type="number" id="Param24" name="Param24" min="100" step="50" data-default="100">
-                                
+
+                                <input type="number" id="Param24" name="Param24" min="50" step="50" value="100">
                             </div>
                             <div>
                                 <label for="Param25">min_samples_split</label>
                                 <span class="param-description-btn" data-description="Le nombre minimum d'échantillons requis pour diviser un nœud interne.">?</span>
                                 <br />
-                                <input type="number" name="Param25" id="Param25" min="2" step="1" data-default="2">
+                                <input type="number" name="Param25" id="Param25" min="2" step="1" value="2">
                             </div>
                             <div>
                                 <label for="Param26">max_depth</label>
                                 
                                 <span class="param-description-btn" data-description="La profondeur maximale de chaque arbre de décision.">?</span>
                                 <br />
-                                <input type="number" name="Param26" id="Param26" min="3" max="10" step="1" data-default="3">
-                            </div>
+                                <input type="number" name="Param26" id="Param26" min="1" max="10" step="1" value="3">                            </div>
                             <div>
                                 <label for="Param27">criterion</label>
                                 <span class="param-description-btn" data-description="La fonction pour mesurer la qualité d'une partition.">?</span>
@@ -619,25 +617,25 @@
                                 <label for="Param29">min_samples_leaf</label>
                                 <span class="param-description-btn" data-description="Le nombre minimum d'échantillons requis pour être au niveau d'une feuille.">?</span>
                                 <br />
-                                <input type="number" name="Param29" id="Param29" min="1" max="10" step="1" data-default="1">
+                                <input type="number" name="Param29" id="Param29" min="1" max="10" step="1" value="1">
                             </div>
                             <div>
                                 <label for="Param30">min_weight_fraction_leaf</label>
                                 <span class="param-description-btn" data-description="Le poids minimum qu'un échantillon doit avoir pour être considéré dans un nœud de feuille.">?</span>
                                 <br />
-                                <input type="number" name="Param30" id="Param30" min="0.0" max="10" step="0.1" data-default="0.0">
+                                <input type="number" name="Param30" id="Param30" min="0.0" max="1.0" step="0.1" value="0.0">
                             </div>
                             <div>
                                 <label for="Param31">max_leaf_nodes</label>
                                 <span class="param-description-btn" data-description="Le nombre maximum de nœuds de feuille.">?</span>
                                 <br />
-                                <input type="number" name="Param31" id="Param31" min="2" max="10" step="1" data-default="2">
+                                <input type="number" name="Param31" id="Param31" min="2" max="10" step="1" value="2">
                             </div>
                             <div>
                                 <label for="Param32">min_impurity_decrease</label>
                                 <span class="param-description-btn" data-description="Un nœud sera divisé si cette division induit une diminution de l'impureté plus grande ou égale à cette valeur.">?</span>
                                 <br />
-                                <input type="number" name="Param32" id="Param32" min="0.0" max="10" step="0.1" data-default="0.0">
+                                <input type="number" name="Param32" id="Param32" min="0.0" max="1.0" step="0.1" value="0.0">
                             </div>
                             <div>
                                 <label for="Param33">bootstrap</label>
@@ -661,19 +659,19 @@
                                 <label for="Param35">n_jobs</label>
                                 <span class="param-description-btn" data-description="Le nombre de jobs parallèles à exécuter pour l'ajustement de l'arbre de décision.">?</span>
                                 <br />
-                                <input type="number" name="Param35" id="Param35" min="-1" max="20" step="1" data-default="-1">
+                                <input type="number" name="Param35" id="Param35" min="-1" max="20" step="1" value="-1">
                             </div>
                             <div>
                                 <label for="Param36">random_state</label>
                                 <span class="param-description-btn" data-description="Contrôle le tirage aléatoire des échantillons utilisés lors de la construction des arbres de décision.">?</span>
                                 <br />
-                                <input type="number" name="Param36" id="Param36" min="24" step="10" data-default="42">
+                                <input type="number" name="Param36" id="Param36" min="0" step="1" value="44">
                             </div>
                             <div>
                                 <label for="Param37">verbose</label>
                                 <span class="param-description-btn" data-description="Contrôle la verbosité lors de l'ajustement et de la prédiction.">?</span>
                                 <br />
-                                <input type="number" name="Param37" id="Param37" min="0" step="1" data-default="0">
+                                <input type="number" name="Param37" id="Param37" min="0" step="1" value="0">
                             </div>
                             <div>
                                 <label for="Param38">warm_start</label>
@@ -697,13 +695,13 @@
                                 <label for="Param40">ccp_alpha</label>
                                 <span class="param-description-btn" data-description="Paramètre de complexité utilisé pour la stratégie d'élagage Minimal Cost-Complexity Pruning.">?</span>
                                 <br />
-                                <input type="number" name="Param40" id="Param40" min="0.0" step="0.1" data-default="0.0">
+                                <input type="number" name="Param40" id="Param40" min="0.0" step="0.1" value="0.0">
                             </div>
                             <div>
                                 <label for="Param41">max_samples</label>
                                 <span class="param-description-btn" data-description="Le nombre d'échantillons à tirer des données d'apprentissage pour s'entraîner chaque arbre de décision.">?</span>
                                 <br />
-                                <input type="number" name="Param41" id="Param41" min="0" step="1" max="2" data-default="0">
+                                <input type="number" name="Param41" id="Param41" min="0" max="1" step="0.1" value="1">
                             </div>
                         <div>
                             <label for="Param42">Nombre de plis pour validation croisée</label>
