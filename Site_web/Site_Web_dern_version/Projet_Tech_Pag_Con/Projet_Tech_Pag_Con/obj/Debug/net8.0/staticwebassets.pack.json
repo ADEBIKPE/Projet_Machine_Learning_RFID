@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\images\\boxplot_EPC_comparison_seaborn_KNN.png"
     },
     {
+      "Id": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\wwwroot\\images\\boxplot_EPC_comparison_seaborn_KNNtest.png",
+      "PackagePath": "staticwebassets\\images\\boxplot_EPC_comparison_seaborn_KNNtest.png"
+    },
+    {
       "Id": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\wwwroot\\images\\boxplot_EPC_comparison_seaborn_SVM.png",
       "PackagePath": "staticwebassets\\images\\boxplot_EPC_comparison_seaborn_SVM.png"
     },

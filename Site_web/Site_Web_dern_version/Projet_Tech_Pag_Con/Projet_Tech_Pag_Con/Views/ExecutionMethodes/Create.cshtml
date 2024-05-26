@@ -39,8 +39,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="SimulationId" class="control-label"></label>
-                <input asp-for="SimulationId" class="form-control" />
-                <span asp-validation-for="SimulationId" class="text-danger"></span>
+                <select asp-for="SimulationId" class ="form-control" asp-items="ViewBag.SimulationId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserRoleId" class="control-label"></label>
+                <select asp-for="UserRoleId" class ="form-control" asp-items="ViewBag.UserRoleId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

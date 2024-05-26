@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NPMmqizKGNR1snHUgHMo/HG9VOYwGhTF6rXz18WRoJU=",
+  "Hash": "MNRSbI1pi75+EEzZG2v/2NbJ7uQ2f2G1kGpTHAHlMo4=",
   "Source": "Projet_Tech_Pag_Con",
   "BasePath": "_content/Projet_Tech_Pag_Con",
   "Mode": "Default",
@@ -1250,6 +1250,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\boxplot_EPC_comparison_seaborn_KNN.png"
+    },
+    {
+      "Identity": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\wwwroot\\images\\boxplot_EPC_comparison_seaborn_KNNtest.png",
+      "SourceId": "Projet_Tech_Pag_Con",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\wwwroot\\",
+      "BasePath": "_content/Projet_Tech_Pag_Con",
+      "RelativePath": "images/boxplot_EPC_comparison_seaborn_KNNtest.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\boxplot_EPC_comparison_seaborn_KNNtest.png"
     },
     {
       "Identity": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\wwwroot\\images\\boxplot_EPC_comparison_seaborn_SVM.png",

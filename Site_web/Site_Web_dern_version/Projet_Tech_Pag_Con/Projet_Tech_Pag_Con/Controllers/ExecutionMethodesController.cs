@@ -20,24 +20,60 @@ namespace Projet_Tech_Pag_Con.Controllers
         }
 
         // GET: ExecutionMethodes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string methodFilter, string userFilter, DateTime? dateFilter)
         {
-            return View(await _context.ExecutionMethode.ToListAsync());
+            var query = _context.ExecutionMethode
+                .Include(e => e.User)
+                .Include(e => e.UserRole)
+                .Include(e => e.Simulation) // Inclure l'entité Simulation
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(methodFilter))
+            {
+                query = query.Where(e => e.NomMethode.Contains(methodFilter));
+            }
+
+            if (!string.IsNullOrEmpty(userFilter))
+            {
+                // Filtrer par nom d'utilisateur
+                query = query.Where(e => e.User.UserName == userFilter);
+            }
+
+            if (dateFilter.HasValue)
+            {
+                // Filtrer par date de simulation
+                query = query.Where(e => e.Simulation.DateSimulation.Date == dateFilter.Value.Date);
+            }
+
+            var filteredResults = await query.ToListAsync();
+            ViewData["MethodFilter"] = methodFilter;
+            ViewData["UserFilter"] = userFilter;
+            ViewData["DateFilter"] = dateFilter?.ToString("yyyy-MM-dd");
+
+            // Récupérer la liste des utilisateurs pour la liste déroulante
+            ViewBag.Users = await _context.Users.Select(u => u.UserName).Distinct().ToListAsync();
+
+            return View(filteredResults);
         }
+
+
+
 
         // GET: ExecutionMethodes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
-                return View();
+                return NotFound();
             }
 
             var executionMethode = await _context.ExecutionMethode
+                .Include(e => e.User)
+                .Include(e => e.UserRole)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (executionMethode == null)
             {
-                return View();
+                return NotFound();
             }
 
             return View(executionMethode);
@@ -46,6 +82,8 @@ namespace Projet_Tech_Pag_Con.Controllers
         // GET: ExecutionMethodes/Create
         public IActionResult Create()
         {
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["UserRoleId"] = new SelectList(_context.Roles, "Id", "Id");
             return View();
         }
 
@@ -54,7 +92,7 @@ namespace Projet_Tech_Pag_Con.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NomMethode,Details,Performance,MatriceConfusion,Temps_Execution,SimulationId")] ExecutionMethode executionMethode)
+        public async Task<IActionResult> Create([Bind("Id,NomMethode,Details,Performance,MatriceConfusion,Temps_Execution,SimulationId,UserId,UserRoleId")] ExecutionMethode executionMethode)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +100,8 @@ namespace Projet_Tech_Pag_Con.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", executionMethode.UserId);
+            ViewData["UserRoleId"] = new SelectList(_context.Roles, "Id", "Id", executionMethode.UserRoleId);
             return View(executionMethode);
         }
 
@@ -78,6 +118,8 @@ namespace Projet_Tech_Pag_Con.Controllers
             {
                 return NotFound();
             }
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", executionMethode.UserId);
+            ViewData["UserRoleId"] = new SelectList(_context.Roles, "Id", "Id", executionMethode.UserRoleId);
             return View(executionMethode);
         }
 
@@ -86,7 +128,7 @@ namespace Projet_Tech_Pag_Con.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NomMethode,Details,Performance,MatriceConfusion,Temps_Execution,SimulationId")] ExecutionMethode executionMethode)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NomMethode,Details,Performance,MatriceConfusion,Temps_Execution,SimulationId,UserId,UserRoleId")] ExecutionMethode executionMethode)
         {
             if (id != executionMethode.Id)
             {
@@ -113,6 +155,8 @@ namespace Projet_Tech_Pag_Con.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", executionMethode.UserId);
+            ViewData["UserRoleId"] = new SelectList(_context.Roles, "Id", "Id", executionMethode.UserRoleId);
             return View(executionMethode);
         }
 
@@ -125,6 +169,8 @@ namespace Projet_Tech_Pag_Con.Controllers
             }
 
             var executionMethode = await _context.ExecutionMethode
+                .Include(e => e.User)
+                .Include(e => e.UserRole)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (executionMethode == null)
             {

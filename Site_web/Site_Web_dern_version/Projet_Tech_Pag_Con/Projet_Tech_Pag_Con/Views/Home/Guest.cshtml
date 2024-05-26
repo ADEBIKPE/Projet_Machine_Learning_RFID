@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details</title>
+    <title>Accueil - RFID Tunnel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,23 +15,38 @@
             background-image: url('https://livetechspot.com/wp-content/uploads/2020/07/Complete-Guide-List-on-How-to-Optimize-E-commerce-Website.jpg');
             background-size: cover;
             background-position: center;
+            color: #333;
         }
 
         .container {
-            max-width: 800px;
-            margin: 20px auto;
+            max-width: 1000px;
+            margin: 40px auto;
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
         }
 
-        h1 {
+        h1, h2 {
             text-align: center;
             color: #333;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            margin-top: 0;
         }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+            .section img {
+                width: 100%;
+                border-radius: 10px;
+                margin-bottom: 15px;
+            }
+
+            .section p {
+                font-size: 1.1em;
+                line-height: 1.6;
+            }
 
         .row {
             margin-bottom: 15px;
@@ -47,54 +63,29 @@
 </head>
 <body>
     <div class="container">
-        <h1>Details de Simulation</h1>
+        <h1>Welcome @ViewBag.UserName.Split('@')[0]</h1>
 
-        <div>
-            <!--<h4>Execution Methode</h4>-->
-            <hr />
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.NomMethode)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.NomMethode)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Details)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Details)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Performance)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Performance)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.MatriceConfusion)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.MatriceConfusion)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Temps_Execution)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Temps_Execution)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.SimulationId)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.SimulationId)
-                </dd>
-            </dl>
+        <div class="section">
+            <h2>Présentation du Projet</h2>
         </div>
-        <div>
-            <!--<a asp-action="Edit" asp-route-id="Model?.Id">Edit</a> |-->
-            <a asp-action="Index" asp-controller="ExecutionMethodes">Affichage Historique</a>
+
+        <div class="section">
+            <h2>Avantages de la Technologie RFID</h2>
+            
         </div>
+
+        <div class="section">
+            <h2>Défis Rencontrés</h2>
+            
+        </div>
+
+        <div class="section">
+
+        </div>
+        
+        
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

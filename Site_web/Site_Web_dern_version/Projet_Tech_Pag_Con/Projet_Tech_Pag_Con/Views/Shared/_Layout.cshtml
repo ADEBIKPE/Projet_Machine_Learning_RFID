@@ -25,6 +25,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        <li class="nav-item">
+                            <!--<a asp-action="Edit" asp-route-id="Model?.Id">Edit</a> |-->
+                            <a class="nav-link text-dark" asp-action="Index" asp-controller="ExecutionMethodes">History of all users</a>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -37,7 +41,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted mt-auto">
         <div class="container">
             &copy; 2024 - Projet_Tech_Pag_Con - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

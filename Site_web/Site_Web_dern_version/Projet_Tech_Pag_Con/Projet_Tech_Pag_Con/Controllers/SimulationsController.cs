@@ -22,7 +22,8 @@ namespace Projet_Tech_Pag_Con.Controllers
         // GET: Simulations
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Simulation.ToListAsync());
+            var applicationDbContext = _context.Simulation.Include(s => s.Utilisateur);
+            return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: Simulations/Details/5
@@ -30,14 +31,15 @@ namespace Projet_Tech_Pag_Con.Controllers
         {
             if (id == null)
             {
-                return View();
+                return NotFound();
             }
 
             var simulation = await _context.Simulation
+                .Include(s => s.Utilisateur)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (simulation == null)
             {
-                return View();
+                return NotFound();
             }
 
             return View(simulation);
@@ -46,6 +48,7 @@ namespace Projet_Tech_Pag_Con.Controllers
         // GET: Simulations/Create
         public IActionResult Create()
         {
+            ViewData["UtilisateurId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
@@ -62,6 +65,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UtilisateurId"] = new SelectList(_context.Users, "Id", "Id", simulation.UtilisateurId);
             return View(simulation);
         }
 
@@ -78,6 +82,7 @@ namespace Projet_Tech_Pag_Con.Controllers
             {
                 return NotFound();
             }
+            ViewData["UtilisateurId"] = new SelectList(_context.Users, "Id", "Id", simulation.UtilisateurId);
             return View(simulation);
         }
 
@@ -113,6 +118,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["UtilisateurId"] = new SelectList(_context.Users, "Id", "Id", simulation.UtilisateurId);
             return View(simulation);
         }
 
@@ -125,6 +131,7 @@ namespace Projet_Tech_Pag_Con.Controllers
             }
 
             var simulation = await _context.Simulation
+                .Include(s => s.Utilisateur)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (simulation == null)
             {

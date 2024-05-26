@@ -27,7 +27,7 @@ namespace Projet_Tech_Pag_Con.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
-        
+        private readonly UserManager<IdentityUser> _userManager;
         public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _logger = logger;
@@ -35,7 +35,7 @@ namespace Projet_Tech_Pag_Con.Controllers
             _userManager = userManager;
         }
 
-        private readonly UserManager<IdentityUser> _userManager;
+        
 
 
 
@@ -43,6 +43,7 @@ namespace Projet_Tech_Pag_Con.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
+                ViewBag.UserName = User.Identity.Name;
                 if (User.IsInRole("Admin"))
                 {
                     // L'utilisateur est dans le rôle "Admin"
@@ -50,17 +51,21 @@ namespace Projet_Tech_Pag_Con.Controllers
                 }
                 if (User.IsInRole("Lamda"))
                 {
+
                     // L'utilisateur n'est pas dans le rôle "Admin", rediriger vers la page "Guest"
                     return RedirectToAction("Guest", "Home");
                 }
                 if (!User.IsInRole("Lamda") && !User.IsInRole("Admin"))
                 {
+
                     // L'utilisateur n'est pas dans le rôle "Admin", rediriger vers la page "Guest"
                     return RedirectToAction("Index", "ExecutionMethodesAdmins");
                 }
                 else
                 {
+                    
                     // L'utilisateur est authentifié mais n'est pas dans un rôle spécifique
+                    
                     return View();
                 }
             }
@@ -111,10 +116,12 @@ namespace Projet_Tech_Pag_Con.Controllers
 
         public IActionResult Guest()
         {
+            ViewBag.UserName = User.Identity.Name;
             return View();
         }
         public IActionResult SuperUtilisateur()
         {
+            ViewBag.UserName = User.Identity.Name;
             return View();
         }
         public IActionResult Histogramme_Boite_Moustache()
@@ -206,7 +213,9 @@ namespace Projet_Tech_Pag_Con.Controllers
                             Performance = (float)accuracy,
                             MatriceConfusion = "Aucune",
                             Temps_Execution = formattedExecutionTime,
-                            SimulationId = simu.Id
+                            SimulationId = simu.Id,
+                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
+                            UserRoleId = "1", // Utilisez le rôle de l'utilisateur actuel
                         };
 
                         _context.ExecutionMethode.Add(execMeth);
@@ -314,7 +323,9 @@ namespace Projet_Tech_Pag_Con.Controllers
                             Performance = jsonResponse.score, // Performance spécifique à RandomForest
                             MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à RandomForest
                             Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à RandomForest
-                            SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
+                            SimulationId = simu.Id ,// Utiliser l'identifiant de la simulation créée
+                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
+                            UserRoleId = "1", // Utilisez le rôle de l'utilisateur actuel
                         };
                         _context.ExecutionMethode.Add(executionMethode);
                         await _context.SaveChangesAsync();
@@ -399,7 +410,9 @@ namespace Projet_Tech_Pag_Con.Controllers
                             Performance = jsonResponse.score, // Performance spécifique à KNN
                             MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à KNN
                             Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à KNN
-                            SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
+                            SimulationId = simu.Id,// Utiliser l'identifiant de la simulation créée
+                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
+                            UserRoleId = "1" // Utilisez le rôle de l'utilisateur actuel
                         };
                         _context.ExecutionMethode.Add(executionMethode);
                         await _context.SaveChangesAsync();
@@ -496,7 +509,9 @@ namespace Projet_Tech_Pag_Con.Controllers
                             Performance = jsonResponse.score, // Performance spécifique à SVM
                             MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à SVM
                             Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à SVM
-                            SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
+                            SimulationId = simu.Id, // Utiliser l'identifiant de la simulation créée
+                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
+                            UserRoleId = "1" // Utilisez le rôle de l'utilisateur actuel
                         };
                         _context.ExecutionMethode.Add(executionMethode);
                         await _context.SaveChangesAsync();
