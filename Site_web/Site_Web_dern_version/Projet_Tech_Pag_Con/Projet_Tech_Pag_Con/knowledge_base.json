@@ -1,0 +1,41 @@
+{
+  "questions": [
+    {
+      "question": "Bonjour",
+      "answer": "Bonjour ! Comment puis-je vous aider ?"
+    },
+    {
+      "question": "En quoi consiste  Random Forest",
+      "answer": "Le Random Forest, aussi appele foret d'arbres aleatoires en francais, est un algorithme d'apprentissage automatique supervise tres populaire, reconnu pour sa robustesse, sa precision et sa polyvalence. Il s'agit d'une methode d'ensemble qui combine plusieurs arbres de decision pour obtenir des predictions plus fiables et plus stables."
+    },
+    {
+      "question": "En quoi consiste SVM",
+      "answer": "SVM, qui signifie Support Vector Machine en anglais, est un algorithme d'apprentissage automatique supervise utilise pour la classification et la regression. Il est reconnu pour sa capacite a separer efficacement les donnees en deux ou plusieurs classes."
+    },
+    
+    {
+      "question": "En quoi consiste KNN",
+      "answer": "K-Nearest Neighbors, ou K plus proches voisins en francais, est un algorithme d'apprentissage automatique supervise simple et efficace, largement utilise pour la classification et la regression."
+    },
+    {
+      "question": "Quels sont les hyperparametres de Random Forest",
+      "answer": "Les principaux hyperparametres de Random Forest incluent :\n- n_estimators : Le nombre d'arbres dans la foret.\n- max_depth : La profondeur maximale des arbres de decision.\n- min_samples_split : Le nombre minimum d'echantillons requis pour diviser un noeud interne.\n- min_samples_leaf : Le nombre minimum d'echantillons qu'un noeud terminal (feuille) doit avoir.\n- max_features : Le nombre de caracteristiques a considerer lors de la recherche de la meilleure separation.\n- bootstrap : Indique si les echantillons doivent etre tires avec remplacement (bootstrap) ou non.\n- criterion : La fonction pour mesurer la qualite d'une division."
+    },
+    {
+      "question": "Quels sont les hyperparametres de SVM",
+      "answer": "Les principaux hyperparametres de SVM incluent :\n- C : Le parametre de regularisation.\n- kernel : Le type de noyau a utiliser dans l'algorithme.\n- degree : Le degre de la fonction polynomiale (utilise pour le noyau 'poly').\n- gamma : Le coefficient de noyau pour 'rbf', 'poly', et 'sigmoid'.\n- coef0 : Le terme independant dans le noyau 'poly' et 'sigmoid'.\n- tol : La tolerance pour les criteres d'arret.\n- max_iter : Le nombre maximal d'iterations pour les solveurs d'optimisation."
+    },
+    {
+      "question": "Quels sont les hyperparametres de KNN",
+      "answer": "Les principaux hyperparametres de K-Nearest Neighbors (KNN) incluent :\n- n_neighbors : Le nombre de voisins a utiliser pour la classification ou la regression.\n- weights : La fonction de poids utilisee dans la prediction.\n- algorithm : L'algorithme utilise pour calculer les plus proches voisins.\n- leaf_size : La taille des feuilles dans les arbres utilises.\n- p : La puissance du parametre de Minkowski."
+    },
+    {
+      "question": "En quoi consiste la methode analytique",
+      "answer": "La methode analytique se base sur une fenetre de decision et sur les tags presents dans la zone de detection dans une fenetre de temps donnee."
+    },
+    {
+      "question": "Quels sont les hyperparametres de la methode analytique",
+      "answer": "Les principaux hyperparametres de la methode analytique sont le step qui designe le nombre de periodes de prises de decision a considerer dans une sous-fenetre et la marge qui est le nombre de secondes a considerer avant et apres la fenetre de temps consideree pendant laquelle les tags sont dans la fenetre de decision."
+    }
+  ]
+}

@@ -103,8 +103,10 @@ namespace Projet_Tech_Pag_Con.Controllers
 
                     var content = new StringContent(JsonConvert.SerializeObject(requestData), System.Text.Encoding.UTF8, "application/json");
                     var response = await client.PostAsync("http://localhost:5000/Chemin", content);
-
                 }
+
+                // Définir un indicateur dans la session indiquant que le fichier a été téléchargé
+                HttpContext.Session.SetString("FileUploaded", "true");
 
                 // Retourner le chemin du fichier téléchargé dans l'en-tête de réponse HTTP
                 return View("Index");
@@ -113,6 +115,7 @@ namespace Projet_Tech_Pag_Con.Controllers
             // Si aucun fichier n'a été téléchargé, retourner une réponse BadRequest
             return BadRequest("Aucun fichier téléchargé.");
         }
+
 
         public IActionResult Guest()
         {
@@ -154,6 +157,14 @@ namespace Projet_Tech_Pag_Con.Controllers
             string Param35, string Param36, string Param37, string Param38, string Param39, string Param40, string Param41, string Param42,
             string method1, string method2, string method3, string method4,string Param1000, string Param1111)
         {
+
+
+            if (HttpContext.Session.GetString("FileUploaded") != "true")
+            {
+                // Si le fichier n'a pas été téléchargé, retourner une réponse appropriée
+                return BadRequest("Vous devez d'abord télécharger un fichier.");
+            }
+
             // Récupérer l'utilisateur actuel
             var user = await _userManager.GetUserAsync(User);
 

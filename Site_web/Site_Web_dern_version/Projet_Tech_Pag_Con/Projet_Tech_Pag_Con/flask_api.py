@@ -7,9 +7,13 @@ from FonctionML_RF import RandomForest_method
 from FonctionML_SVM import SVM_method
 from os.path import relpath
 import zipfile
-
+from flask_cors import CORS
+import spacy
+import json
+from sklearn.metrics.pairwise import cosine_similarity
+import numpy as np
 app = Flask(__name__)
-
+CORS(app) 
 
 def unzip_file(file_path, extract_to):
     with zipfile.ZipFile(file_path, 'r') as zip_ref:
@@ -22,7 +26,7 @@ def analytical_route():
     if input_params is not None:
         sec = input_params.get('sec')
         step = input_params.get('step')
-        accuracy, execution_time = Analiz('data_anonymous', int(step), int(sec))
+        accuracy, execution_time = Analiz("Uploads/data", int(step), int(sec))
         
         # Return the prediction as JSON
         return jsonify({'accuracy': accuracy, 'execution_time': execution_time})
@@ -50,7 +54,7 @@ def SVM_route():
         output_dir = 'wwwroot/images'
 
         score, conf_matrix, execution_time, details_classement, plot_path = SVM_method(
-            float(regularisation), float(CoefNoyau), int(n_plis), str(Noyau), './data_anonymous', int(degree), 
+            float(regularisation), float(CoefNoyau), int(n_plis), str(Noyau), "Uploads/data", int(degree), 
             float(coef0), bool(shrinking), bool(probability), float(tol), float(cache_size), bool(verbose), 
             int(max_iter), str(decision_function_shape), bool(break_ties), int(random_state), output_dir
         )
@@ -107,7 +111,7 @@ def rf_route():
         output_dir = 'wwwroot/images'
 
         score, cm, execution_time, details_classement, plot_path  = RandomForest_method(
-            int(n_arbres), int(profondeur), int(n_plis), int(n_minimum_split), './data_anonymous', str(criterion), 
+            int(n_arbres), int(profondeur), int(n_plis), int(n_minimum_split), "Uploads/data", str(criterion), 
             int(min_samples_leaf), float(min_weight_fraction_leaf), str(max_features), int(max_leaf_nodes), 
             float(min_impurity_decrease), bool(bootstrap), bool(oob_score), int(n_jobs), int(random_state), 
             int(verbose), bool(warm_start), str(class_weight), float(ccp_alpha), int(max_samples), output_dir
@@ -141,7 +145,7 @@ def knn_route():
         output_dir = 'wwwroot/images'
 
         score, conf_matrix, execution_time, details_classement, plot_path = KNN_method(
-            str(metric), int(n_neighbors), int(n_plis), str(weights), './data_anonymous', str(algorithm), 
+            str(metric), int(n_neighbors), int(n_plis), str(weights), "Uploads/data", str(algorithm), 
             int(leaf_size), float(p), int(n_jobs), output_dir
         )
 
@@ -163,6 +167,73 @@ def knn_route():
             'details_classement': details_classement_json,
             'path_Img': plot_url
         })
+
+# Charger le modèle de SpaCy
+nlp = spacy.load('en_core_web_md')
+
+def load_knowledge_base(file_path: str) -> dict:
+    try:
+        with open(file_path, 'r') as file:
+            return json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError) as e:
+        print(f"Error loading knowledge base: {e}")
+        return {"questions": []}
+
+def save_knowledge_base(file_path: str, data: dict):
+    try:
+        with open(file_path, 'w') as file:
+            json.dump(data, file, indent=2)
+    except IOError as e:
+        print(f"Error saving knowledge base: {e}")
+
+def preprocess_text(text: str) -> str:
+    doc = nlp(text)
+    return " ".join([token.lemma_ for token in doc if not token.is_stop])
+
+def get_vector(text: str) -> np.ndarray:
+    return nlp(text).vector
+
+def find_best_match(user_question: str, questions: list[str]) -> str | None:
+    user_vector = get_vector(user_question)
+    question_vectors = [get_vector(q) for q in questions]
+    similarities = cosine_similarity([user_vector], question_vectors)[0]
+    best_index = np.argmax(similarities)
+    print(f"User question: '{user_question}' - Best match: '{questions[best_index]}' with similarity: {similarities[best_index]}")  # Debugging print
+    return questions[best_index] if similarities[best_index] > 0.6 else None
+
+def get_answer_for_question(question: str, knowledge_base: dict) -> str | None:
+    for q in knowledge_base.get("questions", []):
+        if q.get("question") == question:
+            return q.get("answer")
+    return None
+
+knowledge_base = load_knowledge_base('knowledge_base.json')
+
+@app.route('/ask', methods=['POST'])
+def ask():
+    data = request.json
+    user_input = data.get('question', '')
+    preprocessed_input = preprocess_text(user_input)
+    questions = [preprocess_text(q.get("question", "")) for q in knowledge_base.get("questions", [])]
+    best_match = find_best_match(preprocessed_input, questions)
+
+    if best_match:
+        original_question = next(q for q in knowledge_base["questions"] if preprocess_text(q["question"]) == best_match)["question"]
+        answer = get_answer_for_question(original_question, knowledge_base)
+        return jsonify({'answer': answer})
+    else:
+        return jsonify({'answer': "I don't know the answer. Can you teach me?"})
+
+@app.route('/teach', methods=['POST'])
+def teach():
+    data = request.json
+    new_question = data.get('question', '')
+    new_answer = data.get('answer', '')
+
+    knowledge_base.setdefault("questions", []).append({"question": new_question, "answer": new_answer})
+    save_knowledge_base('knowledge_base.json', knowledge_base)
+    return jsonify({'status': 'success'})
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

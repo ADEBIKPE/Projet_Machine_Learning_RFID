@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Configurer les services d'authentification et autres services
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
@@ -35,15 +36,12 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 builder.Services.AddDbContext<Projet_Tech_Pag_ConContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("Projet_Tech_Pag_ConContextConnection") ?? throw new
-InvalidOperationException("Connection string 'Projet_Tech_Pag_ConContextConnection' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Projet_Tech_Pag_ConContextConnection") ?? throw new
+    InvalidOperationException("Connection string 'Projet_Tech_Pag_ConContextConnection' not found.")));
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("Projet_Tech_Pag_ConContextConnection") ?? throw new
     InvalidOperationException("Connection string 'Projet_Tech_Pag_ConContextConnection' not found.")));
-
-
-
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
@@ -52,9 +50,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-   .AddRoles<IdentityRole>()
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+
+// Configurer la session
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 
@@ -73,7 +79,6 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -85,21 +90,19 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Utiliser la session
+app.UseSession();
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=ExecutionMethodes}/{action=Details}/{id?}");
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Simulations}/{action=Details}/{id?}");
 
 app.MapRazorPages();
+
 using (var serviceScope = app.Services.GetService<IServiceScopeFactory>().CreateScope())
 {
     var context = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    //context.Database.EnsureDeleted();
     context.Database.EnsureCreated();
 }
+
 app.Run();
