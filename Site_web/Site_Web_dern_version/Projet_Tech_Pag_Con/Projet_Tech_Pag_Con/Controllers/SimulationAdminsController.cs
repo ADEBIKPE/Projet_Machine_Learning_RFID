@@ -22,7 +22,7 @@ namespace Projet_Tech_Pag_Con.Controllers
         // GET: SimulationAdmins
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.SimulationAdmin.Include(s => s.Utilisateur);
+            var applicationDbContext = _context.SimulationAdmin.Include(s => s.User);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,7 +35,7 @@ namespace Projet_Tech_Pag_Con.Controllers
             }
 
             var simulationAdmin = await _context.SimulationAdmin
-                .Include(s => s.Utilisateur)
+                .Include(s => s.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (simulationAdmin == null)
             {
@@ -48,7 +48,7 @@ namespace Projet_Tech_Pag_Con.Controllers
         // GET: SimulationAdmins/Create
         public IActionResult Create()
         {
-            ViewData["UtilisateurId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
 
@@ -57,7 +57,7 @@ namespace Projet_Tech_Pag_Con.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DateSimulation,UtilisateurId")] SimulationAdmin simulationAdmin)
+        public async Task<IActionResult> Create([Bind("Id,DateSimulationAdmin,NomMethodeAdmin,DetailsAdmin,PerformanceAdmin,MatriceConfusionAdmin,Temps_ExecutionAdmin,SimulationIdAdmin,UserId")] SimulationAdmin simulationAdmin)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UtilisateurId"] = new SelectList(_context.Users, "Id", "Id", simulationAdmin.UtilisateurId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", simulationAdmin.UserId);
             return View(simulationAdmin);
         }
 
@@ -82,7 +82,7 @@ namespace Projet_Tech_Pag_Con.Controllers
             {
                 return NotFound();
             }
-            ViewData["UtilisateurId"] = new SelectList(_context.Users, "Id", "Id", simulationAdmin.UtilisateurId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", simulationAdmin.UserId);
             return View(simulationAdmin);
         }
 
@@ -91,7 +91,7 @@ namespace Projet_Tech_Pag_Con.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DateSimulation,UtilisateurId")] SimulationAdmin simulationAdmin)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DateSimulationAdmin,NomMethodeAdmin,DetailsAdmin,PerformanceAdmin,MatriceConfusionAdmin,Temps_ExecutionAdmin,SimulationIdAdmin,UserId")] SimulationAdmin simulationAdmin)
         {
             if (id != simulationAdmin.Id)
             {
@@ -118,7 +118,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UtilisateurId"] = new SelectList(_context.Users, "Id", "Id", simulationAdmin.UtilisateurId);
+            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", simulationAdmin.UserId);
             return View(simulationAdmin);
         }
 
@@ -131,7 +131,7 @@ namespace Projet_Tech_Pag_Con.Controllers
             }
 
             var simulationAdmin = await _context.SimulationAdmin
-                .Include(s => s.Utilisateur)
+                .Include(s => s.User)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (simulationAdmin == null)
             {

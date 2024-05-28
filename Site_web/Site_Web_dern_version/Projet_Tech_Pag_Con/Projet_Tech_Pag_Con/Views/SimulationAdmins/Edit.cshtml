@@ -14,14 +14,44 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="DateSimulation" class="control-label"></label>
-                <input asp-for="DateSimulation" class="form-control" />
-                <span asp-validation-for="DateSimulation" class="text-danger"></span>
+                <label asp-for="DateSimulationAdmin" class="control-label"></label>
+                <input asp-for="DateSimulationAdmin" class="form-control" />
+                <span asp-validation-for="DateSimulationAdmin" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UtilisateurId" class="control-label"></label>
-                <select asp-for="UtilisateurId" class="form-control" asp-items="ViewBag.UtilisateurId"></select>
-                <span asp-validation-for="UtilisateurId" class="text-danger"></span>
+                <label asp-for="NomMethodeAdmin" class="control-label"></label>
+                <input asp-for="NomMethodeAdmin" class="form-control" />
+                <span asp-validation-for="NomMethodeAdmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DetailsAdmin" class="control-label"></label>
+                <input asp-for="DetailsAdmin" class="form-control" />
+                <span asp-validation-for="DetailsAdmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PerformanceAdmin" class="control-label"></label>
+                <input asp-for="PerformanceAdmin" class="form-control" />
+                <span asp-validation-for="PerformanceAdmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MatriceConfusionAdmin" class="control-label"></label>
+                <input asp-for="MatriceConfusionAdmin" class="form-control" />
+                <span asp-validation-for="MatriceConfusionAdmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Temps_ExecutionAdmin" class="control-label"></label>
+                <input asp-for="Temps_ExecutionAdmin" class="form-control" />
+                <span asp-validation-for="Temps_ExecutionAdmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SimulationIdAdmin" class="control-label"></label>
+                <input asp-for="SimulationIdAdmin" class="form-control" />
+                <span asp-validation-for="SimulationIdAdmin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

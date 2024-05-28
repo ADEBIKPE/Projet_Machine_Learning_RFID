@@ -49,17 +49,17 @@ namespace Projet_Tech_Pag_Con.Controllers
                     // L'utilisateur est dans le rôle "Admin"
                     return RedirectToAction("IndexAdmin", "Home");
                 }
-                if (User.IsInRole("Lamda"))
+                if (User.IsInRole("Guest"))
                 {
 
                     // L'utilisateur n'est pas dans le rôle "Admin", rediriger vers la page "Guest"
                     return RedirectToAction("Guest", "Home");
                 }
-                if (!User.IsInRole("Lamda") && !User.IsInRole("Admin"))
+                if (!User.IsInRole("Guest") && !User.IsInRole("Admin"))
                 {
 
                     // L'utilisateur n'est pas dans le rôle "Admin", rediriger vers la page "Guest"
-                    return RedirectToAction("Index", "ExecutionMethodesAdmins");
+                    return RedirectToAction("VueAdmin", "Home");
                 }
                 else
                 {
@@ -139,7 +139,10 @@ namespace Projet_Tech_Pag_Con.Controllers
         {
             return View();
         }
-
+        public IActionResult VueAdmin()
+        {
+            return View();
+        }
         public IActionResult IndexAdmin()
         {
             return View("Index");
@@ -188,17 +191,18 @@ namespace Projet_Tech_Pag_Con.Controllers
                 await _context.SaveChangesAsync();
 
                 // Votre logique pour la méthode "Analytique"
+                // Votre logique pour la méthode "Analytique"
                 if (method1 == "Analytique")
                 {
                     using (var client = new HttpClient())
                     {
                         var requestData = new
                         {
-                            step= Param1000,
+                            step = Param1000,
                             sec = Param1111,
-                         };
+                        };
                         var content = new StringContent(JsonConvert.SerializeObject(requestData), Encoding.UTF8, "application/json");
-                        var response = await client.PostAsync("http://localhost:5000/analytical",content);
+                        var response = await client.PostAsync("http://localhost:5000/analytical", content);
                         response.EnsureSuccessStatusCode();
                         var result = await response.Content.ReadAsStringAsync();
 
@@ -224,32 +228,32 @@ namespace Projet_Tech_Pag_Con.Controllers
                             Performance = (float)accuracy,
                             MatriceConfusion = "Aucune",
                             Temps_Execution = formattedExecutionTime,
-                            SimulationId = simu.Id,
-                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
-                            UserRoleId = "1", // Utilisez le rôle de l'utilisateur actuel
+                            SimulationId = simu.Id
                         };
 
                         _context.ExecutionMethode.Add(execMeth);
                         await _context.SaveChangesAsync();
 
+
                         // Créer une instance d'ExecutionMethodesAdmin en utilisant les informations récupérées
-                        var executionMethodesAdmin = new ExecutionMethodesAdmin
+                        var simulationAdmin = new SimulationAdmin
                         {
-                            NomMethode = "Analytique",
-                            Details = $"{detailsBuilder.ToString()}",
-                            Performance = (float)accuracy,
-                            MatriceConfusion = "Aucune",
-                            Temps_Execution = formattedExecutionTime,
+                            DateSimulationAdmin = DateTime.Now,
+                            NomMethodeAdmin = "Analytique",
+                            DetailsAdmin = detailsBuilder.ToString(),
+                            PerformanceAdmin = (float)accuracy,
+                            MatriceConfusionAdmin = "Aucune",
+                            Temps_ExecutionAdmin = formattedExecutionTime,
                             UserId = userId,
-                            UserRoleId = "1",
-                            SimulationId = simu.Id
+                            SimulationIdAdmin = simu.Id
                         };
 
-                        _context.ExecutionMethodesAdmin.Add(executionMethodesAdmin);
+                        _context.SimulationAdmin.Add(simulationAdmin);
                         await _context.SaveChangesAsync();
 
                     }
                 }
+
 
                 //return View("Index");
                 // Ajoutez l'instance à DbContext et enregistrez les modifications
@@ -334,27 +338,26 @@ namespace Projet_Tech_Pag_Con.Controllers
                             Performance = jsonResponse.score, // Performance spécifique à RandomForest
                             MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à RandomForest
                             Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à RandomForest
-                            SimulationId = simu.Id ,// Utiliser l'identifiant de la simulation créée
-                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
-                            UserRoleId = "1", // Utilisez le rôle de l'utilisateur actuel
+                            SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
                         };
                         _context.ExecutionMethode.Add(executionMethode);
                         await _context.SaveChangesAsync();
+
                         // Créez une nouvelle instance d'ExecutionMethodesAdmin avec les données appropriées
-                        ExecutionMethodesAdmin executionMethodesAdmin = new ExecutionMethodesAdmin
+                        SimulationAdmin simulationAdmin = new SimulationAdmin
                         {
-                            NomMethode = "RandomForest",
-                            Details = $"{detailsBuilder.ToString()} \n\n Détails de classement : \n{detailsClassement}",
-                            Performance = jsonResponse.score,
-                            MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(),
-                            Temps_Execution = tempsExecutionFormate,
-                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
-                            UserRoleId = "1", // Utilisez le rôle de l'utilisateur actuel
-                            SimulationId = simu.Id
+                            DateSimulationAdmin = DateTime.Now, // Ajout de la date actuelle pour DateSimulationAdmin
+                            NomMethodeAdmin = "RandomForest",
+                            DetailsAdmin = $"{detailsBuilder.ToString()} \n\n Détails de classement : \n{detailsClassement}",
+                            PerformanceAdmin = jsonResponse.score,
+                            MatriceConfusionAdmin = jsonResponse.matriceDeConfusion.ToString(),
+                            Temps_ExecutionAdmin = tempsExecutionFormate,
+                            UserId = userId,
+                            SimulationIdAdmin = simu.Id
                         };
 
                         // Ajoutez l'instance à DbContext et enregistrez les modifications
-                        _context.ExecutionMethodesAdmin.Add(executionMethodesAdmin);
+                        _context.SimulationAdmin.Add(simulationAdmin);
                         await _context.SaveChangesAsync();
 
                     }
@@ -421,9 +424,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                             Performance = jsonResponse.score, // Performance spécifique à KNN
                             MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à KNN
                             Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à KNN
-                            SimulationId = simu.Id,// Utiliser l'identifiant de la simulation créée
-                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
-                            UserRoleId = "1" // Utilisez le rôle de l'utilisateur actuel
+                            SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
                         };
                         _context.ExecutionMethode.Add(executionMethode);
                         await _context.SaveChangesAsync();
@@ -431,22 +432,21 @@ namespace Projet_Tech_Pag_Con.Controllers
                         //var result = await response.Content.ReadAsStringAsync();
 
                         //ViewBag.Result = result;
-                        ExecutionMethodesAdmin executionMethodesAdmin = new ExecutionMethodesAdmin
+                        SimulationAdmin simulationAdmin = new SimulationAdmin
                         {
-                            NomMethode = "KNN",
-                            Details = $"{detailsBuilder.ToString()} \n\n Détails de classement : \n{detailsClassement}",
-                            Performance = jsonResponse.score,
-                            MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(),
-                            Temps_Execution = tempsExecutionFormate,
-                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
-                            UserRoleId = "1", // Utilisez le rôle de l'utilisateur actuel
-                            SimulationId = simu.Id
+                            DateSimulationAdmin = DateTime.Now, // Ajout de la date actuelle pour DateSimulationAdmin
+                            NomMethodeAdmin = "KNN",
+                            DetailsAdmin = $"{detailsBuilder.ToString()} \n\n Détails de classement : \n{detailsClassement}",
+                            PerformanceAdmin = jsonResponse.score,
+                            MatriceConfusionAdmin = jsonResponse.matriceDeConfusion.ToString(),
+                            Temps_ExecutionAdmin = tempsExecutionFormate,
+                            UserId = userId,
+                            SimulationIdAdmin = simu.Id
                         };
 
                         // Ajoutez l'instance à DbContext et enregistrez les modifications
-                        _context.ExecutionMethodesAdmin.Add(executionMethodesAdmin);
+                        _context.SimulationAdmin.Add(simulationAdmin);
                         await _context.SaveChangesAsync();
-
                     }
                 }
                 if (method2 == "SVM")
@@ -520,27 +520,25 @@ namespace Projet_Tech_Pag_Con.Controllers
                             Performance = jsonResponse.score, // Performance spécifique à SVM
                             MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à SVM
                             Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à SVM
-                            SimulationId = simu.Id, // Utiliser l'identifiant de la simulation créée
-                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
-                            UserRoleId = "1" // Utilisez le rôle de l'utilisateur actuel
+                            SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
                         };
                         _context.ExecutionMethode.Add(executionMethode);
                         await _context.SaveChangesAsync();
 
-                        ExecutionMethodesAdmin executionMethodesAdmin = new ExecutionMethodesAdmin
+                        SimulationAdmin simulationAdmin = new SimulationAdmin
                         {
-                            NomMethode = "SVM",
-                            Details = $"{detailsBuilder.ToString()} \n\n Détails de classement : \n{detailsClassement}",
-                            Performance = jsonResponse.score,
-                            MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(),
-                            Temps_Execution = tempsExecutionFormate,
-                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
-                            UserRoleId = "1", // Utilisez le rôle de l'utilisateur actuel
-                            SimulationId = simu.Id
+                            DateSimulationAdmin = DateTime.Now, // Ajout de la date actuelle pour DateSimulationAdmin
+                            NomMethodeAdmin = "SVM",
+                            DetailsAdmin = $"{detailsBuilder.ToString()} \n\n Détails de classement : \n{detailsClassement}",
+                            PerformanceAdmin = jsonResponse.score,
+                            MatriceConfusionAdmin = jsonResponse.matriceDeConfusion.ToString(),
+                            Temps_ExecutionAdmin = tempsExecutionFormate,
+                            UserId = userId,
+                            SimulationIdAdmin = simu.Id
                         };
 
                         // Ajoutez l'instance à DbContext et enregistrez les modifications
-                        _context.ExecutionMethodesAdmin.Add(executionMethodesAdmin);
+                        _context.SimulationAdmin.Add(simulationAdmin);
                         await _context.SaveChangesAsync();
                         //var result = await response.Content.ReadAsStringAsync();
 
@@ -568,6 +566,7 @@ namespace Projet_Tech_Pag_Con.Controllers
             return View("Histogramme_Boite_Moustache");
 
         }
+
 
         public IActionResult Privacy()
         {

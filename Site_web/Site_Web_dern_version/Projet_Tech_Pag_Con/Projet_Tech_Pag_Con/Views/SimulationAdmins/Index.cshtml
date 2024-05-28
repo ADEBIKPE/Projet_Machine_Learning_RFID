@@ -1,97 +1,77 @@
-﻿@model IEnumerable<Projet_Tech_Pag_Con.Models.ExecutionMethode>
+﻿@model IEnumerable<Projet_Tech_Pag_Con.Models.SimulationAdmin>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        body {
-            background-image: url('https://livetechspot.com/wp-content/uploads/2020/07/Complete-Guide-List-on-How-to-Optimize-E-commerce-Website.jpg');
-            background-size: cover; /* Make sure the image covers the whole page */
-            background-repeat: no-repeat; /* Prevent the image from repeating */
-            background-attachment: fixed; /* Ensure the background stays fixed when scrolling */
-        }
+<h1>Index</h1>
 
-        table {
-            background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white background for the table to improve readability */
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #4CAF50;
-            color: black;
-        }
-    </style>
-</head>
-<body>
-    <h1>@ViewData["Title"]</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.NomMethode)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Details)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Performance)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.MatriceConfusion)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Temps_Execution)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.SimulationId)
-                </th>
-                <th>
-                    Username
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.NomMethode)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Details)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Performance)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MatriceConfusion)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Temps_Execution)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.SimulationId)
-                    </td>
-                    <td>
-                        safietou.guindo@groupe-esigelec.org
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</body>
-</html>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DateSimulationAdmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomMethodeAdmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DetailsAdmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PerformanceAdmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MatriceConfusionAdmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Temps_ExecutionAdmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SimulationIdAdmin)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateSimulationAdmin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomMethodeAdmin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DetailsAdmin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PerformanceAdmin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatriceConfusionAdmin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Temps_ExecutionAdmin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SimulationIdAdmin)
+            </td>
+            <td>
+                    @await Html.PartialAsync("_GetUserName", item.UserId)
+            </td>
+            <td>
+               
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

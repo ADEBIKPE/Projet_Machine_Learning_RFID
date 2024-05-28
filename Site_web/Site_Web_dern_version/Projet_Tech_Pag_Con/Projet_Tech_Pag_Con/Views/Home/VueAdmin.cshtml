@@ -1,5 +1,158 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://livetechspot.com/wp-content/uploads/2020/07/Complete-Guide-List-on-How-to-Optimize-E-commerce-Website.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            width: 100%;
+        }
+
+            .menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+            }
+
+                .menu ul li {
+                    margin-right: 20px;
+                }
+
+                    .menu ul li:last-child {
+                        margin-right: 0;
+                    }
+
+                    .menu ul li a {
+                        color: #fff;
+                        text-decoration: none;
+                        font-weight: bold;
+                    }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .method-sections {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .method-section {
+            flex: 0 1 300px;
+            margin: 10px;
+            position: relative;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+
+            .method-section:hover {
+                transform: scale(1.05);
+                background-color: rgba(255, 255, 255, 0.9);
+            }
+
+            .method-section h2 {
+                margin-bottom: 10px;
+                font-size: 1.5em;
+            }
+
+            .method-section p {
+                margin-bottom: 20px;
+            }
+
+            .method-section a {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #fff;
+                color: #333;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s ease, color 0.3s ease;
+                border: 2px solid #333;
+            }
+
+                .method-section a:hover {
+                    background-color: #333;
+                    color: #fff;
+                }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    <div class="menu">
+        <ul>
+            <li><a href="#history-connections">Historique des Connexions</a></li>
+            <li><a href="#history-simulations">Historique des Simulations</a></li>
+            <li><a href="#user-profiles">Profil des Utilisateurs</a></li>
+            <li><a href="#run-simulation">Faire des Simulations</a></li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div class="method-sections">
+            <section class="method-section" id="history-connections">
+                <h2>Historique des Connexions</h2>
+                <p>Consulter l'historique de toutes les connexions sur le site.</p>
+                <a href="/ConnexionHistoriques/Index">Voir l'historique</a>
+            </section>
+
+            <section class="method-section" id="history-simulations">
+                <h2>Historique des Simulations</h2>
+                <p>Consulter l'historique de toutes les simulations.</p>
+                <a href="/SimulationAdmins/Index">Voir l'historique</a>
+            </section>
+
+            <section class="method-section" id="user-profiles">
+                <h2>Profil des Utilisateurs</h2>
+                <p>Consulter le profil de tous les utilisateurs.</p>
+                <a href="/UserViewModels/Index">Voir les profils</a>
+            </section>
+
+            <section class="method-section" id="run-simulation">
+                <h2>Faire des Simulations</h2>
+                <p>Faire des simulations sur les données.</p>
+                <a href="/Home/IndexAdmin">Lancer une simulation</a>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

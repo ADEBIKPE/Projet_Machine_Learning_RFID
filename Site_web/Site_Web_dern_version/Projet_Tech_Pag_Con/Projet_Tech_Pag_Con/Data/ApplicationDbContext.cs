@@ -33,6 +33,9 @@ namespace Projet_Tech_Pag_Con.Data
                 .HasForeignKey(s => s.UtilisateurId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
+        public DbSet<ConnexionHistorique> ConnexionHistorique { get; set; } = default!;
+        public DbSet<Projet_Tech_Pag_Con.Models.UserLoginInfo> UserLoginInfo { get; set; } = default!;
+        public DbSet<Projet_Tech_Pag_Con.Models.UserViewModel> UserViewModel { get; set; } = default!;
 
     }
 }
