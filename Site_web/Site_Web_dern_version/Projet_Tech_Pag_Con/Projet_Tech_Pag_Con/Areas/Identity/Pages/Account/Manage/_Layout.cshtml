@@ -27,3 +27,38 @@
 @section Scripts {
     @RenderSection("Scripts", required: false)
 }
+@section Styles {
+    <style>
+        .user-profiles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .user-profile {
+            display: flex;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        .user-photo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .user-details {
+            flex-grow: 1;
+        }
+
+        .user-actions a {
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+}
