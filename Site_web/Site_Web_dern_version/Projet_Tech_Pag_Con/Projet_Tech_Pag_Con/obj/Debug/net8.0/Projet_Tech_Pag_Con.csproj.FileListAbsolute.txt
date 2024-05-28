@@ -1841,3 +1841,4 @@ C:\Users\Ramata\Downloads\Nouveau dossier\Projet_Machine_Learning_RFID\Site_web\
 C:\Users\Ramata\Downloads\Nouveau dossier\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net8.0\Projet_Tech_Pag_Con.pdb
 C:\Users\Ramata\Downloads\Nouveau dossier\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net8.0\Projet_Tech_Pag_Con.genruntimeconfig.cache
 C:\Users\Ramata\Downloads\Nouveau dossier\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\obj\Debug\net8.0\ref\Projet_Tech_Pag_Con.dll
+D:\Esigelec\2emeAnnee\S8\Projet_S8_V8\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\bin\Debug\net8.0\knowledge_base.json

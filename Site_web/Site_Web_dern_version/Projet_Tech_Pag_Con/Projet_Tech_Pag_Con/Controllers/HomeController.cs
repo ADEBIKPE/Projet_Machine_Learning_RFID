@@ -228,7 +228,9 @@ namespace Projet_Tech_Pag_Con.Controllers
                             Performance = (float)accuracy,
                             MatriceConfusion = "Aucune",
                             Temps_Execution = formattedExecutionTime,
-                            SimulationId = simu.Id
+                            SimulationId = simu.Id,
+                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
+                            UserRoleId = "1", // Utilisez le rôle de l'utilisateur actuel
                         };
 
                         _context.ExecutionMethode.Add(execMeth);
@@ -338,7 +340,9 @@ namespace Projet_Tech_Pag_Con.Controllers
                             Performance = jsonResponse.score, // Performance spécifique à RandomForest
                             MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à RandomForest
                             Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à RandomForest
-                            SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
+                            SimulationId = simu.Id,// Utiliser l'identifiant de la simulation créée
+                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
+                            UserRoleId = "1", // Utilisez le rôle de l'utilisateur actuel
                         };
                         _context.ExecutionMethode.Add(executionMethode);
                         await _context.SaveChangesAsync();
@@ -350,7 +354,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                             NomMethodeAdmin = "RandomForest",
                             DetailsAdmin = $"{detailsBuilder.ToString()} \n\n Détails de classement : \n{detailsClassement}",
                             PerformanceAdmin = jsonResponse.score,
-                            MatriceConfusionAdmin = jsonResponse.matriceDeConfusion.ToString(),
+                            MatriceConfusionAdmin = jsonResponse.matrice_de_confusion.ToString(),
                             Temps_ExecutionAdmin = tempsExecutionFormate,
                             UserId = userId,
                             SimulationIdAdmin = simu.Id
@@ -424,7 +428,9 @@ namespace Projet_Tech_Pag_Con.Controllers
                             Performance = jsonResponse.score, // Performance spécifique à KNN
                             MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à KNN
                             Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à KNN
-                            SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
+                            SimulationId = simu.Id,// Utiliser l'identifiant de la simulation créée
+                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
+                            UserRoleId = "1" // Utilisez le rôle de l'utilisateur actuel
                         };
                         _context.ExecutionMethode.Add(executionMethode);
                         await _context.SaveChangesAsync();
@@ -438,10 +444,10 @@ namespace Projet_Tech_Pag_Con.Controllers
                             NomMethodeAdmin = "KNN",
                             DetailsAdmin = $"{detailsBuilder.ToString()} \n\n Détails de classement : \n{detailsClassement}",
                             PerformanceAdmin = jsonResponse.score,
-                            MatriceConfusionAdmin = jsonResponse.matriceDeConfusion.ToString(),
-                            Temps_ExecutionAdmin = tempsExecutionFormate,
-                            UserId = userId,
-                            SimulationIdAdmin = simu.Id
+                            MatriceConfusionAdmin = jsonResponse.matrice_de_confusion.ToString(),
+                            Temps_ExecutionAdmin = tempsExecutionFormate,                            
+                            SimulationIdAdmin = simu.Id,
+                            UserId = userId
                         };
 
                         // Ajoutez l'instance à DbContext et enregistrez les modifications
@@ -520,7 +526,9 @@ namespace Projet_Tech_Pag_Con.Controllers
                             Performance = jsonResponse.score, // Performance spécifique à SVM
                             MatriceConfusion = jsonResponse.matrice_de_confusion.ToString(), // Matrice de confusion spécifique à SVM
                             Temps_Execution = tempsExecutionFormate, // Temps d'exécution spécifique à SVM
-                            SimulationId = simu.Id // Utiliser l'identifiant de la simulation créée
+                            SimulationId = simu.Id, // Utiliser l'identifiant de la simulation créée
+                            UserId = User.FindFirstValue(ClaimTypes.NameIdentifier), // Utilisez l'identifiant de l'utilisateur actuel
+                            UserRoleId = "1" // Utilisez le rôle de l'utilisateur actuel
                         };
                         _context.ExecutionMethode.Add(executionMethode);
                         await _context.SaveChangesAsync();
@@ -531,7 +539,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                             NomMethodeAdmin = "SVM",
                             DetailsAdmin = $"{detailsBuilder.ToString()} \n\n Détails de classement : \n{detailsClassement}",
                             PerformanceAdmin = jsonResponse.score,
-                            MatriceConfusionAdmin = jsonResponse.matriceDeConfusion.ToString(),
+                            MatriceConfusionAdmin = jsonResponse.matrice_de_confusion.ToString(),
                             Temps_ExecutionAdmin = tempsExecutionFormate,
                             UserId = userId,
                             SimulationIdAdmin = simu.Id

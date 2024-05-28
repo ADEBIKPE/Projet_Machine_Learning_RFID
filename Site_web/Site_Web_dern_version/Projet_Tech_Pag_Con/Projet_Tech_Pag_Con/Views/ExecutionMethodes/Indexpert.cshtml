@@ -96,22 +96,20 @@
            
             </select>
          <!-- Ajoutez d'autres options selon vos besoins 
-            <input type="text" id="methodFilter" name="methodFilter" value="@ViewData["MethodFilter"]" class="form-control" />
+            <input type="text" id="methodFilter" name="methodFilter" value="ViewData["MethodFilter"]" class="form-control" />
         -->
         </div>
-        @if (!User.IsInRole("Admin"))
-        {
-           <div class="form-group">
+        <!--<div class="form-group">
                 <label for="userFilter">Utilisateur:</label>
                 <select id="userFilter" name="userFilter" class="form-control">
                     <option value="">Sélectionnez un utilisateur</option>
-                            @foreach (var user in ViewBag.Users)
+                            foreach (var user in ViewBag.Users)
                             {
-                            <option value="@user">@user</option>
+                            <option value="user">user</option>
                             }
                 </select>
-           </div>
-        }
+           </div> -->
+
 
 
 

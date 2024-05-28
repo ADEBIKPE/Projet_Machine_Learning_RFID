@@ -32,9 +32,9 @@
                     <span class="detail-value">@user.Role</span>
                 </div>
                 <div class="user-actions">
-                    <a href="@Url.Action("Edit", "User", new { id = user.UserId })">Edit</a>
-                    <a href="@Url.Action("Details", "User", new { id = user.UserId })">Details</a>
-                    <a href="@Url.Action("Delete", "User", new { id = user.UserId })">Delete</a>
+                    <a href="@Url.Action("Edit", "UserViewModels", new { id = user.UserId })">Edit</a>
+                    <a href="@Url.Action("Details", "UserViewModels", new { id = user.UserId })">Details</a>
+                    <a href="@Url.Action("Delete", "UserViewModels", new { id = user.UserId })">Delete</a>
                 </div>
             </div>
         </div>
