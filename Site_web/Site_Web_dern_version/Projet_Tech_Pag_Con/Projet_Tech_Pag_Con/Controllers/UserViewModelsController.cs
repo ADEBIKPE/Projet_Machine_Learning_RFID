@@ -33,10 +33,11 @@ namespace Projet_Tech_Pag_Con.Controllers
                                      join role in _context.Roles on userRole.RoleId equals role.Id
                                      where !existingUsers.Contains(user.Email)  // Filtrer les utilisateurs déjà enregistrés
                                      select new UserViewModel
-                                     {   Id= user.Id,
+                                     {
+                                         Id = user.Id,
                                          Email = user.Email,
                                          UserId = user.Id,
-                                         PhoneNumber ="0258784542"/* user.PhoneNumber*/,
+                                         PhoneNumber = "0258784542"/* user.PhoneNumber*/,
                                          Role = role.Name
                                      }).ToListAsync();
 
@@ -80,35 +81,18 @@ namespace Projet_Tech_Pag_Con.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Email,UserId,PhoneNumber,Role")] UserViewModel userViewModel)
+        public async Task<IActionResult> Create(UserViewModel userViewModel)
         {
             if (ModelState.IsValid)
             {
-                // Create a new User entity
-                var user = new IdentityUser
-                {
-                    Id = userViewModel.UserId,
-                    Email = userViewModel.Email,
-                    PhoneNumber = userViewModel.PhoneNumber,
-                    // Additional properties can be set as needed
-                };
-                _context.Users.Add(user);
-
-                // Create a new UserRole entity based on the Role in UserViewModel
-                var userRole = new IdentityUserRole<string>
-                {
-                    UserId = userViewModel.UserId,
-                    RoleId = userViewModel.Role == "Admin" ? "1" : userViewModel.Role == "Guest" ? "2" : null
-                };
-                _context.UserRoles.Add(userRole);
-
-                // Add the UserViewModel entity to the context
+                // Vous n'avez pas besoin de définir manuellement UserId, laissez la base de données le générer automatiquement
                 _context.Add(userViewModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(userViewModel);
         }
+
 
         // GET: UserViewModels/Edit/5
         public async Task<IActionResult> Edit(string id)

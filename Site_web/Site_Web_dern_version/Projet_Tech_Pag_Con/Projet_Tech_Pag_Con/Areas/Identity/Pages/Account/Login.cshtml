@@ -77,11 +77,10 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>@ViewData["Title"]</h1>
-        <form id="account" method="post">
-            <h2>Use a local account to log in.</h2>
-            <hr />
+  <div class="container">
+    <form id="account" method="post" style="max-width: 400px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);">
+        <h2 style="font-family: 'Arial', sans-serif; transform: skewX(-15deg); text-align: center; color: #333;">Bienvenue sur le portail de connexion !</h2>
+        <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
             <div class="form-floating">
                 <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
@@ -115,24 +114,7 @@
             </div>
         </form>
 
-        <div class="external-login">
-            <h3>Or, use another service to log in:</h3>
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <p>There are no external authentication services configured. See this <a href="https://go.microsoft.com/fwlink/?LinkID=532715">article</a> about setting up this ASP.NET application to support logging in via external services.</p>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                        @foreach (var provider in Model.ExternalLogins!)
-                        {
-                            <button type="submit" class="btn" name="provider" value="@provider.Name">@provider.DisplayName</button>
-                        }
-                    </form>
-                }
-            }
-        </div>
+       
     </div>
 
     @section Scripts {
