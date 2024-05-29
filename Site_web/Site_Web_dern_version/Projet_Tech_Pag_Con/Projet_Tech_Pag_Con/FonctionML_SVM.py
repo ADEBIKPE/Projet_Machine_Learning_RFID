@@ -10,9 +10,11 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau, pathfile, degree,
     from selectfeatures import Xcols_func
     from sklearn.preprocessing import StandardScaler
     import time
-    import pandas as pd
+    import matplotlib
+    matplotlib.use('Agg')  # Utiliser la backend Agg de Matplotlib pour éviter les problèmes de thread
     import matplotlib.pyplot as plt
     import seaborn as sns
+    import pandas as pd
     import os
 
     start_time = time.time()
@@ -103,16 +105,26 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau, pathfile, degree,
     plt.ylabel('Nombre d\'EPCs')
     plt.grid(True)
     plt.tight_layout()
-
     # Définir le répertoire de sortie
     output_dir_path = os.path.join(os.getcwd(), 'wwwroot', 'images')
     os.makedirs(output_dir_path, exist_ok=True)
 
-    # Enregistrer le graphique dans le répertoire de sortie
-    plot_path = os.path.join(output_dir_path, 'boxplot_EPC_comparison_seaborn_SVM.png')
+    # Définir le chemin du fichier à enregistrer
+    file_name = 'boxplot_EPC_comparison_seaborn_KNN.png'
+    plot_path = os.path.join(output_dir_path, file_name)
+
+    # Supprimer les fichiers existants avec le même nom
+    if os.path.exists(plot_path):
+        os.remove(plot_path)
+        print(f"Deleted existing file: {plot_path}")
+
+    # Sauvegarder le nouveau fichier
     plt.savefig(plot_path)
-    print('chemin  :', plot_path)
     plt.close()
+    print(f"Saved new file: {plot_path}")
+    print('chemin :', plot_path)
+    print('chemin :', plot_path)
+
     
     return score, conf_matrix, execution_time, details_classement, plot_path
 

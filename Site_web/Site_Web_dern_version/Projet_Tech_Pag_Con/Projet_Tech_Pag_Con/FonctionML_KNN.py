@@ -1,6 +1,10 @@
 def KNN_method(metric, n_neighbors, n_plis, weights, pathfile, algorithm, leaf_size, p, n_jobs, output_dir):
     # Charger les données
     import time
+    import matplotlib
+    matplotlib.use('Agg')  # Utiliser la backend Agg de Matplotlib pour éviter les problèmes de thread
+    import matplotlib.pyplot as plt
+    import seaborn as sns
     from sklearn.model_selection import cross_val_score, cross_val_predict
     from sklearn.neighbors import KNeighborsClassifier
     from sklearn.preprocessing import StandardScaler, LabelEncoder
@@ -8,8 +12,6 @@ def KNN_method(metric, n_neighbors, n_plis, weights, pathfile, algorithm, leaf_s
     from preprocessing import preprocessing
     from selectfeatures import Xcols_func
     import pandas as pd
-    import matplotlib.pyplot as plt
-    import seaborn as sns
     import os
     
     start_time = time.time()
@@ -84,9 +86,20 @@ def KNN_method(metric, n_neighbors, n_plis, weights, pathfile, algorithm, leaf_s
         output_dir_path = os.path.join(os.getcwd(), 'wwwroot', 'images')
         os.makedirs(output_dir_path, exist_ok=True)
 
-        plot_path = os.path.join(output_dir_path, 'boxplot_EPC_comparison_seaborn_KNNtest.png')
+        # Définir le chemin du fichier à enregistrer
+        file_name = 'boxplot_EPC_comparison_seaborn_KNN.png'
+        plot_path = os.path.join(output_dir_path, file_name)
+
+        # Supprimer les fichiers existants avec le même nom
+        if os.path.exists(plot_path):
+            os.remove(plot_path)
+            print(f"Deleted existing file: {plot_path}")
+
+        # Sauvegarder le nouveau fichier
         plt.savefig(plot_path)
         plt.close()
+        print(f"Saved new file: {plot_path}")
+        print('chemin :', plot_path)
         print('chemin :', plot_path)
     else:
         plot_path = None

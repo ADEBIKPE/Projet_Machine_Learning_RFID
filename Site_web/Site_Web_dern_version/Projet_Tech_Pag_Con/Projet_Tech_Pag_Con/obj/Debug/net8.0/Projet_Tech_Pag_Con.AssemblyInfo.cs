@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Projet_Tech_Pag_Con")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+868a1b9d2b8ab2d004d3e72c16b6f46945eeb7fe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36a5a29ba5734d75cc9fdb150630f89a37f17180")]
 [assembly: System.Reflection.AssemblyProductAttribute("Projet_Tech_Pag_Con")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Projet_Tech_Pag_Con")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
