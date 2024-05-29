@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v8\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\areas\\identity\\pages\\account\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\areas\\identity\\pages\\account\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v8\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v8\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\controllers\\userviewmodelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\controllers\\userviewmodelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v8\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\executionmethodes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\executionmethodes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v8\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v8\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v8\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\controllers\\userviewmodelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\controllers\\userviewmodelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v8\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\userviewmodels\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -67,11 +79,49 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 14,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Login.cshtml.cs",
+              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs",
+              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs*",
+              "RelativeToolTip": "Projet_Tech_Pag_Con\\Areas\\Identity\\Pages\\Account\\Login.cshtml.cs*",
+              "ViewState": "AQIAAHgAAAAAAAAAAAAcwKYAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T07:13:37.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-29T03:08:06.956Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Index.cshtml",
+              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Index.cshtml",
+              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Index.cshtml",
+              "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Index.cshtml",
+              "ViewState": "AQIAAJwAAAAAAAAAAAAAAI8AAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-28T23:01:39.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Resultats.cshtml",
               "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Resultats.cshtml",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\Home\\Resultats.cshtml",
@@ -79,12 +129,11 @@
               "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\Home\\Resultats.cshtml",
               "ViewState": "AQIAAKUAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-28T16:51:15.783Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-28T16:51:15.783Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\Home\\Index.cshtml",
@@ -96,19 +145,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "UserViewModelsController.cs",
               "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Controllers\\UserViewModelsController.cs",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Controllers\\UserViewModelsController.cs",
               "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Controllers\\UserViewModelsController.cs",
               "RelativeToolTip": "Projet_Tech_Pag_Con\\Controllers\\UserViewModelsController.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAcwDIAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-28T16:23:12.441Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\UserViewModels\\Create.cshtml",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\UserViewModels\\Create.cshtml",
@@ -120,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\UserLoginInfoes\\Index.cshtml",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\UserLoginInfoes\\Index.cshtml",
@@ -132,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "SQLQuery1.sql ",
               "DocumentMoniker": "C:\\Users\\hp\\AppData\\Local\\Temp\\ikdjb1nd..sql",
               "ToolTip": "SQLQuery1.sql *",
@@ -141,7 +190,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "dbo.AspNetUserRoles [Donn\u00E9es]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__mssqllocaldb/Projet_Tech_Pag_Con/True/SqlTable/dbo.AspNetUserRoles.sql",
               "ToolTip": "dbo.AspNetUserRoles [Donn\u00E9es]",
@@ -150,7 +199,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "dbo.AspNetUsers [Donn\u00E9es]",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__mssqllocaldb/Projet_Tech_Pag_Con/True/SqlTable/dbo.AspNetUsers.sql",
               "ToolTip": "dbo.AspNetUsers [Donn\u00E9es]",
@@ -159,7 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 12,
               "Title": "flask_api.py",
               "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\flask_api.py",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\flask_api.py",
@@ -171,7 +220,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\Shared\\_Layout.cshtml",
@@ -183,7 +232,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Details.cshtml",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Details.cshtml",
@@ -195,7 +244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "Guest.cshtml",
               "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Guest.cshtml",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\Home\\Guest.cshtml",
@@ -207,7 +256,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "Simulation.cs",
               "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Models\\Simulation.cs",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Models\\Simulation.cs",
@@ -219,7 +268,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Data\\ApplicationDbContext.cs",
@@ -231,16 +280,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Controllers\\HomeController.cs*",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\Controllers\\HomeController.cs*",
+              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V8\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Projet_Tech_Pag_Con\\Controllers\\HomeController.cs",
               "ViewState": "AQIAAEgCAAAAAAAAAAAmwB0CAABgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T22:56:59.465Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-22T22:56:59.465Z"
             }
           ]
         }

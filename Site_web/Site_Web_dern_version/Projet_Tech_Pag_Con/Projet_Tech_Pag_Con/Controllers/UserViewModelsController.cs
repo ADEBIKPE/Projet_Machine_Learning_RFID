@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -22,17 +23,31 @@ namespace Projet_Tech_Pag_Con.Controllers
         // GET: UserViewModels
         public async Task<IActionResult> Index()
         {
-            var users = await (from user in _context.Users
-                               join userRole in _context.UserRoles on user.Id equals userRole.UserId
-                               join role in _context.Roles on userRole.RoleId equals role.Id
-                               select new UserViewModel
-                               {
-                                   Email = user.Email,
-                                   UserId = user.Id,
-                                   PhoneNumber = user.PhoneNumber,
-                                   Role = role.Name
-                               }).ToListAsync();
+            // Vérifier si les détails des utilisateurs existent déjà dans UserViewModel
+            var existingUsers = await (from userViewModel in _context.UserViewModel
+                                       select userViewModel.Email).ToListAsync();
 
+            // Récupérer les détails des utilisateurs à partir des tables Users, UserRoles et Roles
+            var userDetails = await (from user in _context.Users
+                                     join userRole in _context.UserRoles on user.Id equals userRole.UserId
+                                     join role in _context.Roles on userRole.RoleId equals role.Id
+                                     where !existingUsers.Contains(user.Email)  // Filtrer les utilisateurs déjà enregistrés
+                                     select new UserViewModel
+                                     {   Id= user.Id,
+                                         Email = user.Email,
+                                         UserId = user.Id,
+                                         PhoneNumber ="0258784542"/* user.PhoneNumber*/,
+                                         Role = role.Name
+                                     }).ToListAsync();
+
+            // Ajouter les nouveaux utilisateurs à la table UserViewModel
+            _context.UserViewModel.AddRange(userDetails);
+            await _context.SaveChangesAsync();
+
+            // Récupérer tous les utilisateurs de la table UserViewModel
+            var users = await _context.UserViewModel.ToListAsync();
+
+            // Retourner la vue avec les détails des utilisateurs
             return View(users);
         }
 
@@ -69,6 +84,25 @@ namespace Projet_Tech_Pag_Con.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Create a new User entity
+                var user = new IdentityUser
+                {
+                    Id = userViewModel.UserId,
+                    Email = userViewModel.Email,
+                    PhoneNumber = userViewModel.PhoneNumber,
+                    // Additional properties can be set as needed
+                };
+                _context.Users.Add(user);
+
+                // Create a new UserRole entity based on the Role in UserViewModel
+                var userRole = new IdentityUserRole<string>
+                {
+                    UserId = userViewModel.UserId,
+                    RoleId = userViewModel.Role == "Admin" ? "1" : userViewModel.Role == "Guest" ? "2" : null
+                };
+                _context.UserRoles.Add(userRole);
+
+                // Add the UserViewModel entity to the context
                 _context.Add(userViewModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -95,6 +129,7 @@ namespace Projet_Tech_Pag_Con.Controllers
         // POST: UserViewModels/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: UserViewModels/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Id,Email,UserId,PhoneNumber,Role")] UserViewModel userViewModel)
@@ -106,19 +141,59 @@ namespace Projet_Tech_Pag_Con.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                using (var transaction = await _context.Database.BeginTransactionAsync())
                 {
-                    _context.Update(userViewModel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UserViewModelExists(userViewModel.Id))
+                    try
                     {
-                        return NotFound();
+                        var user = await _context.Users.FindAsync(userViewModel.UserId);
+                        if (user == null)
+                        {
+                            return NotFound();
+                        }
+
+                        user.Email = userViewModel.Email;
+                        user.PhoneNumber = userViewModel.PhoneNumber;
+                        _context.Users.Update(user);
+
+                        var userRole = await _context.UserRoles.FirstOrDefaultAsync(ur => ur.UserId == userViewModel.UserId);
+                        if (userRole != null)
+                        {
+                            _context.UserRoles.Remove(userRole);
+                            await _context.SaveChangesAsync();
+
+                            var newRoleId = userViewModel.Role == "Admin" ? "1" : userViewModel.Role == "Guest" ? "2" : null;
+                            if (newRoleId != null)
+                            {
+                                var newUserRole = new IdentityUserRole<string>
+                                {
+                                    UserId = userViewModel.UserId,
+                                    RoleId = newRoleId
+                                };
+                                _context.UserRoles.Add(newUserRole);
+                            }
+                        }
+
+                        _context.Update(userViewModel);
+                        await _context.SaveChangesAsync();
+
+                        await transaction.CommitAsync();
                     }
-                    else
+                    catch (DbUpdateConcurrencyException)
                     {
+                        await transaction.RollbackAsync();
+
+                        if (!UserViewModelExists(userViewModel.Id))
+                        {
+                            return NotFound();
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        await transaction.RollbackAsync();
                         throw;
                     }
                 }
@@ -126,6 +201,7 @@ namespace Projet_Tech_Pag_Con.Controllers
             }
             return View(userViewModel);
         }
+
 
         // GET: UserViewModels/Delete/5
         public async Task<IActionResult> Delete(string id)

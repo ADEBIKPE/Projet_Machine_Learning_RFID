@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using Projet_Tech_Pag_Con.Data;
+using Projet_Tech_Pag_Con.Models;
 
 namespace Projet_Tech_Pag_Con.Areas.Identity.Pages.Account
 {
@@ -111,38 +112,57 @@ namespace Projet_Tech_Pag_Con.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
-
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-
             if (ModelState.IsValid)
             {
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+                // Cette action ne compte pas les échecs de connexion vers le verrouillage du compte
+                // Pour permettre aux échecs de mot de passe de déclencher le verrouillage du compte, définissez lockoutOnFailure: true
                 var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
-
+                    _logger.LogInformation("Utilisateur connecté.");
+                    // Enregistrer l'historique des connexions
                     var connexionHistorique = new ConnexionHistorique
                     {
                         Email = Input.Email,
                         DateConnexion = DateTime.Now,
                     };
-
                     _context.ConnexionHistorique.Add(connexionHistorique);
                     await _context.SaveChangesAsync();
-
-
+                    // Rechercher l'utilisateur par email dans UserViewModel
+                    var userDetails = await (from user in _context.Users
+                                             join userRole in _context.UserRoles on user.Id equals userRole.UserId
+                                             join role in _context.Roles on userRole.RoleId equals role.Id
+                                             where user.Email == Input.Email
+                                             select new UserViewModel
+                                             {
+                                                 Email = user.Email,
+                                                 UserId = user.Id,
+                                                 PhoneNumber = user.PhoneNumber,
+                                                 Role = role.Name
+                                             }).FirstOrDefaultAsync();
+                    if (userDetails != null)
+                    {
+                        // Vérifier si l'utilisateur a déjà été enregistré dans UserViewModel
+                        var existingUser = await _context.UserViewModel
+                            .FirstOrDefaultAsync(u => u.Email == userDetails.Email);
+                        if (existingUser == null)
+                        {
+                            // Ajouter une nouvelle entrée dans UserViewModel
+                            _context.UserViewModel.Add(userDetails);
+                            await _context.SaveChangesAsync();
+                        }
+                    }
                     return LocalRedirect(returnUrl);
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    // Gérer les échecs de connexion
+                    ModelState.AddModelError(string.Empty, "Tentative de connexion invalide.");
                     return Page();
                 }
             }
-
-            // If we got this far, something failed, redisplay form
+            // Si le modèle d'état n'est pas valide, recharger la page
             return Page();
         }
     }

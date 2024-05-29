@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,27 +14,38 @@ namespace Projet_Tech_Pag_Con.Controllers
     public class ExecutionMethodesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public ExecutionMethodesController(ApplicationDbContext context)
+        public ExecutionMethodesController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: ExecutionMethodes
         public async Task<IActionResult> Index(string methodFilter, string userFilter, DateTime? dateFilter)
         {
+            var currentUser = await _userManager.GetUserAsync(User); // Get current logged-in user
+            var isExpert = User.IsInRole("Admin"); // Check if the user is an admin
+
             var query = _context.ExecutionMethode
                 .Include(e => e.User)
                 .Include(e => e.UserRole)
                 .Include(e => e.Simulation) // Inclure l'entité Simulation
                 .AsQueryable();
 
+            if (isExpert)
+            {
+                // If user is admin, filter to show only their data
+                query = query.Where(e => e.UserId == currentUser.Id);
+            }
+
             if (!string.IsNullOrEmpty(methodFilter))
             {
                 query = query.Where(e => e.NomMethode.Contains(methodFilter));
             }
 
-            if (!string.IsNullOrEmpty(userFilter))
+            if (!isExpert && !string.IsNullOrEmpty(userFilter))
             {
                 // Filtrer par nom d'utilisateur
                 query = query.Where(e => e.User.UserName == userFilter);
