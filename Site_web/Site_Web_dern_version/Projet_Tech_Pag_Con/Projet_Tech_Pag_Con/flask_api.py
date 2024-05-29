@@ -5,13 +5,14 @@ from Methode_Analytique import Analiz
 from FonctionML_KNN import KNN_method
 from FonctionML_RF import RandomForest_method
 from FonctionML_SVM import SVM_method
+from Chatbotv2 import  load_knowledge_base,save_knowledge_base,preprocess_text,get_vector,find_best_match,get_answer_for_question
 from os.path import relpath
 import zipfile
 from flask_cors import CORS
 import spacy
 import json
 from sklearn.metrics.pairwise import cosine_similarity
-import numpy as np
+
 app = Flask(__name__)
 CORS(app) 
 
@@ -169,43 +170,7 @@ def knn_route():
         })
 
 # Charger le modèle de SpaCy
-nlp = spacy.load('en_core_web_md')
 
-def load_knowledge_base(file_path: str) -> dict:
-    try:
-        with open(file_path, 'r') as file:
-            return json.load(file)
-    except (FileNotFoundError, json.JSONDecodeError) as e:
-        print(f"Error loading knowledge base: {e}")
-        return {"questions": []}
-
-def save_knowledge_base(file_path: str, data: dict):
-    try:
-        with open(file_path, 'w') as file:
-            json.dump(data, file, indent=2)
-    except IOError as e:
-        print(f"Error saving knowledge base: {e}")
-
-def preprocess_text(text: str) -> str:
-    doc = nlp(text)
-    return " ".join([token.lemma_ for token in doc if not token.is_stop])
-
-def get_vector(text: str) -> np.ndarray:
-    return nlp(text).vector
-
-def find_best_match(user_question: str, questions: list[str]) -> str | None:
-    user_vector = get_vector(user_question)
-    question_vectors = [get_vector(q) for q in questions]
-    similarities = cosine_similarity([user_vector], question_vectors)[0]
-    best_index = np.argmax(similarities)
-    print(f"User question: '{user_question}' - Best match: '{questions[best_index]}' with similarity: {similarities[best_index]}")  # Debugging print
-    return questions[best_index] if similarities[best_index] > 0.6 else None
-
-def get_answer_for_question(question: str, knowledge_base: dict) -> str | None:
-    for q in knowledge_base.get("questions", []):
-        if q.get("question") == question:
-            return q.get("answer")
-    return None
 
 knowledge_base = load_knowledge_base('knowledge_base.json')
 
