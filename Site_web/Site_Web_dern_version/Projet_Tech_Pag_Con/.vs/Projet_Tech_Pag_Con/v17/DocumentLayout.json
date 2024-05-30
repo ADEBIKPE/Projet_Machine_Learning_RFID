@@ -1,58 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\",
+  "WorkspaceRootPath": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V10\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\executionmethodes\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\executionmethodes\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\home\\histogramme_boite_moustache.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v10\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\home\\histogramme_boite_moustache.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\home\\histogramme_boite_moustache.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\executionmethodes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\executionmethodes\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\home\\guest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\home\\guest.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\executionmethodes\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\executionmethodes\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\executionmethodes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\executionmethodes\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\home\\index_2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\home\\index_2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\controllers\\executionmethodescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\controllers\\executionmethodescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\simulationadmins\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\simulationadmins\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|d:\\esigelec\\2emeannee\\s8\\projet_s8_v9\\projet_machine_learning_rfid\\site_web\\site_web_dern_version\\projet_tech_pag_con\\projet_tech_pag_con\\views\\home\\vueadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C4418806-3090-4487-8B0F-0EB2ADEA7022}|Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con.csproj|solutionrelative:projet_tech_pag_con\\views\\home\\vueadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,165 +14,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Delete.cshtml",
-              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Delete.cshtml",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Delete.cshtml",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Delete.cshtml",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-30T03:21:01.591Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Create.cshtml",
-              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Create.cshtml",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Create.cshtml",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Create.cshtml",
-              "ViewState": "AQIAACYAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-30T03:20:01.828Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAANwBAAAAAAAAAAAqwOkBAABTAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-30T00:57:06.281Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "site.css",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\wwwroot\\css\\site.css",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\wwwroot\\css\\site.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-29T23:51:30.579Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Index_2.cshtml",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Index_2.cshtml",
-              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\Home\\Index_2.cshtml",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Index_2.cshtml",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\Home\\Index_2.cshtml",
-              "ViewState": "AQIAAJEBAAAAAAAAAAAAAKUBAAAiAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T23:46:23.514Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAACwAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T22:54:29.565Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ExecutionMethodesController.cs",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Controllers\\ExecutionMethodesController.cs",
-              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Controllers\\ExecutionMethodesController.cs",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Controllers\\ExecutionMethodesController.cs",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\Controllers\\ExecutionMethodesController.cs",
-              "ViewState": "AQIAABkAAAAAAAAAAAAgwB0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-29T22:27:58.667Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\SimulationAdmins\\Index.cshtml",
-              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\SimulationAdmins\\Index.cshtml",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\SimulationAdmins\\Index.cshtml",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\SimulationAdmins\\Index.cshtml",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T22:26:26.321Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Index.cshtml",
-              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Index.cshtml",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Index.cshtml",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Index.cshtml",
-              "ViewState": "AQIAAIEAAAAAAAAAAAAAAF8AAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T22:24:53.492Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Edit.cshtml",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Edit.cshtml",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\ExecutionMethodes\\Edit.cshtml",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T22:24:52.088Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Guest.cshtml",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Guest.cshtml",
-              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\Home\\Guest.cshtml",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Guest.cshtml",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\Home\\Guest.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAADYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T22:23:01.655Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "VueAdmin.cshtml",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\VueAdmin.cshtml",
-              "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\Home\\VueAdmin.cshtml",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\VueAdmin.cshtml",
-              "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\Home\\VueAdmin.cshtml",
-              "ViewState": "AQIAAGsAAAAAAAAAAAAkwHoAAABRAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T22:05:43.62Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Histogramme_Boite_Moustache.cshtml",
-              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Histogramme_Boite_Moustache.cshtml",
+              "DocumentMoniker": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V10\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Histogramme_Boite_Moustache.cshtml",
               "RelativeDocumentMoniker": "Projet_Tech_Pag_Con\\Views\\Home\\Histogramme_Boite_Moustache.cshtml",
-              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V9\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Histogramme_Boite_Moustache.cshtml",
+              "ToolTip": "D:\\Esigelec\\2emeAnnee\\S8\\Projet_S8_V10\\Projet_Machine_Learning_RFID\\Site_web\\Site_Web_dern_version\\Projet_Tech_Pag_Con\\Projet_Tech_Pag_Con\\Views\\Home\\Histogramme_Boite_Moustache.cshtml",
               "RelativeToolTip": "Projet_Tech_Pag_Con\\Views\\Home\\Histogramme_Boite_Moustache.cshtml",
               "ViewState": "AQIAACkAAAAAAAAAAAAowDwAAABJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-05-29T21:04:29.672Z"
+              "WhenOpened": "2024-05-29T21:04:29.672Z",
+              "EditorCaption": ""
             }
           ]
         }

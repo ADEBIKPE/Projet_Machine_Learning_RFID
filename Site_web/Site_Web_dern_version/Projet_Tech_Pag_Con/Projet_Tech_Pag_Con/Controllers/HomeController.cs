@@ -417,7 +417,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                         detailsBuilder.AppendLine("Hyperparamètres pour KNN :");
                         foreach (var param in requestData.GetType().GetProperties())
                         {
-                            detailsBuilder.AppendLine($"{param.Name} : {param.GetValue(requestData)}");
+                            detailsBuilder.AppendLine($"{param.Name} : {param.GetValue(requestData)}|");
                         }
 
                         // Enregistrement des résultats dans la table ExecutionMethode
@@ -514,7 +514,7 @@ namespace Projet_Tech_Pag_Con.Controllers
                         detailsBuilder.AppendLine("Hyperparamètres pour SVM :");
                         foreach (var param in requestData.GetType().GetProperties())
                         {
-                            detailsBuilder.AppendLine($"{param.Name} : {param.GetValue(requestData)}");
+                            detailsBuilder.AppendLine($"{param.Name} : {param.GetValue(requestData)}|");
                         }
 
 
