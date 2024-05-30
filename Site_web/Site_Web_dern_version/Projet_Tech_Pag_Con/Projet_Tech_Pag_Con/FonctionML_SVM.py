@@ -110,7 +110,7 @@ def SVM_method(regularisation, CoefNoyau, n_plis, Noyau, pathfile, degree,
     os.makedirs(output_dir_path, exist_ok=True)
 
     # Définir le chemin du fichier à enregistrer
-    file_name = 'boxplot_EPC_comparison_seaborn_KNN.png'
+    file_name = 'boxplot_EPC_comparison_seaborn_SVM.png'
     plot_path = os.path.join(output_dir_path, file_name)
 
     # Supprimer les fichiers existants avec le même nom

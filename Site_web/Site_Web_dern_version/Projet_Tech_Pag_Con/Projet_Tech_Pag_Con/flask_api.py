@@ -187,7 +187,7 @@ def ask():
         answer = get_answer_for_question(original_question, knowledge_base)
         return jsonify({'answer': answer})
     else:
-        return jsonify({'answer': "I don't know the answer. Can you teach me?"})
+        return jsonify({'answer': "Ohlala, je crois que je connais pas la reponse."})
 
 @app.route('/teach', methods=['POST'])
 def teach():

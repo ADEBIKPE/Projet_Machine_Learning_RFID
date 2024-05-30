@@ -10,7 +10,7 @@
 <head>
     <style>
         body {
-            background-image: url('https://livetechspot.com/wp-content/uploads/2020/07/Complete-Guide-List-on-How-to-Optimize-E-commerce-Website.jpg');
+            background-image: url('https://img.freepik.com/photos-gratuite/fond-noir-blanc-ondule_23-2150530922.jpg?t=st=1717037698~exp=1717041298~hmac=452300f8f38b62b2bd65008966f9bf20e3c814f2383e1f5d46a1a0867e7699ef');
             background-size: cover; /* Make sure the image covers the whole page */
             background-repeat: no-repeat; /* Prevent the image from repeating */
             background-attachment: fixed; /* Ensure the background stays fixed when scrolling */
@@ -79,6 +79,22 @@
                 border-color: #000; /* Changement de couleur de la bordure au survol */
             }
 
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #fff; /* Couleur de fond du bouton */
+            color: #333; /* Couleur du texte */
+            border: 2px solid #333; /* Bordure solide */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Transition douce pour le changement de couleur */
+        }
+
+            button[type="submit"]:hover {
+                background-color: #333; /* Changement de couleur de fond au survol */
+                color: #fff; /* Changement de couleur du texte au survol */
+            }
+
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -141,11 +157,11 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Temps_Execution)
                 </th>
+                <!--<th>
+                    Html.DisplayNameFor(model => model.User.UserName)
+                </th>-->
                 <th>
                     @Html.DisplayNameFor(model => model.User.UserName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UserRole.Name)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Simulation.DateSimulation)
@@ -173,12 +189,12 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Temps_Execution)
                     </td>
+                    <!--<td>
+                        Html.DisplayNameFor(model => model.User.UserName)
+
+                    </td>-->
                     <td>
-                        @Html.DisplayNameFor(model => model.User.UserName)
-                       
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.UserRole.Name)
+                        @Html.DisplayFor(modelItem => item.User.UserName)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Simulation.DateSimulation)

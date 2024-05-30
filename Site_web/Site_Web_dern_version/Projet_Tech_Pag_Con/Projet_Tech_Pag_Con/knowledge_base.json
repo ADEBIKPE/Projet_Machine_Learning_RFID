@@ -12,7 +12,6 @@
       "question": "En quoi consiste SVM ?",
       "answer": "SVM, qui signifie Support Vector Machine en anglais, est un algorithme d'apprentissage automatique supervise utilise pour la classification et la regression. Il est reconnu pour sa capacite a separer efficacement les donnees en deux ou plusieurs classes."
     },
-    
     {
       "question": "En quoi consiste KNN ?",
       "answer": "K-Nearest Neighbors, ou K plus proches voisins en francais, est un algorithme d'apprentissage automatique supervise simple et efficace, largement utilise pour la classification et la regression."
@@ -36,6 +35,18 @@
     {
       "question": "Quels sont les hyperparametres de la methode analytique ?",
       "answer": "Les principaux hyperparametres de la methode analytique sont le step qui designe le nombre de periodes de prises de decision a considerer dans une sous-fenetre et la marge qui est le nombre de secondes a considerer avant et apres la fenetre de temps consideree pendant laquelle les tags sont dans la fenetre de decision."
+    },
+    {
+      "question": "hallo",
+      "answer": "hallo"
+    },
+    {
+      "question": "hello",
+      "answer": "hi"
+    },
+    {
+      "question": "Abracadabra",
+      "answer": "ouii"
     }
   ]
 }

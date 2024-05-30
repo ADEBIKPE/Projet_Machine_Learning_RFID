@@ -39,11 +39,55 @@
     <title>@ViewData["Title"]</title>
     <style>
         body {
-            background-image: url('https://livetechspot.com/wp-content/uploads/2020/07/Complete-Guide-List-on-How-to-Optimize-E-commerce-Website.jpg');
+            background-image: url('https://img.freepik.com/photos-gratuite/fond-noir-blanc-ondule_23-2150530922.jpg?t=st=1717037698~exp=1717041298~hmac=452300f8f38b62b2bd65008966f9bf20e3c814f2383e1f5d46a1a0867e7699ef');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            color: black;
         }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #333; /* Dark background for tables */
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            color: black;
+            background-color: #faf0e6; /* Beige légèrement moins foncé */
+        }
+
+        th {
+            background-color: navajowhite;
+            color: black;
+        }
+
+        .result {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .image-container {
+            flex: 1 1 300px; /* Ajuster la largeur maximale des divs selon vos besoins */
+            margin: 10px; /* Espacement entre les divs */
+            text-align: center; /* Centrer le contenu */
+        }
+
+            .image-container img {
+                max-width: 100%; /* Assurez-vous que les images ne dépassent pas leur conteneur */
+            }
+
     </style>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -52,173 +96,183 @@
 </head>
 <body>
     <h2>@ViewData["Title"]</h2>
-    <canvas id="resultChart" width="400" height="200"></canvas>
 
-    <div class="col-md-8">
-                <div class="result" id="analizResult">
-                    @if (ViewBag.Accuracy != null && ViewBag.ExecutionTime != null)
-                    {
-                        <h4>Resultat Analytique:</h4>
-                        <pre>Accuracy: @ViewBag.Accuracy</pre>
-                        <pre>Execution Time: @ViewBag.ExecutionTime</pre>
-                        
-                    }
-                </div>
+    <div id="pdfContent">
+        <table>
+            <thead>
+                <tr>
+                    <th>Méthode</th>
+                    <th>Score</th>
+                    <th>Matrice de confusion</th>
+                    <th>Temps d'exécution</th>
+                    <th>Détails de classement</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (ViewBag.Accuracy != null && ViewBag.ExecutionTime != null)
+                {
+                    <tr>
+                        <td>Analytique</td>
+                        <td>@ViewBag.Accuracy</td>
+                        <td></td> <!-- Add specific data if available -->
+                        <td>@ViewBag.ExecutionTime</td>
+                        <td></td> <!-- Add specific data if available -->
+                    </tr>
+                }
+                @if (ViewBag.ScoreSVM != null)
+                {
+                    <tr>
+                        <td>SVM</td>
+                        <td>@ViewBag.ScoreSVM</td>
+                        <td>
+                            <table>
+                                @foreach (var row in ViewBag.MatriceDeConfusionSVM)
+                                {
+                                    <tr>
+                                        @foreach (var item in row)
+                                        {
+                                            <td>@item</td>
+                                        }
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                        <td>@ViewBag.TempsExecutionSVM</td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <th>Tags</th>
+                                    <th>Classé dans la boîte</th>
+                                    <th>Devrait être classé dans la boîte</th>
+                                </tr>
+                                @foreach (var detail in ViewBag.DetailsClassementSVM)
+                                {
+                                    <tr>
+                                        <td>@detail.Tags</td>
+                                        <td>@detail["Classé dans la boîte"]</td>
+                                        <td>@detail["Devrait être classé dans la boite"]</td>
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                }
+                @if (ViewBag.ScoreKNN != null)
+                {
+                    <tr>
+                        <td>KNN</td>
+                        <td>@ViewBag.ScoreKNN</td>
+                        <td>
+                            <table>
+                                @foreach (var row in ViewBag.MatriceDeConfusionKNN)
+                                {
+                                    <tr>
+                                        @foreach (var item in row)
+                                        {
+                                            <td>@item</td>
+                                        }
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                        <td>@ViewBag.TempsExecutionKNN</td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <th>Tags</th>
+                                    <th>Classé dans la boîte</th>
+                                    <th>Devrait être classé dans la boîte</th>
+                                </tr>
+                                @foreach (var detail in ViewBag.DetailsClassementKNN)
+                                {
+                                    <tr>
+                                        <td>@detail.Tags</td>
+                                        <td>@detail["Classé dans la boîte"]</td>
+                                        <td>@detail["Devrait être classé dans la boite"]</td>
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                }
+                @if (ViewBag.ScoreRF != null)
+                {
+                    <tr>
+                        <td>Random Forest</td>
+                        <td>@ViewBag.ScoreRF</td>
+                        <td>
+                            <table>
+                                @foreach (var row in ViewBag.MatriceDeConfusionRF)
+                                {
+                                    <tr>
+                                        @foreach (var item in row)
+                                        {
+                                            <td>@item</td>
+                                        }
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                        <td>@ViewBag.TempsExecutionRF</td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <th>Tags</th>
+                                    <th>Classé dans la boîte</th>
+                                    <th>Devrait être classé dans la boîte</th>
+                                </tr>
+                                @foreach (var detail in ViewBag.DetailsClassementRF)
+                                {
+                                    <tr>
+                                        <td>@detail.Tags</td>
+                                        <td>@detail["Classé dans la boîte"]</td>
+                                        <td>@detail["Devrait être classé dans la boite"]</td>
+                                    </tr>
+                                }
+                            </table>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div id="chartContainer">
+            <canvas id="resultChart" width="400" height="200"></canvas>
+        </div>
+    </div>
+
+    <div class="flex-container">
+        @if (ViewBag.ScoreSVM != null)
+        {
+            <div class="image-container">
+                <p>Boîte à moustache SVM:</p>
+                <img src="@ViewBag.CheminBoxPlotSVM" alt="BoxplotSVM des EPCs" />
+            </div>
+        }
+
+        @if (ViewBag.ScoreKNN != null)
+        {
+            <div class="image-container">
+                <p>Boîte à moustache KNN:</p>
+                <img src="@ViewBag.CheminBoxPlotKNN" alt="BoxplotSVM des EPCs" />
             </div>
 
-    <div class="col-md-8">
-        <div class="result" id=" =" svmResult>
-            @if (ViewBag.ScoreSVM != null)
-            {
-                <h4>Résultats SVM :</h4>
-                <p>Score : @ViewBag.ScoreSVM</p>
-                <p>Matrice de confusion :</p>
-                <table>
-                    @foreach (var row in ViewBag.MatriceDeConfusionSVM)
-                    {
-                        <tr>
-                            @foreach (var item in row)
-                            {
-                                <td>@item</td>
-                            }
-                        </tr>
-                    }
-                </table>
-                <p>Temps d'exécution : @ViewBag.TempsExecutionSVM</p>
-                <p>Détails de classement :</p>
-                <table>
-                    <tr>
-                        <th>Tags</th>
-                        <th>Classé dans la boîte</th>
-                        <th>Devrait être classé dans la boîte</th>
-                    </tr>
-                    @foreach (var detail in ViewBag.DetailsClassementSVM)
-                    {
-                        <tr>
-                            <td>@detail.Tags</td>
-                            <td>    </td>
-                            <td>@detail["Classé dans la boîte"]</td>
-                            <td>    </td>
-                            <td>@detail["Devrait être classé dans la boite"]</td>
-                        </tr>
-                    }
-                </table>
+        }
 
-                <p>Boîte à moustache :</p>
-                <img src="@ViewBag.CheminBoxPlotSVM" alt="BoxplotSVM des EPCs" />
-            }
-            else
-            {
-                <!-- <p>Aucun résultat disponible pour le SVM.</p>-->
-            }
-        </div>
-    </div>
-
-    <div class="col-md-8">
-        <div class="result" id="knnResult">
-            @if (ViewBag.ScoreKNN != null)
-            {
-                <h4>Résultats KNN:</h4>
-                <p>Score : @ViewBag.ScoreKNN</p>
-                <p>Matrice de confusion :</p>
-                <table>
-                    @foreach (var row in ViewBag.MatriceDeConfusionKNN)
-                    {
-                        <tr>
-                            @foreach (var item in row)
-                            {
-                                <td>@item</td>
-                            }
-                        </tr>
-                    }
-                </table>
-                <p>Temps d'exécution : @ViewBag.TempsExecutionKNN</p>
-                <p>Détails de classement :</p>
-                <table>
-                    <tr>
-                        <th>Tags</th>
-                        <th>Classé dans la boîte</th>
-                        <th>Devrait être classé dans la boîte</th>
-                    </tr>
-                    @foreach (var detail in ViewBag.DetailsClassementKNN)
-                    {
-                        <tr>
-                            <td>@detail.Tags</td>
-                            <td>    </td>
-                            <td>@detail["Classé dans la boîte"]</td>
-                            <td>    </td>
-                            <td>@detail["Devrait être classé dans la boite"]</td>
-                        </tr>
-                    }
-                </table>
-
-                <p>Boîte à moustache :</p>
-                <img src="@ViewBag.CheminBoxPlotKNN" alt="BoxplotSVM des EPCs" />
-
-                
-
-            }
-            else
-            {
-                <!-- <p>Aucun résultat disponible pour le SVM.</p>-->
-            }
-        </div>
-    </div>
-
-    <div class="col-md-8">
-        <div class="result" id="randomForestResult">
-            @if (ViewBag.ScoreRF != null)
-            {
-                <h4>Résultats Random Forest:</h4>
-                <p>Score : @ViewBag.ScoreRF</p>
-                <p>Matrice de confusion :</p>
-                <table>
-                    @foreach (var row in ViewBag.MatriceDeConfusionRF)
-                    {
-                        <tr>
-                            @foreach (var item in row)
-                            {
-                                <td>@item</td>
-                            }
-                        </tr>
-                    }
-                </table>
-                <p>Temps d'exécution : @ViewBag.TempsExecutionRF</p>
-                <p>Détails de classement :</p>
-                <table>
-                    <tr>
-                        <th>Tags</th>
-                        <th>Classé dans la boîte</th>
-                        <th>Devrait être classé dans la boîte</th>
-                    </tr>
-                    @foreach (var detail in ViewBag.DetailsClassementRF)
-                    {
-                        <tr>
-                            <td>@detail.Tags</td>
-                            <td>    </td>
-                            <td>@detail["Classé dans la boîte"]</td>
-                            <td>    </td>
-                            <td>@detail["Devrait être classé dans la boite"]</td>
-                        </tr>
-                    }
-                </table>
-
-                <p>Boîte à moustache :</p>
+        @if (ViewBag.ScoreRF != null)
+        {
+            <div class="image-container">
+                <p>Boîte à moustache RF:</p>
                 <img src="@ViewBag.CheminBoxPlotRF" alt="Aucun mauvais classement trouvé." />
-
-
-            }
-            else
-            {
-                <!-- <p>Aucun résultat disponible pour le SVM.</p>-->
-            }
-        </div>
+            </div>
+        }
     </div>
 
+    <!--
     <div class="conteneur-bouton">
         <button type="submit" class="bouton-envoyer">Générer le PDF</button>
     </div>
-
+    -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             var ctx = document.getElementById('resultChart').getContext('2d');
@@ -233,7 +287,7 @@
         @svmResult,
         @knnResult,
         @randomForestResult
-                                                        ],
+                                                                ],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -254,6 +308,16 @@
                         y: {
                             beginAtZero: true
                         }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: 'black' // Couleur des labels en noir
+                            }
+                        },
+                        tooltip: {
+                            bodyFontColor: 'black' // Couleur du texte du tooltip en noir
+                        }
                     }
                 }
             });
@@ -262,15 +326,39 @@
 
     <script>
         function generatePDF() {
-            let element = document.querySelector('body'); // Sélection de l'élément à convertir en PDF
+            let element = document.querySelector('body');
+
+            // Sauvegarder la position de défilement actuelle
+            let scrollPosition = window.scrollY;
+
+            // Forcer le défilement en haut de la page
+            window.scrollTo(0, 0);
+
+            // Définir les options pour html2pdf
             let opt = {
-                margin: 1,
+                margin: [0.5, 0.5, 0.5, 0.5],
                 filename: 'chart.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'cm', format: 'a4', orientation: 'portrait' }
+                html2canvas: {
+                    scale: 2,
+                    useCORS: true,
+                    scrollX: 0,
+                    scrollY: 0,
+                    windowWidth: document.documentElement.scrollWidth,
+                    windowHeight: document.documentElement.scrollHeight
+                },
+                jsPDF: {
+                    unit: 'cm',
+                    format: 'a4',
+                    orientation: 'portrait'
+                }
             };
-            html2pdf().set(opt).from(element).save(); // Conversion de l'élément en PDF et téléchargement
+
+            // Utiliser html2pdf pour convertir l'élément et générer le PDF
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restaurer la position de défilement
+                window.scrollTo(0, scrollPosition);
+            });
         }
     </script>
     <button onclick="generatePDF()" class="btn btn-primary" id="pdfButton">Télécharger le PDF</button>

@@ -78,7 +78,7 @@ def KNN_method(metric, n_neighbors, n_plis, weights, pathfile, algorithm, leaf_s
         # Tracer le boxplot avec Seaborn pour SVM
         plt.figure(figsize=(10, 6))
         sns.boxplot(x='Classification', y='EPC Numbers', hue='Classification', data=epc_data_svm, palette='Set3', dodge=False)
-        plt.title('Comparaison des EPCs correctement et incorrectement classés (SVM)')
+        plt.title('Comparaison des EPCs correctement et incorrectement classés (KNN)')
         plt.ylabel('Nombre d\'EPCs')
         plt.grid(True)
         plt.tight_layout()

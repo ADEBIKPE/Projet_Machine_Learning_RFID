@@ -7,12 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil - RFID Tunnel</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-image: url('https://livetechspot.com/wp-content/uploads/2020/07/Complete-Guide-List-on-How-to-Optimize-E-commerce-Website.jpg');
+            background-image: url('https://img.freepik.com/photos-gratuite/fond-noir-blanc-ondule_23-2150530922.jpg?t=st=1717037698~exp=1717041298~hmac=452300f8f38b62b2bd65008966f9bf20e3c814f2383e1f5d46a1a0867e7699ef');
             background-size: cover;
             background-position: center;
             color: #333;
@@ -22,68 +23,106 @@
             max-width: 1000px;
             margin: 40px auto;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
         }
 
         h1, h2 {
             text-align: center;
             color: #333;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+            display: inline-block;
         }
 
         .section {
             margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+            .section:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            }
 
             .section img {
                 width: 100%;
                 border-radius: 10px;
                 margin-bottom: 15px;
+                transition: transform 0.3s ease;
             }
+
+                .section img:hover {
+                    transform: scale(1.05);
+                }
 
             .section p {
                 font-size: 1.1em;
                 line-height: 1.6;
+                text-align: justify;
             }
 
-        .row {
-            margin-bottom: 15px;
+        .list-unstyled li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+            .list-unstyled li i {
+                color: #007bff;
+                margin-right: 10px;
+            }
+
+        dl {
+            margin-bottom: 0;
         }
 
         dt {
             font-weight: bold;
+            margin-top: 10px;
         }
 
         dd {
-            margin-left: 0;
+            margin-left: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome @ViewBag.UserName.Split('@')[0]</h1>
+        <h1>Welcome, @ViewBag.UserName.Split('@')[0]!</h1>
 
-        <div class="section">
-            <h2>Présentation du Projet</h2>
-        </div>
 
         <div class="section">
             <h2>Avantages de la Technologie RFID</h2>
-            
+            <ul class="list-unstyled">
+                <li><i class="fas fa-check-circle"></i>Automatisation des processus : L'utilisation de la RFID avec le machine learning permet d'automatiser les processus de suivi et de gestion des stocks, réduisant ainsi les erreurs humaines.</li>
+                <li><i class="fas fa-chart-line"></i>Amélioration de la précision : Les algorithmes de machine learning peuvent analyser les données RFID pour améliorer la précision du suivi des articles en temps réel.</li>
+                <li><i class="fas fa-cogs"></i>Maintenance prédictive : Les systèmes RFID peuvent être utilisés pour surveiller l'état des équipements et, grâce au machine learning, prédire quand une maintenance est nécessaire avant qu'une panne ne se produise.</
+                <li><i class="fas fa-thumbs-up"></i>Amélioration de l'efficacité : En combinant les technologies RFID et machine learning, les entreprises peuvent optimiser leurs opérations logistiques, réduire les coûts et augmenter l'efficacité.</li>
+                <li><i class="fas fa-lock"></i>Renforcement de la sécurité : La technologie RFID associée au machine learning permet de détecter des anomalies et des comportements suspects, renforçant ainsi la sécurité des biens et des personnes.</li>
+                <li><i class="fas fa-lightbulb"></i>Insights avancés : L'analyse des données collectées par RFID à l'aide du machine learning fournit des insights précieux pour la prise de décision stratégique.</li>
+            </ul>
         </div>
 
-        <div class="section">
-            <h2>Défis Rencontrés</h2>
-            
-        </div>
 
-        <div class="section">
 
-        </div>
-        
-        
+
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

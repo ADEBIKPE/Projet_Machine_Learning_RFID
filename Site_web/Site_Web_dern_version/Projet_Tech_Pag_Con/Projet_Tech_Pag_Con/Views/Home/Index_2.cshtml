@@ -1,0 +1,903 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma Page Web</title>
+    <!--<link rel="stylesheet" href="~/Styles/StyleSheet.css">
+
+     Formulaire pour KNN-->
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('https://livetechspot.com/wp-content/uploads/2020/07/Complete-Guide-List-on-How-to-Optimize-E-commerce-Website.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            width: 100%;
+        }
+
+            .menu ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+            }
+
+                .menu ul li {
+                    margin-right: 20px;
+                }
+
+                    .menu ul li:last-child {
+                        margin-right: 0;
+                    }
+
+                    .menu ul li a {
+                        color: #fff;
+                        text-decoration: none;
+                        font-weight: bold;
+                    }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .method-sections {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .method-section {
+            flex: 0 1 300px;
+            margin: 10px;
+            position: relative;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+
+            .method-section:hover {
+                transform: scale(1.05);
+                background-color: rgba(255, 255, 255, 0.9);
+            }
+
+            .method-section h2 {
+                margin-bottom: 10px;
+                font-size: 1.5em;
+            }
+
+            .method-section p {
+                margin-bottom: 20px;
+            }
+
+            .method-section a {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #fff;
+                color: #333;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s ease, color 0.3s ease;
+                border: 2px solid #333;
+            }
+
+                .method-section a:hover {
+                    background-color: #333;
+                    color: #fff;
+                }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Couleur de fond transparente pour chaque section */
+        .analytique {
+            background-color: rgba(10, 0, 0, 0.3); /* Rouge transparent */
+        }
+
+        .svm {
+            background-color: rgba(10, 0, 0, 0.3); /* Vert transparent */
+        }
+
+        .knn {
+            background-color: rgba(10, 0, 0, 0.3)
+        }
+
+        .RandomForest {
+            background-color: rgba(10, 0, 0, 0.3)
+        }
+
+        .method-section:hover {
+            flex-grow: 2; /* Élargit la section au survol */
+        }
+
+        .method-section h2 {
+            margin-right: 20px; /* Espacement entre le titre et le formulaire */
+        }
+
+
+        form {
+            margin-top: 30px; /* Espacement du formulaire par rapport au contenu */
+            text-align: center;
+        }
+
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #007bff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+        }
+
+        .chatbox-container {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            flex-direction: column;
+        }
+
+        .chatbox-header {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            text-align: center;
+        }
+
+        .chatbox-messages {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chatbox-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+            .chatbox-input input {
+                flex: 1;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                margin-right: 10px;
+            }
+
+            .chatbox-input button {
+                padding: 10px 15px;
+                border: none;
+                background-color: #007bff;
+                color: white;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+        .message {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 70%;
+        }
+
+            .message.user {
+                background-color: #dcf8c6;
+                align-self: flex-end;
+            }
+
+            .message.bot {
+                background-color: #f1f0f0;
+                align-self: flex-start;
+            }
+
+        .timestamp {
+            font-size: 0.8em;
+            color: #999;
+            text-align: right;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 1em;
+            margin-top: 10px; /* Espacement entre le formulaire et le select */
+        }
+
+        button[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff; /* Couleur de fond du bouton */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease; /* Transition douce pour le changement de couleur */
+        }
+
+            button[type="submit"]:hover {
+                background-color: #0056b3; /* Changement de couleur au survol */
+            }
+
+        .form-container {
+            display: none;
+        }
+        /* Cacher les boutons par défaut */
+        .param-description-btn {
+            display: none;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        /* Afficher les boutons au survol de leur parent */
+        div:hover .param-description-btn {
+            display: inline-block;
+        }
+    </style> 
+</head>
+<body>
+    <h1 class="welcome-title">BIENVENUE SUR VOTRE SITE DE GESTION LOGISTIQUE</h1>
+    <section class="horizontal-section">
+        <div class="import-section">
+            <form method="post" asp-action="Upload" asp-controller="Home" enctype="multipart/form-data">
+                <label for="file">Choisissez le fichier à traiter </label>
+                <input type="file" id="file" name="files" multiple>
+                <button type="submit">Soumettre</button>
+            </form>
+        </div>
+    </section>
+    <form asp-action="Valider" id="form" method="post" asp-controller="Home">
+    <div class="method-sections">
+        <section class="method-section analytique" id="method-Analytique">
+            <h2>Méthode Analytique</h2>
+        <ul class="Menu">
+        <li>
+            <input type="checkbox" id="checkbox-Analytique" name="method1" value="Analytique" onclick="toggleForm('Analytique')">
+            <label for="checkbox-Analytique">Méthode Analytique</label>
+
+                        <div id="form-container-Analytique" class="form-container">
+                            <div>
+                                <label for="Param1000">nombre de période dans une sous fenetre</label>
+                                <span class="param-description-btn" data-description="..............">?</span>
+                                <select id="Param1000" name="Param1000">
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param1111">marge de part et d'autres de la petite fenetre de décision'</label>
+                                <span class="param-description-btn" data-description="..........">?</span>
+                                <select id="Param1111" name="Param1111">
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+
+                                </select>
+                            </div>
+
+                </div>
+
+
+
+        </li>
+        </ul>
+        </section>
+        <section class="method-section svm" id="method-SVM">
+        <h2>Méthode SVM</h2>
+        <ul class="Menu">
+            <li>
+                <input type="checkbox" id="checkbox-SVM" name="method2" value="SVM" onclick="toggleForm('SVM')">
+
+                <label for="checkbox-SVM">Méthode SVM</label>
+                <div id="form-container-SVM" class="form-container">
+                    
+
+                        <!-- Formulaire pour SVM -->
+                        <div>
+                            <label for="Param1">Paramètre de régularisation(C)</label>
+                                <span class="param-description-btn" data-description="Il contrôle la trade-off entre la marge maximale et la classification correcte des points d'entraînement">?</span>                            <select id="Param1" name="Param1">
+                                <option value="1.0">Par défaut:1.0</option>
+                                <option value="100">Maximum:100</option>
+                                <option value="0.1">Minimum:0.1</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="Param2">Paramètre du noyau(Kernel)</label>
+                            <span class="param-description-btn" data-description="Le noyau à utiliser dans l'algorithme SVM">?</span>
+                            <br />
+                            <select id="Param2" name="Param2">
+                                <option value="rbf">RBF</option>
+                                <option value="poly">Poly</option>
+                                <option value="linear">Linear</option>
+                                <option value="sigmoid">Sigmoid</option>
+                                <option value="precomputed">Precomputed</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="Param3">Coefficient du noyau(Gamma)</label>
+                            <span class="param-description-btn" data-description="Il définit jusqu'à quel point l'influence d'un seul exemple d'entraînement s'étend">?</span>
+                            <br />
+                            <select id="Param3" name="Param3">
+                                <option value="10">Maximum:10</option>
+                                <option value="0.001">Minimum:0,001</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="Param4">Nombre de plis pour validation croisée</label>
+                            <span class="param-description-btn" data-description="Nombre de plis pour validation croisée">?</span>
+                            <br />
+                            <select id="Param4" name="Param4">
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                            <div>
+                                <label for="Param5">Degré du noyau(Degree)</label>
+                                <span class="param-description-btn" data-description="Le degré du polynôme si le noyau est de type 'poly'">?</span>
+                                <br />
+                                <input type="number" id="Param5" name="Param5" min="1" max="10" value="3">
+                            </div>
+                            <div>
+                                <label for="Param6">Coefficient indépendant du noyau(Coef0)</label>
+                                <span class="param-description-btn" data-description="Le degré du polynôme si le noyau est de type 'poly'">?</span>
+                                <br />
+                                <input type="number" id="Param6" name="Param6" min="0.0" max="1" step="0.1" value="0.2">
+                            </div>
+                            <div>
+                                <label for="Param7">Activer le rétrécissement de la marge(Shrinking)</label>
+                                <span class="par<a href=" D:\Esigelec\2emeAnnee\S8\Projet_S8_VersG\Nouveau dossier\Nouveau dossier_\Projet_S8_V9\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\Views\Home\Index.cshtml">D:\Esigelec\2emeAnnee\S8\Projet_S8_VersG\Nouveau dossier\Nouveau dossier_\Projet_S8_V9\Projet_Machine_Learning_RFID\Site_web\Site_Web_dern_version\Projet_Tech_Pag_Con\Projet_Tech_Pag_Con\Views\Home\Index.cshtml</a>am-description-btn" data-description="Activer ou désactiver le rétrécissement de la marge">?</span>
+                                <br />
+                                <select id="Param7" name="Param7">
+                                    <option value="True">Oui</option>
+                                    <option value="False">Non</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param8">Activer la probabilité de sortie(Probability)</label>
+                                <span class="param-description-btn" data-description="Activer ou désactiver la probabilité de sortie">?</span>
+                                <br />
+                                <select id="Param8" name="Param8">
+                                    <option value="False">Non</option>
+                                    <option value="True">Oui</option>
+                                    
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param9">Tolérance de tolérance d'arrêt(Tol)</label>
+                                <span class="param-description-btn" data-description="La tolérance pour arrêter l'optimisation">?</span>
+                                <br />
+                                <input type="number" id="Param9" name="Param9" min="0.001" step="0.001" value="0.001">
+                            </div>
+                            <div>
+                                <label for="Param10">Taille du cache(Cache Size)</label>
+                                <span class="param-description-btn" data-description="La taille du cache en Mo">?</span>
+                                <br />
+                                <input type="number" id="Param10" name="Param10" min="200" max="500" step="50" value="200">
+                            </div>
+                            <div>
+                                <label for="Param11">Verbosité(Verbose)</label>
+                                <span class="param-description-btn" data-description="Le niveau de verbosité">?</span>
+                                <br />
+                                <select id="Param11" name="Param11">
+                                    <option value="False">Non</option>
+                                    <option value="True">Oui</option>
+                                    
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param12">Nombre maximal d'itérations(Max Iter)</label>
+                                <span class="param-description-btn" data-description="Le nombre maximal d'itérations">?</span>
+                                <br />
+                                <input type="number" id="Param12" name="Param12" min="-1" max="60" step="5" value="2">
+                            </div>
+                            <div>
+                                <label for="Param13">Forme de la fonction de décision(Decision Function Shape)</label>
+                                <span class="param-description-btn" data-description="La forme de la fonction de décision">?</span>
+                                <br />
+                                <select id="Param13" name="Param13">
+                                    <option value="ovr">One-vs-Rest</option>
+                                    <option value="ovo">One-vs-One</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param14">Break Ties</label>                                
+                                <span class="param-description-btn" data-description="Détermination de la règle de rupture">?</span>
+                                <br />
+                                <select id="Param14" name="Param14">
+                                    <option value="False">Faux</option>
+                                    <option value="True">Vrai</option>
+                                    
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param15">Seed pour la randomisation(Random State)</label>
+                                <span class="param-description-btn" data-description="Seed pour la randomisation">?</span>
+                                <br />
+                                <input type="number" id="Param15" name="Param15" min="24" value="42">
+                            </div>
+                       
+
+                   
+
+                </div>
+                
+
+            </li>
+        </ul>
+        </section>
+        <section class="method-section knn" id="method-KNN">
+        <h2>Méthode KNN</h2>
+        <ul class="Menu">
+        <li>
+            <input type="checkbox" id="checkbox-KNN" name="method3" value="KNN" onclick="toggleForm('KNN')">
+            <label for="checkbox-KNN">Méthode KNN</label>
+            <div id="form-container-KNN" class="form-container">
+                
+                    <!-- Formulaire pour KNN -->
+                     <div>
+                      <label for="Param16">metric</label>
+                     <span class="param-description-btn" data-description="La mesure de distance utilisée pour calculer la proximité entre les points.">?</span>
+                       <br />
+                       <select id="Param16" name="Param16">
+                         <option value="minkowski">Minkowski</option>
+                         <option value="euclidean">Euclidienne</option>
+                         <option value="manhattan">Manhattan</option>
+                       </select>
+                     </div>
+                    <div>
+                        <label for="Param17">n_neighbors</label>
+                        <span class="param-description-btn" data-description="Le nombre de voisins à considérer lors de la prédiction.">?</span>
+                        <br />
+                        <select id="Param17" name="Param17">
+                            <option value="5">Default: 5</option>
+                            <option value="20">Maximum: 20</option>>
+                            <option value="5">Minimum: 5</option>
+                            
+                        </select>
+                    </div>
+                                <div>
+                                    <label for="Param18">Nombre de plis pour validation croisée</label>
+                                    <select id="Param18" name="Param18">
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                            <div>
+                                <label for="Param19">weights</label>
+                                
+                                <span class="param-description-btn" data-description="La méthode utilisée pour pondérer les voisins.">?</span>
+                                <br />
+
+                                <select id="Param19" name="Param19">
+                                    <option value="uniform">Uniforme</option>
+                                    <option value="distance">Distance</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param20">algorithm</label>
+                                <span class="param-description-btn" data-description="L'algorithme utilisé pour calculer les voisins les plus proches.">?</span>
+                                <br />
+                                
+                                <select id="Param20" name="Param20">
+                                    <option value="auto">Auto</option>
+                                    <option value="ball_tree">Ball Tree</option>
+                                    <option value="kd_tree">KD Tree</option>
+                                    <option value="brute">Brute</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param21">leaf_size</label>
+                                <span class="param-description-btn" data-description="La taille de la feuille pour les arbres ball ou KD.">?</span>
+                                <br />
+                                                               
+                                <input type="number" id="Param21" name="Param21" min="30" max="60" step="5" value="30">
+                                
+                            </div>
+                            <div>
+                                <label for="Param22">p</label>
+                                <span class="param-description-btn" data-description="Paramètre pour la distance de Minkowski.">?</span>
+                                <br />
+                                <input type="number" id="Param22" name="Param22" min="2" step="1" value="2">
+                                
+                            </div>
+                            <div>
+                                <label for="Param23">n_jobs</label>
+                                <span class="param-description-btn" data-description="Nombre de tâches à exécuter en parallèle.">?</span>
+                                <br />
+                                <input type="number" id="Param23" name="Param23" min="-1" max="20" step="1" value="-1">
+                              
+                            </div>
+                       
+            </div>
+                   
+            
+        </li>
+       </ul>
+        </section>
+        <section class="method-section RandomForest" id="method-RandomForest">
+        <h2>Méthode Random Forest</h2>
+        <ul class="Menu">
+            <li>
+                <input type="checkbox" id="checkbox-RandomForest" name="method4" value="RandomForest" onclick="toggleForm('RandomForest')">
+                <label for="checkbox-RandomForest">Méthode RandomForest</label>
+                <div id="form-container-RandomForest" class="form-container">
+                       
+                        <!-- Formulaire pour RandomForest -->
+                            <div>
+                                <label for="Param24">n_estimators</label>
+                               <span class="param-description-btn" data-description="Le nombre d'arbres de décision dans la forêt.">?</span>
+                                <br />
+
+                                <input type="number" id="Param24" name="Param24" min="50" step="50" value="100">
+                            </div>
+                            <div>
+                                <label for="Param25">min_samples_split</label>
+                                <span class="param-description-btn" data-description="Le nombre minimum d'échantillons requis pour diviser un nœud interne.">?</span>
+                                <br />
+                                <input type="number" name="Param25" id="Param25" min="2" step="1" value="2">
+                            </div>
+                            <div>
+                                <label for="Param26">max_depth</label>
+                                
+                                <span class="param-description-btn" data-description="La profondeur maximale de chaque arbre de décision.">?</span>
+                                <br />
+                                <input type="number" name="Param26" id="Param26" min="1" max="10" step="1" value="3">                            </div>
+                            <div>
+                                <label for="Param27">criterion</label>
+                                <span class="param-description-btn" data-description="La fonction pour mesurer la qualité d'une partition.">?</span>
+                                <br />
+                                <select id="Param27" name="Param27">
+                                    <option value="gini">Gini</option>
+                                    <option value="entropy">Entropie</option>
+                                    <option value="log_loss">Log_loss</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param28">max_features</label>
+                                <span class="param-description-btn" data-description="Le nombre de caractéristiques à considérer lors de la recherche de la meilleure partition.">?</span>
+                                <br />
+                                <select id="Param28" name="Param28">
+                                    <option value="sqrt">Sqrt</option>
+                                    <option value="log2">Log2</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param29">min_samples_leaf</label>
+                                <span class="param-description-btn" data-description="Le nombre minimum d'échantillons requis pour être au niveau d'une feuille.">?</span>
+                                <br />
+                                <input type="number" name="Param29" id="Param29" min="1" max="10" step="1" value="1">
+                            </div>
+                            <div>
+                                <label for="Param30">min_weight_fraction_leaf</label>
+                                <span class="param-description-btn" data-description="Le poids minimum qu'un échantillon doit avoir pour être considéré dans un nœud de feuille.">?</span>
+                                <br />
+                                <input type="number" name="Param30" id="Param30" min="0.0" max="1.0" step="0.1" value="0.0">
+                            </div>
+                            <div>
+                                <label for="Param31">max_leaf_nodes</label>
+                                <span class="param-description-btn" data-description="Le nombre maximum de nœuds de feuille.">?</span>
+                                <br />
+                                <input type="number" name="Param31" id="Param31" min="2" max="10" step="1" value="2">
+                            </div>
+                            <div>
+                                <label for="Param32">min_impurity_decrease</label>
+                                <span class="param-description-btn" data-description="Un nœud sera divisé si cette division induit une diminution de l'impureté plus grande ou égale à cette valeur.">?</span>
+                                <br />
+                                <input type="number" name="Param32" id="Param32" min="0.0" max="1.0" step="0.1" value="0.0">
+                            </div>
+                            <div>
+                                <label for="Param33">bootstrap</label>
+                                <span class="param-description-btn" data-description="Indique si les échantillons sont tirés avec remplacement.">?</span>
+                                <br />
+                                <select id="Param33" name="Param33">
+                                    <option value="True">True</option>
+                                    <option value="False">False</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param34">oob_score</label>
+                                <span class="param-description-btn" data-description="Indique si d'utiliser les échantillons hors-bag pour estimer la précision du généralisateur.">?</span>
+                                <br />
+                                <select id="Param34" name="Param34">
+                                    <option value="False">False</option>
+                                    <option value="True">True</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param35">n_jobs</label>
+                                <span class="param-description-btn" data-description="Le nombre de jobs parallèles à exécuter pour l'ajustement de l'arbre de décision.">?</span>
+                                <br />
+                                <input type="number" name="Param35" id="Param35" min="-1" max="20" step="1" value="-1">
+                            </div>
+                            <div>
+                                <label for="Param36">random_state</label>
+                                <span class="param-description-btn" data-description="Contrôle le tirage aléatoire des échantillons utilisés lors de la construction des arbres de décision.">?</span>
+                                <br />
+                                <input type="number" name="Param36" id="Param36" min="0" step="1" value="44">
+                            </div>
+                            <div>
+                                <label for="Param37">verbose</label>
+                                <span class="param-description-btn" data-description="Contrôle la verbosité lors de l'ajustement et de la prédiction.">?</span>
+                                <br />
+                                <input type="number" name="Param37" id="Param37" min="0" step="1" value="0">
+                            </div>
+                            <div>
+                                <label for="Param38">warm_start</label>
+                                <span class="param-description-btn" data-description="Quand il est True, réutilise la solution de l'appel précédent pour ajuster et ajouter plus d'estimateurs à l'ensemble.">?</span>
+                                <br />
+                                <select id="Param38" name="Param38">
+                                    <option value="False">False</option>
+                                    <option value="True">True</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param39">class_weight</label>
+                                <span class="param-description-btn" data-description="Les poids associés à chaque classe dans l'ensemble de données.">?</span>
+                                <br />
+                                <select id="Param39" name="Param39">
+                                    <option value="balanced">Balanced</option>
+                                    <option value="balanced_subsample">Balanced Subsample</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="Param40">ccp_alpha</label>
+                                <span class="param-description-btn" data-description="Paramètre de complexité utilisé pour la stratégie d'élagage Minimal Cost-Complexity Pruning.">?</span>
+                                <br />
+                                <input type="number" name="Param40" id="Param40" min="0.0" step="0.1" value="0.0">
+                            </div>
+                            <div>
+                                <label for="Param41">max_samples</label>
+                                <span class="param-description-btn" data-description="Le nombre d'échantillons à tirer des données d'apprentissage pour s'entraîner chaque arbre de décision.">?</span>
+                                <br />
+                                <input type="number" name="Param41" id="Param41" min="0" max="1" step="0.1" value="1">
+                            </div>
+                        <div>
+                            <label for="Param42">Nombre de plis pour validation croisée</label>
+                            <select id="Param42" name="Param42">
+                                <option value=5>5</option>
+                                <option value=6>6</option>
+                                <option value=7>7</option>
+                                <option value=8>8</option>
+                                <option value=9>9</option>
+                                <option value=10>10</option>
+                            </select>
+
+                        </div>
+                        
+                    
+                </div>
+                
+            </li> 
+        
+        </ul>
+            
+        </section>
+        
+            <div class="conteneur-bouton">
+            <button type="submit" class="bouton-envoyer">Valider</button>
+            </div>
+            <!-- <div class="conteneur-bouton">
+                 Utilisez un lien pour déclencher l'action 
+                <a href="Url.Action("Histogramme_Boite_Moustache", "Home", new {
+        resultatAnalytique = ViewBag.Accuracy != null ? ViewBag.Accuracy : 0,
+        resultatRandomForest = ViewBag.ScoreRF != null ? ViewBag.ScoreRF : 0,
+        resultatSVM = ViewBag.ScoreSVM != null ? ViewBag.ScoreSVM : 0,
+        resultatKNN = ViewBag.ScoreKNN != null ? ViewBag.ScoreKNN : 0
+    })" class="bouton-envoyer">Afficher l'histogramme</a>
+                    </div>-->
+
+
+
+           
+    </div>
+    </form>
+    <div class="chat-icon" onclick="toggleChatbox()">💬</div>
+
+    <div class="chatbox-container" id="chatbox-container">
+        <div class="chatbox-header">
+            Chatbot
+        </div>
+        <div class="chatbox-messages" id="chatbox-messages">
+            <!-- Messages will be displayed here -->
+        </div>
+        <div class="chatbox-input">
+            <input type="text" id="user-input" placeholder="Ask a question...">
+            <button onclick="askQuestion()">Send</button>
+        </div>
+    </div>
+
+
+    <!-- Script JavaScript 
+    <script src="script.js"></script>-->
+    <!-- Script JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        function toggleForm(methodName) {
+            var formContainer = document.getElementById('form-container-' + methodName);
+            var checkbox = document.getElementById('checkbox-' + methodName);
+
+            if (checkbox.checked) {
+                formContainer.style.display = 'block'; // Affiche le formulaire si la case est cochée
+            } else {
+                formContainer.style.display = 'none'; // Masque le formulaire si la case n'est pas cochée
+            }
+        }
+        // Récupérer tous les éléments span avec la classe param-description-btn
+        const descriptionButtons = document.querySelectorAll('.param-description-btn');
+
+        // Pour chaque bouton, ajoutez un gestionnaire d'événements pour afficher la description au survol
+        descriptionButtons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                const description = button.getAttribute('data-description');
+                alert(description); // Remplacez cela par du code pour afficher la description de manière plus esthétique
+            });
+        });
+
+        /*function showForm(methodName) {
+            var formContainer = document.getElementById('form-container-' + methodName);
+            if (formContainer.style.display === 'block') {
+                formContainer.style.display = 'none';
+            } else {
+                formContainer.style.display = 'block';
+            }
+
+            // Assure que le formulaire est affiché en bas de la carte
+            window.scrollTo({
+                top: formContainer.offsetTop,
+                behavior: 'smooth'
+            });
+        }*/
+        
+        function toggleChatbox() {
+            const chatboxContainer = document.getElementById('chatbox-container');
+            chatboxContainer.style.display = (chatboxContainer.style.display === 'none' || chatboxContainer.style.display === '') ? 'flex' : 'none';
+        }
+
+        async function askQuestion() {
+            console.log("askQuestion function called"); // Debugging line
+            const userInput = document.getElementById('user-input').value;
+            if (!userInput.trim()) return;  // Ne rien faire si l'entrée utilisateur est vide
+
+            try {
+                const response = await fetch('http://127.0.0.1:5000/ask', {  // URL de l'endpoint Flask
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ question: userInput }),
+                });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                displayMessage('You', userInput, 'user');
+                displayMessage('Bot', data.answer, 'bot');
+
+                if (data.answer === "Ohlala, je crois que je connais pas la réponse. Pouvez-vous m'apprendre ?") {
+                    const userAnswer = prompt("Je ne connais pas la réponse. Pouvez-vous m'apprendre ? S'il vous plaît, fournissez la réponse:");
+
+                    if (userAnswer && userAnswer.trim()) {
+                        const teachResponse = await fetch('http://127.0.0.1:5000/teach', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ question: userInput, answer: userAnswer }),
+                        });
+
+                        if (!teachResponse.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+
+                        const teachData = await teachResponse.json();
+                        if (teachData.status === 'success') {
+                            displayMessage('Bot', 'Merci! J\'ai appris quelque chose de nouveau.', 'bot');
+                        } else {
+                            displayMessage('Bot', 'Il y a eu une erreur lors de l\'apprentissage de la nouvelle information.', 'bot');
+                        }
+                    }
+                }
+
+                document.getElementById('user-input').value = '';  // Clear the input field
+            } catch (error) {
+                console.error('There has been a problem with your fetch operation:', error);
+                displayMessage('Bot', 'Il y a eu une erreur lors du traitement de votre requête.', 'bot');
+            }
+        }
+
+        function displayMessage(sender, message, messageType) {
+            const chatboxMessages = document.getElementById('chatbox-messages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${messageType}`;
+            messageDiv.innerHTML = ` ${message}<div class="timestamp">${new Date().toLocaleTimeString()}</div>`;
+            chatboxMessages.appendChild(messageDiv);
+            chatboxMessages.scrollTop = chatboxMessages.scrollHeight;  // Scroll to the bottom
+        }
+
+
+
+    </script>
+</body>
+</html>
